@@ -1,0 +1,22 @@
+{
+  "name": "advanced-trade-typescript-sdk",
+  "version": "1.0.0",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.11",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^2.6.1"
+  }
+}
