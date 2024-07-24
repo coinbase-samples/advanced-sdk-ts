@@ -23,9 +23,7 @@ async function prepareRequest(httpMethod: string, urlPath: string, queryParams?:
     };
 
     const queryString = buildQueryString(queryParams)
-    console.log(queryString)
     const url = `https://${BASE_URL}${urlPath}${queryString}`
-    console.log(url)
 
     return sendRequest(headers, requestOptions, url)
 }
