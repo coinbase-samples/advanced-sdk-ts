@@ -2,6 +2,7 @@
 
 Welcome to the Coinbase Advanced API Typescript SDK. This typescript project was created to allow coders to easily plug into the [Coinbase Advanced API](https://docs.cdp.coinbase.com/advanced-trade/docs/welcome).
 
+For more information on all the available REST endpoints, see the [API Reference](https://docs-cdp-advanced-trade-preview.cbhq.net/advanced-trade/reference/retailbrokerageapi_getaccounts).
 ___
 ## Installation
 
