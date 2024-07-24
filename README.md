@@ -22,7 +22,7 @@ tsc
 
 After building the project, each `.ts` file will have its `.js` counterpart generated.
 
-To run the generated Javascript files, run the following command with the file of choice:
+To run a file, use the following command:
 
 ```
 node dist/{INSERT-FILENAME}.js
