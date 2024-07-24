@@ -63,12 +63,12 @@ All REST endpoints are stored in the `src/rest/`. After locating the endpoint yo
 import { listAccounts } from "./rest/accounts";
 ```
 
-Here, the `listAccounts` endpoints is now imported and ready to be called.
+Here, the `listAccounts` endpoint is now imported and ready to be called.
 ___
 
 ## Making the request
 
-After the endpoint is imported, to make a request to the `listAccounts` endpoint, you would do it like so:
+After the endpoint is imported, make a request to the `listAccounts` endpoint like so:
 
 ```
 import { listAccounts } from "./rest/accounts";
