@@ -8,8 +8,6 @@ ___
 
 ```bash
 npm install
-
-tsc
 ```
 ___
 ## Build and Use
@@ -20,17 +18,22 @@ To build the project, run the following command:
 tsc
 ```
 
-*Note: To avoid potential issues, do not forget to build your project again if you make any changes to it.*
+*Note: To avoid potential issues, do not forget to build your project again after making any changes to it.*
 
-After building the project, Javascript counterparts will be created for each Typescript file. The SDK includes a `main.ts` file with a few requests already setup. Run the file like so:
+After building the project, each `.ts` file will have its `.js` counterpart generated.
+
+To run the generated Javascript files, run the following command with the file of choice:
+
+```
+node dist/{INSERT-FILENAME}.js
+```
+
+For example, the SDK includes a `main.ts` file with examples requests already setup inside it. To run it, you would do it like so:
+
 ```bash
 node dist/main.js
 ```
 
-If you would like to run another file, for example `test.ts`, then simply replace the `main.js` portion with the respective filename. For example, after building the project, the command for `test.ts` would be:
-```bash
-node dist/test.js
-```
 ___
 
 ## Coinbase Developer Platform (CDP) API Keys
