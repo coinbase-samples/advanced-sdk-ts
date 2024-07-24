@@ -2,18 +2,20 @@ import {generateToken} from "../jwt-generator";
 import fetch, {Headers, RequestInit} from "node-fetch";
 import { BASE_URL } from "../constants";
 import * as http from "http";
+import * as dotenv from "dotenv";
 
-export function request(httpMethod: string, urlPath: string, queryParams?: Record<string, any>, bodyParams?: Record<string, any>){
+export function request(httpMethod: string, urlPath: string, queryParams?: Record<string, any>, bodyParams?: Record<string, any>, isPublic?: boolean){
     queryParams = queryParams ? filterParams(queryParams) : {};
 
     if(bodyParams !== undefined)
         bodyParams = bodyParams ? filterParams(bodyParams) : {};
 
-    return prepareRequest(httpMethod, urlPath, queryParams, bodyParams)
+
+    return prepareRequest(httpMethod, urlPath, queryParams, bodyParams, isPublic)
 }
 
-async function prepareRequest(httpMethod: string, urlPath: string, queryParams?: Record<string, any>, bodyParams?: Record<string, any>){
-    const headers: Headers = setHeaders(httpMethod, urlPath);
+async function prepareRequest(httpMethod: string, urlPath: string, queryParams?: Record<string, any>, bodyParams?: Record<string, any>, isPublic?: boolean){
+    const headers: Headers = setHeaders(httpMethod, urlPath, isPublic);
 
     const requestOptions: RequestInit | undefined = {
         method: httpMethod,
@@ -43,12 +45,14 @@ async function sendRequest(headers: Headers, requestOptions: RequestInit, url: s
     }
 }
 
-function setHeaders(httpMethod: string, urlPath: string){
-    const token = generateToken(httpMethod, urlPath)
-
+function setHeaders(httpMethod: string, urlPath: string, isPublic?: boolean){
+    dotenv.config();
     const headers: Headers= new Headers();
-    headers.append("Authorization", `Bearer ${token}`)
     headers.append("Content-Type", "application/json");
+    if(process.env.API_KEY !== undefined && process.env.API_SECRET !== undefined)
+        headers.append("Authorization", `Bearer ${generateToken(httpMethod, urlPath)}`)
+    else if(isPublic == undefined || isPublic == false)
+        throw new Error('Attempting to access authenticated endpoint with invalid API_KEY or API_SECRET.');
 
     return headers;
 }

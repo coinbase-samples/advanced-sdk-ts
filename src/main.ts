@@ -8,15 +8,20 @@ import {
 } from "./rest/products";
 import {createOrder} from "./rest/orders";
 import {getTransactionSummary} from "./rest/fees";
-import {getServerTime} from "./rest/public";
-getServerTime()
-    .then((result) => {
-        console.log(result)
-    })
-    .catch((error) => {
-        console.error('Unhandled error:', error.message);
-    });
+import {
+    getPublicMarketTrades,
+    getPublicProduct,
+    getServerTime
+} from "./rest/public";
 
+
+// getPublicProduct('BTC-USD')
+//     .then((result) => {
+//         console.log(result)
+//     })
+//     .catch((error) => {
+//         console.error('Unhandled error:', error.message);
+//     });
 
 
 // listAccounts()
@@ -26,7 +31,7 @@ getServerTime()
 //     .catch((error) => {
 //         console.error('Unhandled error:', error.message);
 //     });
-//
+
 // listPortfolio()
 //     .then((result) => {
 //         console.log(result);

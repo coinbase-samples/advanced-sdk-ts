@@ -4,7 +4,7 @@ import {request} from "./rest-base";
 export function getServerTime(){
     const endpoint = `${API_PREFIX}/time`
 
-    return request("GET", endpoint, undefined, undefined)
+    return request("GET", endpoint, undefined, undefined, true)
 }
 
 export function getPublicProductBook(product_id: string, limit?: number,
@@ -16,7 +16,7 @@ export function getPublicProductBook(product_id: string, limit?: number,
         aggregation_price_increment: aggregation_price_increment
     }
 
-    return request("GET", endpoint, queryParams, undefined)
+    return request("GET", endpoint, queryParams, undefined, true)
 }
 
 export function listPublicProducts(limit?: number, offset?: number, product_type?: string,
@@ -33,13 +33,13 @@ export function listPublicProducts(limit?: number, offset?: number, product_type
         get_all_products: get_all_products
     }
 
-    return request("GET", endpoint, queryParams, undefined)
+    return request("GET", endpoint, queryParams, undefined, true)
 }
 
 export function getPublicProduct(product_id: string){
     const endpoint = `${API_PREFIX}/market/products/${product_id}`
 
-    return request("GET", endpoint, undefined, undefined)
+    return request("GET", endpoint, undefined, undefined, true)
 }
 
 export function getPublicProductCandles(product_id: string, start: string, end: string, granularity: string){
@@ -50,7 +50,7 @@ export function getPublicProductCandles(product_id: string, start: string, end: 
         granularity: granularity
     }
 
-    return request("GET", endpoint, queryParams, undefined)
+    return request("GET", endpoint, queryParams, undefined, true)
 }
 
 export function getPublicMarketTrades(product_id: string, limit: number, start?: string, end?: string){
@@ -61,5 +61,5 @@ export function getPublicMarketTrades(product_id: string, limit: number, start?:
         end: end
     }
 
-    return request("GET", endpoint, queryParams, undefined)
+    return request("GET", endpoint, queryParams, undefined, true)
 }

@@ -1,12 +1,10 @@
 import { BASE_URL, ALGORITHM } from "./constants";
-import * as dotenv from 'dotenv';
 import * as jwt from 'jsonwebtoken';
 import * as crypto from 'crypto';
 
 
 
 export function generateToken(requestMethod: string, requestPath: string): string {
-    dotenv.config();
     const uri = `${requestMethod} ${BASE_URL}${requestPath}`;
     const payload = {
         iss: 'cdp',
