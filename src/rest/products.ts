@@ -10,11 +10,13 @@ export function getBestBidAsk(product_ids?: string[]){
     return request("GET", endpoint, queryParams, undefined)
 }
 
-export function getProductBook(product_id: string, limit?: number){
+export function getProductBook(product_id: string, limit?: number,
+                               aggregation_price_increment?: number){
     const endpoint = `${API_PREFIX}/product_book`
     let queryParams = {
         product_id: product_id,
-        limit: limit
+        limit: limit,
+        aggregation_price_increment: aggregation_price_increment
     }
 
     return request("GET", endpoint, queryParams, undefined)
@@ -22,7 +24,8 @@ export function getProductBook(product_id: string, limit?: number){
 
 export function listProducts(limit?: number, offset?: number, product_type?: string,
                              product_ids?: string[], contract_expiry_type?: string,
-                             expiring_contract_status?: string, get_tradability_status?: boolean){
+                             expiring_contract_status?: string, get_tradability_status?: boolean,
+                             get_all_products?: boolean){
     const endpoint = `${API_PREFIX}/products`
     let queryParams = {
         limit: limit,
@@ -31,7 +34,8 @@ export function listProducts(limit?: number, offset?: number, product_type?: str
         product_ids: product_ids,
         contract_expiry_type: contract_expiry_type,
         expiring_contract_status: expiring_contract_status,
-        get_tradability_status: get_tradability_status
+        get_tradability_status: get_tradability_status,
+        get_all_products: get_all_products
     }
 
     return request("GET", endpoint, queryParams, undefined)
@@ -40,7 +44,6 @@ export function listProducts(limit?: number, offset?: number, product_type?: str
 export function getProduct(product_id: string, get_tradability_status?: boolean){
     const endpoint = `${API_PREFIX}/products/${product_id}`
     let queryParams = {
-        product_id: product_id,
         get_tradability_status: get_tradability_status
     }
 
