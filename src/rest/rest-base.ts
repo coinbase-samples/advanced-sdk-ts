@@ -17,7 +17,7 @@ export function request(httpMethod: string, urlPath: string, queryParams?: Recor
 async function prepareRequest(httpMethod: string, urlPath: string, queryParams?: Record<string, any>, bodyParams?: Record<string, any>, isPublic?: boolean){
     const headers: Headers = setHeaders(httpMethod, urlPath, isPublic);
 
-    const requestOptions: RequestInit | undefined = {
+    const requestOptions: RequestInit = {
         method: httpMethod,
         headers: headers,
         body: JSON.stringify(bodyParams),
