@@ -15,7 +15,7 @@ ___
 To build the project, run the following command:
 
 ```bash
-tsc
+npm run build
 ```
 
 *Note: To avoid potential issues, do not forget to build your project again after making any changes to it.*
