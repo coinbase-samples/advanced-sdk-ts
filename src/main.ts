@@ -1,28 +1,14 @@
-import {listAccounts, } from "./rest/accounts";
-import {listPortfolio} from "./rest/portfolios";
 import {
+    listAccounts,
+    listPortfolio,
     getBestBidAsk,
-    getProduct,
     getProductBook,
     listProducts,
-} from "./rest/products";
-import {createOrder} from "./rest/orders";
-import {getTransactionSummary} from "./rest/fees";
-import {
-    getPublicMarketTrades,
+    getProduct,
+    createOrder,
+    getTransactionSummary,
     getPublicProduct,
-    getServerTime
-} from "./rest/public";
-
-
-// getPublicProduct('BTC-USD')
-//     .then((result) => {
-//         console.log(result)
-//     })
-//     .catch((error) => {
-//         console.error('Unhandled error:', error.message);
-//     });
-
+} from "./rest";
 
 // listAccounts()
 //     .then((result) => {
@@ -85,6 +71,14 @@ import {
 // getTransactionSummary("FUTURE")
 //     .then((result) => {
 //         console.log(result);
+//     })
+//     .catch((error) => {
+//         console.error('Unhandled error:', error.message);
+//     });
+
+// getPublicProduct('BTC-USD')
+//     .then((result) => {
+//         console.log(result)
 //     })
 //     .catch((error) => {
 //         console.error('Unhandled error:', error.message);
