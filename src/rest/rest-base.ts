@@ -1,17 +1,18 @@
 import {generateToken} from "../jwt-generator";
 import fetch, {Headers, RequestInit} from "node-fetch";
 import { BASE_URL } from "../constants";
-import * as http from "http";
 import * as dotenv from "dotenv";
+import { RequestOptions } from "./types";
 
-export function request(httpMethod: string, urlPath: string, queryParams?: Record<string, any>, bodyParams?: Record<string, any>, isPublic?: boolean){
+export function request(options: RequestOptions){
+    let { method, endpoint, queryParams, bodyParams, isPublic} = options;
+
     queryParams = queryParams ? filterParams(queryParams) : {};
 
     if(bodyParams !== undefined)
         bodyParams = bodyParams ? filterParams(bodyParams) : {};
 
-
-    return prepareRequest(httpMethod, urlPath, queryParams, bodyParams, isPublic)
+    return prepareRequest(method, endpoint, queryParams, bodyParams, isPublic)
 }
 
 async function prepareRequest(httpMethod: string, urlPath: string, queryParams?: Record<string, any>, bodyParams?: Record<string, any>, isPublic?: boolean){
