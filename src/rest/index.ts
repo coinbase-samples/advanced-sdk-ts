@@ -86,7 +86,4 @@ export class RESTClient extends RESTBase{
     public getPublicProduct = Public.getPublicProduct.bind(this);
     public getPublicProductCandles = Public.getPublicProductCandles.bind(this);
     public getPublicMarketTrades = Public.getPublicMarketTrades.bind(this);
-
-
-
 }
