@@ -2,9 +2,9 @@ import { RESTClient } from "./rest";
 import * as dotenv from "dotenv";
 
 dotenv.config();
-const client = new RESTClient();
+const client = new RESTClient(process.env.API_KEY, process.env.API_SECRET);
 
-// client.listAccounts()
+// client.getServerTime()
 //     .then((result) => {
 //         console.log(result)
 //     })

@@ -1,772 +1,92 @@
 import {API_PREFIX} from "../constants";
-import {request} from "./rest-base";
+import {RESTBase} from "./rest-base";
 import { RequestOptions } from './types'
+import * as Accounts from "./accounts";
+import * as Converts from "./converts"
+import * as Fees from "./fees"
+import * as Futures from "./futures"
+import * as Orders from "./orders"
+import * as Payments from "./payments"
+import * as Perpetuals from "./perpetuals"
+import * as Portfolios from "./portfolios"
+import * as Products from "./products"
+import * as Public from "./public"
 
-export class RESTClient{
-    private apiKey: string | undefined;
-    private apiSecret: string | undefined;
-
+export class RESTClient extends RESTBase{
     constructor(key?: string | undefined, secret?: string | undefined) {
-        if (!key || !secret) {
-            console.log("Could not authenticate. Only public endpoints accessible.")
-        }
-
-        this.apiKey = key;
-        this.apiSecret = secret;
+        super(key, secret)
     }
-
 
 // =============== ACCOUNTS endpoints ===============
-    public getAccount(account_uuid: string){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/accounts/${account_uuid}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public listAccounts(limit?: number, cursor?: string, retail_portfolio_id?: string){
-        let queryParams = {
-            limit: limit,
-            cursor: cursor,
-            retail_portfolio_id: retail_portfolio_id
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/accounts`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
+    public getAccount = Accounts.getAccount.bind(this);
+    public listAccounts = Accounts.listAccounts.bind(this);
 
 // =============== CONVERTS endpoints ===============
-    public createConvertQuote(from_account: string, to_account: string, amount: string,
-                                       trade_incentive_metadata: object){
-        let bodyParams = {
-            from_account: from_account,
-            to_account: to_account,
-            amount: amount,
-            trade_incentive_metadata: trade_incentive_metadata
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/convert/quote`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public commitConvertTrade(trade_id: string, from_account: string, to_account: string){
-        let bodyParams = {
-            from_account: from_account,
-            to_account: to_account
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/convert/trade/{trade_id}`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public getConvertTrade(trade_id: string, from_account: string, to_account: string){
-        let queryParams = {
-            from_account: from_account,
-            to_account: to_account
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/convert/trade/${trade_id}`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
+    public createConvertQuote = Converts.createConvertQuote.bind(this);
+    public commitConvertTrade = Converts.commitConvertTrade.bind(this);
+    public getConvertTrade = Converts.getConvertTrade.bind(this);
 
 // =============== FEES endpoints ===============
-    public getTransactionSummary(product_type?: string, contract_expiry_type?: string,
-                                          product_venue?: string){
-        let queryParams = {
-            product_type: product_type,
-            contract_expiry_type: contract_expiry_type,
-            product_venue: product_venue
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/transaction_summary`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
+    public getTransactionSummary = Fees.getTransactionSummary.bind(this);
 
 // =============== FUTURES endpoints ===============
-    public closePosition(client_order_id: string, product_id: string,
-                                  size?: string){
-        let bodyParams = {
-            client_order_id: client_order_id,
-            product_id: product_id,
-            size: size
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/orders/close_position`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public getFuturesBalanceSummary(){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/cfm/balance_summary`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public getIntradayMarginSetting(){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public setIntradayMarginSetting(intraday_margin_setting?: string){
-        let bodyParams = {
-            intraday_margin_setting: intraday_margin_setting
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public getCurrentMarginWindow(margin_profile_type?: string){
-        let bodyParams = {
-            margin_profile_type: margin_profile_type
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/cfm/intraday/current_margin_window`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public listFuturesPositions(){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/cfm/positions`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public getFuturesPosition(product_id: string){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/cfm/positions/${product_id}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public scheduleFuturesSweep(usd_amount?: string){
-        let bodyParams = {
-            usd_amount: usd_amount
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/cfm/sweeps/schedule`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public listFuturesSweeps(){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/cfm/sweeps`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public cancelPendingFuturesSweep(){
-        return request({
-            method: "DELETE",
-            endpoint: `${API_PREFIX}/cfm/sweeps`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
+    public closePosition = Futures.closePosition.bind(this);
+    public getFuturesBalanceSummary = Futures.getFuturesBalanceSummary.bind(this);
+    public getIntradayMarginSetting = Futures.getIntradayMarginSetting.bind(this);
+    public setIntradayMarginSetting = Futures.setIntradayMarginSetting.bind(this);
+    public getCurrentMarginWindow = Futures.getCurrentMarginWindow.bind(this);
+    public listFuturesPositions = Futures.listFuturesPositions.bind(this);
+    public getFuturesPosition = Futures.getFuturesPosition.bind(this);
+    public scheduleFuturesSweep = Futures.scheduleFuturesSweep.bind(this);
+    public listFuturesSweeps = Futures.listFuturesSweeps.bind(this);
+    public cancelPendingFuturesSweep = Futures.cancelPendingFuturesSweep.bind(this);
 
 // =============== ORDERS endpoints ===============
-    public createOrder(client_order_id: string, product_id: string, side: string,
-                                order_configuration: object, self_trade_prevention_id?: string,
-                                leverage?: string, margin_type?: string, retail_portfolio_id?: string){
-        let bodyParams = {
-            client_order_id: client_order_id,
-            product_id: product_id,
-            side: side,
-            order_configuration: order_configuration,
-            self_trade_prevention_id: self_trade_prevention_id,
-            leverage: leverage,
-            margin_type: margin_type,
-            retail_portfolio_id: retail_portfolio_id
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/orders`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public cancelOrders(order_ids: string[]){
-        let bodyParams = {
-            order_ids: order_ids
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/orders/batch_cancel`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public editOrder(order_id: string, price?: string, size?: string){
-        let bodyParams = {
-            order_id: order_id,
-            price: price,
-            size: size
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/orders/edit`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public editOrderPreview(order_id: string, price?: string, size?: string){
-        let bodyParams = {
-            order_id: order_id,
-            price: price,
-            size: size
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/orders/edit_preview`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public listOrders(order_ids?: string[], product_ids?: string[], order_status?: string[], limit?: number,
-                               start_date?: string, end_date?: string, order_type?: string,
-                               order_side?: string, cursor?: string, product_type?: string,
-                               order_placement_source?: string, contract_expiry_type?: string,
-                               asset_filters?: string[], retail_portfolio_id?: string, time_in_forces?: string,
-                               sort_by?: string){
-        let queryParams = {
-            order_ids: order_ids,
-            product_ids: product_ids,
-            order_status: order_status,
-            limit: limit,
-            start_date: start_date,
-            end_date: end_date,
-            order_type: order_type,
-            order_side: order_side,
-            cursor: cursor,
-            product_type: product_type,
-            order_placement_source: order_placement_source,
-            contract_expiry_type: contract_expiry_type,
-            asset_filters: asset_filters,
-            retail_portfolio_id: retail_portfolio_id,
-            time_in_forces: time_in_forces,
-            sort_by: sort_by
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/orders/historical/batch`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public listFills(order_ids?: string[], trade_ids?: string[] ,product_ids?: string[], start_sequence_timestamp?: string,
-                              end_sequence_timestamp?: string, retail_portfolio_id?: string,
-                              limit?: number, cursor?: string, sort_by?: string){
-        let queryParams = {
-            order_ids: order_ids,
-            trade_ids: trade_ids,
-            product_ids: product_ids,
-            start_sequence_timestamp: start_sequence_timestamp,
-            end_sequence_timestamp: end_sequence_timestamp,
-            retail_portfolio_id: retail_portfolio_id,
-            limit: limit,
-            cursor: cursor,
-            sort_by: sort_by
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/orders/historical/fills`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public getOrder(order_id: string){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/orders/historical/${order_id}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public previewOrder(product_id: string, side: string, commission_rate: object,
-                                 order_configuration: object, is_max?: boolean, tradable_balance?: string,
-                                 skip_fcm_risk_check?: boolean, leverage?: string, margin_type?: string,
-                                 retail_portfolio_id?: string){
-        let bodyParams = {
-            product_id: product_id,
-            side: side,
-            commission_rate: commission_rate,
-            order_configuration: order_configuration,
-            is_max: is_max,
-            tradable_balance: tradable_balance,
-            skip_fcm_risk_check: skip_fcm_risk_check,
-            leverage: leverage,
-            margin_type: margin_type,
-            retail_portfolio_id: retail_portfolio_id
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/orders/preview`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
+    public createOrder = Orders.createOrder.bind(this);
+    public cancelOrders = Orders.cancelOrders.bind(this);
+    public editOrder = Orders.editOrder.bind(this);
+    public editOrderPreview = Orders.editOrderPreview.bind(this);
+    public listOrders = Orders.listOrders.bind(this);
+    public listFills = Orders.listFills.bind(this);
+    public getOrder = Orders.getOrder.bind(this);
+    public previewOrder = Orders.previewOrder.bind(this);
 
 // =============== PAYMENTS endpoints ===============
-    public listPaymentMethods(){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/payment_methods`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public getPaymentMethod(payment_method_id: string){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/payment_methods/${payment_method_id}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
+    public listPaymentMethods = Payments.listPaymentMethods.bind(this);
+    public getPaymentMethod = Payments.getPaymentMethod.bind(this);
 
 // =============== PERPETUALS endpoints ===============
-    public allocatePortfolio(portfolio_uuid: string, symbol: string,
-                                      amount: string, currency: string){
-        let bodyParams = {
-            portfolio_uuid: portfolio_uuid,
-            symbol: symbol,
-            amount: amount,
-            currency: currency
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/intx/allocate`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public getPerpetualsPortfolioSummary(portfolio_uuid: string){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/intx/portfolio/${portfolio_uuid}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public listPerpetualsPositions(portfolio_uuid: string){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/intx/positions/${portfolio_uuid}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public getPerpertualsPosition(portfolio_uuid: string, symbol: string){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/intx/positions/${portfolio_uuid}/${symbol}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public GetPortfolioBalances(portfolio_uuid: string){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/intx/balances/${portfolio_uuid}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public optInOutMultiAssetCollateral(portfolio_uuid?: string,
-                                                 multi_asset_collateral_enabled?: boolean){
-        let bodyParams = {
-            portfolio_uuid: portfolio_uuid,
-            multi_asset_collateral_enabled: multi_asset_collateral_enabled
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/intx/multi_asset_collateral`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
+    public allocatePortfolio = Perpetuals.allocatePortfolio.bind(this);
+    public getPerpetualsPortfolioSummary = Perpetuals.getPerpetualsPortfolioSummary.bind(this);
+    public listPerpetualsPositions = Perpetuals.listPerpetualsPositions.bind(this);
+    public getPerpetualsPosition = Perpetuals.getPerpertualsPosition.bind(this);
+    public getPortfolioBalances = Perpetuals.getPortfolioBalances.bind(this);
+    public optInOutMultiAssetCollateral = Perpetuals.optInOutMultiAssetCollateral.bind(this);
 
 // =============== PORTFOLIOS endpoints ===============
-    public listPortfolio(portfolio_type?: string){
-        let queryParams = {
-            portfolio_type: portfolio_type
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/portfolios`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public createPortfolio(name: string){
-        let bodyParams = {
-            name: name
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/portfolios`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public deletePortfolio(portfolio_uuid: string){
-        return request({
-            method: "DELETE",
-            endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public editPortfolio(portfolio_uuid: string, name: string){
-        let bodyParams = {
-            name: name
-        }
-
-        return request({
-            method: "PUT",
-            endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public movePortfolioFunds(funds: object, source_portfolio_uuid: string,
-                                       target_portfolio_uuid: string){
-        let bodyParams = {
-            funds: funds,
-            source_portfolio_uuid: source_portfolio_uuid,
-            target_portfolio_uuid: target_portfolio_uuid
-        }
-
-        return request({
-            method: "POST",
-            endpoint: `${API_PREFIX}/portfolios/move_funds`,
-            queryParams: undefined,
-            bodyParams: bodyParams,
-            isPublic: false
-        });
-    }
-
-    public getPortfolioBreakdown(portfolio_uuid: string, currency: string){
-        let queryParams = {
-            currency: currency
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
+    public listPortfolio = Portfolios.listPortfolio.bind(this);
+    public createPortfolio = Portfolios.createPortfolio.bind(this);
+    public deletePortfolio = Portfolios.deletePortfolio.bind(this);
+    public editPortfolio = Portfolios.editPortfolio.bind(this);
+    public movePortfolioFunds = Portfolios.movePortfolioFunds.bind(this);
+    public getPortfolioBreakdown = Portfolios.getPortfolioBreakdown.bind(this);
 
 // =============== PRODUCTS endpoints ===============
-    public getBestBidAsk(product_ids?: string[]){
-        let queryParams = {
-            product_ids: product_ids
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/best_bid_ask`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public getProductBook(product_id: string, limit?: number,
-                                   aggregation_price_increment?: number){
-        let queryParams = {
-            product_id: product_id,
-            limit: limit,
-            aggregation_price_increment: aggregation_price_increment
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/product_book`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public listProducts(limit?: number, offset?: number, product_type?: string,
-                                 product_ids?: string[], contract_expiry_type?: string,
-                                 expiring_contract_status?: string, get_tradability_status?: boolean,
-                                 get_all_products?: boolean){
-        let queryParams = {
-            limit: limit,
-            offset: offset,
-            product_type: product_type,
-            product_ids: product_ids,
-            contract_expiry_type: contract_expiry_type,
-            expiring_contract_status: expiring_contract_status,
-            get_tradability_status: get_tradability_status,
-            get_all_products: get_all_products
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/products`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public getProduct(product_id: string, get_tradability_status?: boolean){
-        let queryParams = {
-            get_tradability_status: get_tradability_status
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/products/${product_id}`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public getProductCandles(product_id: string, start: string, end: string, granularity: string){
-        let queryParams = {
-            start: start,
-            end: end,
-            granularity: granularity
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/products/${product_id}/candles`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
-
-    public getMarketTrades(product_id: string, limit: number, start?: string, end?: string){
-        let queryParams = {
-            limit: limit,
-            start: start,
-            end: end
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/products/${product_id}/ticker`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: false
-        });
-    }
+    public getBestBidAsk = Products.getBestBidAsk.bind(this);
+    public getProductBook = Products.getProductBook.bind(this);
+    public listProducts = Products.listProducts.bind(this);
+    public getProduct = Products.getProduct.bind(this);
+    public getProductCandles = Products.getProductCandles.bind(this);
+    public getMarketTrades = Products.getMarketTrades.bind(this);
 
 // =============== PUBLIC endpoints ===============
-    public getServerTime(){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/time`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: true
-        });
-    }
+    public getServerTime = Public.getServerTime.bind(this);
+    public getPublicProductBook = Public.getPublicProductBook.bind(this);
+    public listPublicProducts = Public.listPublicProducts.bind(this);
+    public getPublicProduct = Public.getPublicProduct.bind(this);
+    public getPublicProductCandles = Public.getPublicProductCandles.bind(this);
+    public getPublicMarketTrades = Public.getPublicMarketTrades.bind(this);
 
-    public getPublicProductBook(product_id: string, limit?: number,
-                                         aggregation_price_increment?: number){
-        let queryParams = {
-            product_id: product_id,
-            limit: limit,
-            aggregation_price_increment: aggregation_price_increment
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/market/product_book`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: true
-        });
-    }
-
-    public listPublicProducts(limit?: number, offset?: number, product_type?: string,
-                                       product_ids?: string[], contract_expiry_type?: string,
-                                       expiring_contract_status?: string, get_all_products?: boolean){
-        let queryParams = {
-            limit: limit,
-            offset: offset,
-            product_type: product_type,
-            product_ids: product_ids,
-            contract_expiry_type: contract_expiry_type,
-            expiring_contract_status: expiring_contract_status,
-            get_all_products: get_all_products
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/market/products`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: true
-        });
-    }
-
-    public getPublicProduct(product_id: string){
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/market/products/${product_id}`,
-            queryParams: undefined,
-            bodyParams: undefined,
-            isPublic: true
-        });
-    }
-
-    public getPublicProductCandles(product_id: string, start: string, end: string, granularity: string){
-        let queryParams = {
-            start: start,
-            end: end,
-            granularity: granularity
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/market/products/${product_id}/candles`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: true
-        });
-    }
-
-    public getPublicMarketTrades(product_id: string, limit: number, start?: string, end?: string){
-        let queryParams = {
-            limit: limit,
-            start: start,
-            end: end
-        }
-
-        return request({
-            method: "GET",
-            endpoint: `${API_PREFIX}/products/${product_id}/ticker`,
-            queryParams: queryParams,
-            bodyParams: undefined,
-            isPublic: true
-        });
-    }
 
 
 }
