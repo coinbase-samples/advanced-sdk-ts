@@ -64,7 +64,7 @@ export class RESTClient extends RESTBase{
     public optInOutMultiAssetCollateral = Perpetuals.optInOutMultiAssetCollateral.bind(this);
 
 // =============== PORTFOLIOS endpoints ===============
-    public listPortfolio = Portfolios.listPortfolio.bind(this);
+    public listPortfolios = Portfolios.listPortfolios.bind(this);
     public createPortfolio = Portfolios.createPortfolio.bind(this);
     public deletePortfolio = Portfolios.deletePortfolio.bind(this);
     public editPortfolio = Portfolios.editPortfolio.bind(this);

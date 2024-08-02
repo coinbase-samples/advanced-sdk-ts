@@ -20,7 +20,7 @@ const client = new RESTClient(process.env.API_KEY, process.env.API_SECRET);
 //         console.error('Unhandled error:', error.message);
 //     });
 
-// client.listPortfolio()
+// client.listPortfolios()
 //     .then((result) => {
 //         console.log(result);
 //     })

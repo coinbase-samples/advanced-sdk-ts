@@ -1,7 +1,7 @@
 import {API_PREFIX} from "../constants";
 import {RESTBase} from "./rest-base";
 
-export function listPortfolio(this: RESTBase, portfolio_type?: string){
+export function listPortfolios(this: RESTBase, portfolio_type?: string){
     let queryParams = {
         portfolio_type: portfolio_type
     }
