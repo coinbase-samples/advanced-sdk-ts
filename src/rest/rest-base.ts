@@ -7,12 +7,12 @@ export class RESTBase{
     private apiKey: string | undefined;
     private apiSecret: string | undefined;
 
-    constructor(apiKey?: string, apiSecret?: string) {
-        if (!apiKey || !apiSecret) {
+    constructor(key?: string, secret?: string) {
+        if (!key || !secret) {
             console.log("Could not authenticate. Only public endpoints accessible.")
         }
-        this.apiKey = apiKey;
-        this.apiSecret = apiSecret;
+        this.apiKey = key;
+        this.apiSecret = secret;
     }
 
     request(options: RequestOptions){
@@ -61,7 +61,7 @@ export class RESTBase{
         const headers: Headers= new Headers();
         headers.append("Content-Type", "application/json");
         if(this.apiKey !== undefined && this.apiSecret !== undefined)
-            headers.append("Authorization", `Bearer ${generateToken(httpMethod, urlPath)}`)
+            headers.append("Authorization", `Bearer ${generateToken(httpMethod, urlPath, this.apiKey, this.apiSecret)}`)
         else if(isPublic == undefined || isPublic == false)
             throw new Error('Attempting to access authenticated endpoint with invalid API_KEY or API_SECRET.');
 

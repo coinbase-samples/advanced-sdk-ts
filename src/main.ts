@@ -1,7 +1,9 @@
 import { RESTClient } from "./rest";
 import * as dotenv from "dotenv";
 
+// If storing keys in .env file
 dotenv.config();
+
 const client = new RESTClient(process.env.API_KEY, process.env.API_SECRET);
 
 // client.getServerTime()
