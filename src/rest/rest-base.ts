@@ -1,6 +1,6 @@
 import {generateToken} from "../jwt-generator";
 import fetch, {Headers, RequestInit} from "node-fetch";
-import { BASE_URL } from "../constants";
+import {BASE_URL, USER_AGENT} from "../constants";
 import { RequestOptions } from "./types";
 
 export class RESTBase{
@@ -60,6 +60,7 @@ export class RESTBase{
     setHeaders(httpMethod: string, urlPath: string, isPublic?: boolean){
         const headers: Headers= new Headers();
         headers.append("Content-Type", "application/json");
+        headers.append("User-Agent", USER_AGENT)
         if(this.apiKey !== undefined && this.apiSecret !== undefined)
             headers.append("Authorization", `Bearer ${generateToken(httpMethod, urlPath, this.apiKey, this.apiSecret)}`)
         else if(isPublic == undefined || isPublic == false)
