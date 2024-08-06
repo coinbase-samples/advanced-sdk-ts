@@ -15,11 +15,11 @@
   "description": "",
   "devDependencies": {
     "@types/node-fetch": "^2.6.11",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "dotenv": "^16.4.5"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.6",
-    "dotenv": "^16.4.5",
     "jsonwebtoken": "^9.0.2",
     "node-fetch": "^2.6.1"
   }
