@@ -19,5 +19,10 @@ export function generateToken(requestMethod: string, requestPath: string, apiKey
         kid: apiKey,
         nonce: crypto.randomBytes(16).toString('hex'),
     };
-    return jwt.sign(payload, apiSecret as string, { algorithm: "ES256", header });
+    const options: jwt.SignOptions = {
+        algorithm: ALGORITHM as jwt.Algorithm,
+        header: header
+    };
+
+    return jwt.sign(payload, apiSecret as string, options);
 }
