@@ -32,8 +32,7 @@ export class RESTBase{
         const requestOptions: RequestInit = {
             method: httpMethod,
             headers: headers,
-            body: JSON.stringify(bodyParams),
-            redirect: "follow",
+            body: JSON.stringify(bodyParams)
         };
 
         const queryString = this.buildQueryString(queryParams)
