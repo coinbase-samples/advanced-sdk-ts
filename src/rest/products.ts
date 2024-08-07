@@ -10,7 +10,6 @@ export function getBestBidAsk(this: RESTBase, product_ids?: string[]) {
     method: 'GET',
     endpoint: `${API_PREFIX}/best_bid_ask`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -31,7 +30,6 @@ export function getProductBook(
     method: 'GET',
     endpoint: `${API_PREFIX}/product_book`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -62,7 +60,6 @@ export function listProducts(
     method: 'GET',
     endpoint: `${API_PREFIX}/products`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -80,7 +77,6 @@ export function getProduct(
     method: 'GET',
     endpoint: `${API_PREFIX}/products/${product_id}`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -102,7 +98,6 @@ export function getProductCandles(
     method: 'GET',
     endpoint: `${API_PREFIX}/products/${product_id}/candles`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -124,7 +119,6 @@ export function getMarketTrades(
     method: 'GET',
     endpoint: `${API_PREFIX}/products/${product_id}/ticker`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }

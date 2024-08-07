@@ -17,7 +17,6 @@ export function getTransactionSummary(
     method: 'GET',
     endpoint: `${API_PREFIX}/transaction_summary`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }

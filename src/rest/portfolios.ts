@@ -10,7 +10,6 @@ export function listPortfolios(this: RESTBase, portfolio_type?: string) {
     method: 'GET',
     endpoint: `${API_PREFIX}/portfolios`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -23,7 +22,6 @@ export function createPortfolio(this: RESTBase, name: string) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/portfolios`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -33,8 +31,6 @@ export function deletePortfolio(this: RESTBase, portfolio_uuid: string) {
   return this.request({
     method: 'DELETE',
     endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -51,7 +47,6 @@ export function editPortfolio(
   return this.request({
     method: 'PUT',
     endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -72,7 +67,6 @@ export function movePortfolioFunds(
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/portfolios/move_funds`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -91,7 +85,6 @@ export function getPortfolioBreakdown(
     method: 'GET',
     endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }

@@ -104,7 +104,6 @@ export function scheduleFuturesSweep(this: RESTBase, usd_amount?: string) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/cfm/sweeps/schedule`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -114,8 +113,6 @@ export function listFuturesSweeps(this: RESTBase) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/sweeps`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -124,8 +121,6 @@ export function cancelPendingFuturesSweep(this: RESTBase) {
   return this.request({
     method: 'DELETE',
     endpoint: `${API_PREFIX}/cfm/sweeps`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }

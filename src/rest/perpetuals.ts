@@ -18,7 +18,6 @@ export function allocatePortfolio(
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/intx/allocate`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -31,8 +30,6 @@ export function getPerpetualsPortfolioSummary(
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/intx/portfolio/${portfolio_uuid}`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -44,8 +41,6 @@ export function listPerpetualsPositions(
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/intx/positions/${portfolio_uuid}`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -58,8 +53,6 @@ export function getPerpertualsPosition(
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/intx/positions/${portfolio_uuid}/${symbol}`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -68,8 +61,6 @@ export function getPortfolioBalances(this: RESTBase, portfolio_uuid: string) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/intx/balances/${portfolio_uuid}`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -87,7 +78,6 @@ export function optInOutMultiAssetCollateral(
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/intx/multi_asset_collateral`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });

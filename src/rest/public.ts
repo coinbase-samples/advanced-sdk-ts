@@ -5,8 +5,6 @@ export function getServerTime(this: RESTBase) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/time`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: true,
   });
 }
@@ -27,7 +25,6 @@ export function getPublicProductBook(
     method: 'GET',
     endpoint: `${API_PREFIX}/market/product_book`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: true,
   });
 }
@@ -56,7 +53,6 @@ export function listPublicProducts(
     method: 'GET',
     endpoint: `${API_PREFIX}/market/products`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: true,
   });
 }
@@ -65,8 +61,6 @@ export function getPublicProduct(this: RESTBase, product_id: string) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/market/products/${product_id}`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: true,
   });
 }
@@ -88,7 +82,6 @@ export function getPublicProductCandles(
     method: 'GET',
     endpoint: `${API_PREFIX}/market/products/${product_id}/candles`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: true,
   });
 }
@@ -110,7 +103,6 @@ export function getPublicMarketTrades(
     method: 'GET',
     endpoint: `${API_PREFIX}/products/${product_id}/ticker`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: true,
   });
 }

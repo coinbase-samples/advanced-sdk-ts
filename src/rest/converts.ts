@@ -18,7 +18,6 @@ export function createConvertQuote(
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/convert/quote`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -38,7 +37,6 @@ export function commitConvertTrade(
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/convert/trade/{trade_id}`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -59,7 +57,6 @@ export function getConvertTrade(
     method: 'GET',
     endpoint: `${API_PREFIX}/convert/trade/${trade_id}`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }

@@ -26,7 +26,6 @@ export function createOrder(
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -40,7 +39,6 @@ export function cancelOrders(this: RESTBase, order_ids: string[]) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/batch_cancel`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -61,7 +59,6 @@ export function editOrder(
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -82,7 +79,6 @@ export function editOrderPreview(
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit_preview`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
@@ -130,7 +126,6 @@ export function listOrders(
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/historical/batch`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -163,7 +158,6 @@ export function listFills(
     method: 'GET',
     endpoint: `${API_PREFIX}/orders/historical/fills`,
     queryParams: queryParams,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -172,8 +166,6 @@ export function getOrder(this: RESTBase, order_id: string) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/orders/historical/${order_id}`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -207,7 +199,6 @@ export function previewOrder(
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/preview`,
-    queryParams: undefined,
     bodyParams: bodyParams,
     isPublic: false,
   });
