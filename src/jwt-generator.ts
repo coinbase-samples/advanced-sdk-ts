@@ -1,8 +1,6 @@
-import { BASE_URL, ALGORITHM } from "./constants";
+import { BASE_URL, ALGORITHM, JWT_ISSUER } from "./constants";
 import * as jwt from 'jsonwebtoken';
 import * as crypto from 'crypto';
-
-const JWT_ISSUER = 'cdp';
 
 export function generateToken(requestMethod: string, requestPath: string, apiKey: string, apiSecret: string): string {
     const uri = `${requestMethod} ${BASE_URL}${requestPath}`;
