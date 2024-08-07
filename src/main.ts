@@ -7,7 +7,7 @@ dotenv.config();
 const client = new RESTClient(process.env.API_KEY, process.env.API_SECRET);
 
 client
-  .listAccounts()
+  .listAccounts({ limit: 2 })
   .then((result) => {
     console.log(result);
   })

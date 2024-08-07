@@ -1,30 +1,29 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
+import {
+  GetAccountRequiredQueryParams,
+  ListAccountsOptionalQueryParams,
+} from './types';
 
-export function getAccount(this: RESTBase, account_uuid: string) {
+export function getAccount(
+  this: RESTBase,
+  request: GetAccountRequiredQueryParams
+) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/accounts/${account_uuid}`,
+    endpoint: `${API_PREFIX}/accounts/${request.account_uuid}`,
     isPublic: false,
   });
 }
 
 export function listAccounts(
   this: RESTBase,
-  limit?: number,
-  cursor?: string,
-  retail_portfolio_id?: string
+  request?: ListAccountsOptionalQueryParams
 ) {
-  const queryParams = {
-    limit: limit,
-    cursor: cursor,
-    retail_portfolio_id: retail_portfolio_id,
-  };
-
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/accounts`,
-    queryParams: queryParams,
+    queryParams: request,
     isPublic: false,
   });
 }
