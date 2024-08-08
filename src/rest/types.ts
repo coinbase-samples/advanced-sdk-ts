@@ -51,6 +51,13 @@ export type CommitConvertTradeRequiredBodyParams = {
   to_account: string;
 };
 
+// Get Transactions Summary
+export type GetTransactionsSummaryOptionalQueryParams = {
+  product_type?: string;
+  contract_expiry_type?: string;
+  product_venue?: string;
+};
+
 // Misc.
 export type TradeIncentiveMetadata = {
   user_incentive_id: string;
