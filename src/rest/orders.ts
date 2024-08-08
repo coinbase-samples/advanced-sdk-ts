@@ -1,5 +1,17 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
+import {
+  CancelOrdersRequiredBodyParams,
+  ClosePositionOptionalBodyParams,
+  ClosePositionRequiredBodyParams,
+  EditOrderOptionalBodyParams,
+  EditOrderPreviewOptionalBodyParams,
+  EditOrderPreviewRequiredBodyParams,
+  EditOrderRequiredBodyParams,
+  GetOrderRequiredPathParams,
+  ListFillsOptionalQueryParams,
+  ListOrdersOptionalQueryParams,
+} from './types';
 
 export function createOrder(
   this: RESTBase,
@@ -31,141 +43,75 @@ export function createOrder(
   });
 }
 
-export function cancelOrders(this: RESTBase, order_ids: string[]) {
-  const bodyParams = {
-    order_ids: order_ids,
-  };
-
+export function cancelOrders(
+  this: RESTBase,
+  requiredBody: CancelOrdersRequiredBodyParams
+) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/batch_cancel`,
-    bodyParams: bodyParams,
+    bodyParams: requiredBody,
     isPublic: false,
   });
 }
 
 export function editOrder(
   this: RESTBase,
-  order_id: string,
-  price?: string,
-  size?: string
+  requiredBody: EditOrderRequiredBodyParams,
+  optionalBody?: EditOrderOptionalBodyParams
 ) {
-  const bodyParams = {
-    order_id: order_id,
-    price: price,
-    size: size,
-  };
-
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit`,
-    bodyParams: bodyParams,
+    bodyParams: { ...requiredBody, ...optionalBody },
     isPublic: false,
   });
 }
 
 export function editOrderPreview(
   this: RESTBase,
-  order_id: string,
-  price?: string,
-  size?: string
+  requiredBody: EditOrderPreviewRequiredBodyParams,
+  optionalBody?: EditOrderPreviewOptionalBodyParams
 ) {
-  const bodyParams = {
-    order_id: order_id,
-    price: price,
-    size: size,
-  };
-
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit_preview`,
-    bodyParams: bodyParams,
+    bodyParams: { ...requiredBody, ...optionalBody },
     isPublic: false,
   });
 }
 
 export function listOrders(
   this: RESTBase,
-  order_ids?: string[],
-  product_ids?: string[],
-  order_status?: string[],
-  limit?: number,
-  start_date?: string,
-  end_date?: string,
-  order_type?: string,
-  order_side?: string,
-  cursor?: string,
-  product_type?: string,
-  order_placement_source?: string,
-  contract_expiry_type?: string,
-  asset_filters?: string[],
-  retail_portfolio_id?: string,
-  time_in_forces?: string,
-  sort_by?: string
+  optionalQuery?: ListOrdersOptionalQueryParams
 ) {
-  const queryParams = {
-    order_ids: order_ids,
-    product_ids: product_ids,
-    order_status: order_status,
-    limit: limit,
-    start_date: start_date,
-    end_date: end_date,
-    order_type: order_type,
-    order_side: order_side,
-    cursor: cursor,
-    product_type: product_type,
-    order_placement_source: order_placement_source,
-    contract_expiry_type: contract_expiry_type,
-    asset_filters: asset_filters,
-    retail_portfolio_id: retail_portfolio_id,
-    time_in_forces: time_in_forces,
-    sort_by: sort_by,
-  };
-
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/historical/batch`,
-    queryParams: queryParams,
+    queryParams: optionalQuery,
     isPublic: false,
   });
 }
 
 export function listFills(
   this: RESTBase,
-  order_ids?: string[],
-  trade_ids?: string[],
-  product_ids?: string[],
-  start_sequence_timestamp?: string,
-  end_sequence_timestamp?: string,
-  retail_portfolio_id?: string,
-  limit?: number,
-  cursor?: string,
-  sort_by?: string
+  optionalQuery: ListFillsOptionalQueryParams
 ) {
-  const queryParams = {
-    order_ids: order_ids,
-    trade_ids: trade_ids,
-    product_ids: product_ids,
-    start_sequence_timestamp: start_sequence_timestamp,
-    end_sequence_timestamp: end_sequence_timestamp,
-    retail_portfolio_id: retail_portfolio_id,
-    limit: limit,
-    cursor: cursor,
-    sort_by: sort_by,
-  };
-
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/orders/historical/fills`,
-    queryParams: queryParams,
+    queryParams: optionalQuery,
     isPublic: false,
   });
 }
 
-export function getOrder(this: RESTBase, order_id: string) {
+export function getOrder(
+  this: RESTBase,
+  requiredPath: GetOrderRequiredPathParams
+) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/orders/historical/${order_id}`,
+    endpoint: `${API_PREFIX}/orders/historical/${requiredPath.order_id}`,
     isPublic: false,
   });
 }
@@ -206,21 +152,14 @@ export function previewOrder(
 
 export function closePosition(
   this: RESTBase,
-  client_order_id: string,
-  product_id: string,
-  size?: string
+  requiredBody: ClosePositionRequiredBodyParams,
+  optionalBody?: ClosePositionOptionalBodyParams
 ) {
-  const bodyParams = {
-    client_order_id: client_order_id,
-    product_id: product_id,
-    size: size,
-  };
-
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/close_position`,
     queryParams: undefined,
-    bodyParams: bodyParams,
+    bodyParams: { ...requiredBody, ...optionalBody },
     isPublic: false,
   });
 }
