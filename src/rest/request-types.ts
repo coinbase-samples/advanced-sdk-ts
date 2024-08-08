@@ -1,3 +1,5 @@
+import { OrderConfiguration, TradeIncentiveMetadata } from './misc-types';
+
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 export interface RequestOptions {
@@ -79,6 +81,19 @@ export type ScheduleFuturesSweepOptionalBodyParams = {
 };
 
 // Create Order
+export type CreateOrderRequiredBodyParams = {
+  client_order_id: string;
+  product_id: string;
+  side: string;
+  order_configuration: OrderConfiguration;
+};
+
+export type CreateOrderOptionalBodyParams = {
+  self_trade_prevention_id?: string;
+  leverage?: string;
+  margin_type?: string;
+  retail_portfolio_id?: string;
+};
 
 // Cancel Orders
 export type CancelOrdersRequiredBodyParams = {
@@ -144,6 +159,17 @@ export type GetOrderRequiredPathParams = {
 };
 
 // Preview Order
+export type PreviewOrderRequiredBodyParams = {
+  product_id: string;
+  side: string;
+  order_configuration: OrderConfiguration;
+};
+
+export type PreviewOrderOptionalBodyParams = {
+  leverage?: string;
+  margin_type?: string;
+  retail_portfolio_id?: string;
+};
 
 // Close Position
 export type ClosePositionRequiredBodyParams = {
@@ -153,10 +179,4 @@ export type ClosePositionRequiredBodyParams = {
 
 export type ClosePositionOptionalBodyParams = {
   size?: string;
-};
-
-// Misc.
-export type TradeIncentiveMetadata = {
-  user_incentive_id: string;
-  code_val: string;
 };

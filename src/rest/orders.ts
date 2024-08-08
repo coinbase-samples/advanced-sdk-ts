@@ -4,6 +4,8 @@ import {
   CancelOrdersRequiredBodyParams,
   ClosePositionOptionalBodyParams,
   ClosePositionRequiredBodyParams,
+  CreateOrderOptionalBodyParams,
+  CreateOrderRequiredBodyParams,
   EditOrderOptionalBodyParams,
   EditOrderPreviewOptionalBodyParams,
   EditOrderPreviewRequiredBodyParams,
@@ -11,34 +13,19 @@ import {
   GetOrderRequiredPathParams,
   ListFillsOptionalQueryParams,
   ListOrdersOptionalQueryParams,
-} from './types';
+  PreviewOrderOptionalBodyParams,
+  PreviewOrderRequiredBodyParams,
+} from './request-types';
 
 export function createOrder(
   this: RESTBase,
-  client_order_id: string,
-  product_id: string,
-  side: string,
-  order_configuration: object,
-  self_trade_prevention_id?: string,
-  leverage?: string,
-  margin_type?: string,
-  retail_portfolio_id?: string
+  requiredBody: CreateOrderRequiredBodyParams,
+  optionalBody?: CreateOrderOptionalBodyParams
 ) {
-  const bodyParams = {
-    client_order_id: client_order_id,
-    product_id: product_id,
-    side: side,
-    order_configuration: order_configuration,
-    self_trade_prevention_id: self_trade_prevention_id,
-    leverage: leverage,
-    margin_type: margin_type,
-    retail_portfolio_id: retail_portfolio_id,
-  };
-
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders`,
-    bodyParams: bodyParams,
+    bodyParams: { ...requiredBody, ...optionalBody },
     isPublic: false,
   });
 }
@@ -118,34 +105,13 @@ export function getOrder(
 
 export function previewOrder(
   this: RESTBase,
-  product_id: string,
-  side: string,
-  commission_rate: object,
-  order_configuration: object,
-  is_max?: boolean,
-  tradable_balance?: string,
-  skip_fcm_risk_check?: boolean,
-  leverage?: string,
-  margin_type?: string,
-  retail_portfolio_id?: string
+  requiredBody: PreviewOrderRequiredBodyParams,
+  optionalBody?: PreviewOrderOptionalBodyParams
 ) {
-  const bodyParams = {
-    product_id: product_id,
-    side: side,
-    commission_rate: commission_rate,
-    order_configuration: order_configuration,
-    is_max: is_max,
-    tradable_balance: tradable_balance,
-    skip_fcm_risk_check: skip_fcm_risk_check,
-    leverage: leverage,
-    margin_type: margin_type,
-    retail_portfolio_id: retail_portfolio_id,
-  };
-
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/preview`,
-    bodyParams: bodyParams,
+    bodyParams: { ...requiredBody, ...optionalBody },
     isPublic: false,
   });
 }

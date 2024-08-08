@@ -5,7 +5,7 @@ import {
   GetFuturesPositionRequiredPathParams,
   ScheduleFuturesSweepOptionalBodyParams,
   SetIntradayMarginSettingOptionalBodyParams,
-} from './types';
+} from './request-types';
 
 export function getFuturesBalanceSummary(this: RESTBase) {
   return this.request({

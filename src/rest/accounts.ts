@@ -3,7 +3,7 @@ import { RESTBase } from './rest-base';
 import {
   GetAccountRequiredQueryParams,
   ListAccountsOptionalQueryParams,
-} from './types';
+} from './request-types';
 
 export function getAccount(
   this: RESTBase,
