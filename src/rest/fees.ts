@@ -1,6 +1,6 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
-import { GetTransactionsSummaryOptionalQueryParams } from './request-types';
+import { GetTransactionsSummaryOptionalQueryParams } from './types/request-types';
 
 export function getTransactionSummary(
   this: RESTBase,

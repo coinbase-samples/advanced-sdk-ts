@@ -15,7 +15,7 @@ import {
   ListOrdersOptionalQueryParams,
   PreviewOrderOptionalBodyParams,
   PreviewOrderRequiredBodyParams,
-} from './request-types';
+} from './types/request-types';
 
 export function createOrder(
   this: RESTBase,

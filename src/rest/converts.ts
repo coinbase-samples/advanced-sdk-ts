@@ -7,7 +7,7 @@ import {
   CreateConvertQuoteRequiredBodyParams,
   GetConvertTradeRequiredPathParams,
   GetConvertTradeRequiredQueryParams,
-} from './request-types';
+} from './types/request-types';
 
 export function createConvertQuote(
   this: RESTBase,
