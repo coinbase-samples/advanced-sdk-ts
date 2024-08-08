@@ -203,3 +203,24 @@ export function previewOrder(
     isPublic: false,
   });
 }
+
+export function closePosition(
+    this: RESTBase,
+    client_order_id: string,
+    product_id: string,
+    size?: string
+) {
+  const bodyParams = {
+    client_order_id: client_order_id,
+    product_id: product_id,
+    size: size,
+  };
+
+  return this.request({
+    method: 'POST',
+    endpoint: `${API_PREFIX}/orders/close_position`,
+    queryParams: undefined,
+    bodyParams: bodyParams,
+    isPublic: false,
+  });
+}

@@ -28,7 +28,6 @@ export class RESTClient extends RESTBase {
   public getTransactionSummary = Fees.getTransactionSummary.bind(this);
 
   // =============== FUTURES endpoints ===============
-  public closePosition = Futures.closePosition.bind(this);
   public getFuturesBalanceSummary = Futures.getFuturesBalanceSummary.bind(this);
   public getIntradayMarginSetting = Futures.getIntradayMarginSetting.bind(this);
   public setIntradayMarginSetting = Futures.setIntradayMarginSetting.bind(this);
@@ -49,6 +48,7 @@ export class RESTClient extends RESTBase {
   public listFills = Orders.listFills.bind(this);
   public getOrder = Orders.getOrder.bind(this);
   public previewOrder = Orders.previewOrder.bind(this);
+  public closePosition = Orders.closePosition.bind(this);
 
   // =============== PAYMENTS endpoints ===============
   public listPaymentMethods = Payments.listPaymentMethods.bind(this);
