@@ -58,11 +58,24 @@ export type GetTransactionsSummaryOptionalQueryParams = {
   product_venue?: string;
 };
 
-// Futures
-export type GetTransactionsSummaryOptionalQueryParams = {
-  product_type?: string;
-  contract_expiry_type?: string;
-  product_venue?: string;
+// Set Intraday Margin Setting
+export type SetIntradayMarginSettingOptionalBodyParams = {
+  setting?: string;
+};
+
+// Get Current Margin Window
+export type GetCurrentMarginWindowOptionalQueryParams = {
+  margin_profile_type?: string;
+};
+
+// Get Futures Position
+export type GetFuturesPositionRequiredPathParams = {
+  product_id: string;
+};
+
+// Schedule Futures Sweep
+export type ScheduleFuturesSweepOptionalBodyParams = {
+  usd_amount?: string;
 };
 
 // Misc.

@@ -1,12 +1,16 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
+import {
+  GetCurrentMarginWindowOptionalQueryParams,
+  GetFuturesPositionRequiredPathParams,
+  ScheduleFuturesSweepOptionalBodyParams,
+  SetIntradayMarginSettingOptionalBodyParams,
+} from './types';
 
 export function getFuturesBalanceSummary(this: RESTBase) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/balance_summary`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
@@ -15,42 +19,30 @@ export function getIntradayMarginSetting(this: RESTBase) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
 
 export function setIntradayMarginSetting(
   this: RESTBase,
-  intraday_margin_setting?: string
+  optionalBody?: SetIntradayMarginSettingOptionalBodyParams
 ) {
-  const bodyParams = {
-    intraday_margin_setting: intraday_margin_setting,
-  };
-
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
-    queryParams: undefined,
-    bodyParams: bodyParams,
+    bodyParams: optionalBody,
     isPublic: false,
   });
 }
 
 export function getCurrentMarginWindow(
   this: RESTBase,
-  margin_profile_type?: string
+  optionalQuery?: GetCurrentMarginWindowOptionalQueryParams
 ) {
-  const bodyParams = {
-    margin_profile_type: margin_profile_type,
-  };
-
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/intraday/current_margin_window`,
-    queryParams: undefined,
-    bodyParams: bodyParams,
+    queryParams: optionalQuery,
     isPublic: false,
   });
 }
@@ -59,31 +51,29 @@ export function listFuturesPositions(this: RESTBase) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/positions`,
-    queryParams: undefined,
-    bodyParams: undefined,
     isPublic: false,
   });
 }
 
-export function getFuturesPosition(this: RESTBase, product_id: string) {
+export function getFuturesPosition(
+  this: RESTBase,
+  requiredPath: GetFuturesPositionRequiredPathParams
+) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/cfm/positions/${product_id}`,
-    queryParams: undefined,
-    bodyParams: undefined,
+    endpoint: `${API_PREFIX}/cfm/positions/${requiredPath.product_id}`,
     isPublic: false,
   });
 }
 
-export function scheduleFuturesSweep(this: RESTBase, usd_amount?: string) {
-  const bodyParams = {
-    usd_amount: usd_amount,
-  };
-
+export function scheduleFuturesSweep(
+  this: RESTBase,
+  optionalBody?: ScheduleFuturesSweepOptionalBodyParams
+) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/cfm/sweeps/schedule`,
-    bodyParams: bodyParams,
+    bodyParams: optionalBody,
     isPublic: false,
   });
 }

@@ -205,10 +205,10 @@ export function previewOrder(
 }
 
 export function closePosition(
-    this: RESTBase,
-    client_order_id: string,
-    product_id: string,
-    size?: string
+  this: RESTBase,
+  client_order_id: string,
+  product_id: string,
+  size?: string
 ) {
   const bodyParams = {
     client_order_id: client_order_id,
