@@ -180,3 +180,8 @@ export type ClosePositionRequiredBodyParams = {
 export type ClosePositionOptionalBodyParams = {
   size?: string;
 };
+
+// Get Payment Method
+export type GetPaymentMethodRequiredPathParams = {
+  payment_method_id: string;
+};
