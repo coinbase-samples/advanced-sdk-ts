@@ -329,3 +329,58 @@ export type GetMarketTradesOptionalQueryParams = {
   start?: string;
   end?: string;
 };
+
+// Get Public Product Book
+export type GetPublicProductBookRequiredQueryParams = {
+  product_id: string;
+};
+
+export type GetPublicProductBookOptionalQueryParams = {
+  limit?: number;
+  aggregation_price_increment?: number;
+};
+
+// List Public Products
+export type ListPublicProductsOptionalQueryParams = {
+  limit?: number;
+  offset?: number;
+  product_type?: string;
+  product_ids?: string[];
+  contract_expiry_type?: string;
+  expiring_contract_status?: string;
+  get_all_products?: boolean;
+};
+
+// Get Public Product
+export type GetPublicProductRequiredPathParams = {
+  product_id: string;
+};
+
+//Get Public Product Candles
+export type GetPublicProductCandlesRequiredPathParams = {
+  product_id: string;
+};
+
+export type GetPublicProductCandlesRequiredQueryParams = {
+  start: string;
+  end: string;
+  granularity: string;
+};
+
+export type GetPublicProductCandlesOptionalQueryParams = {
+  limit?: number;
+};
+
+// Get Public Market Trades
+export type GetPublicMarketTradesRequiredPathParams = {
+  product_id: string;
+};
+
+export type GetPublicMarketTradesRequiredQueryParams = {
+  limit: number;
+};
+
+export type GetPublicMarketTradesOptionalQueryParams = {
+  start?: string;
+  end?: string;
+};
