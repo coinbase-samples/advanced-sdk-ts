@@ -264,3 +264,68 @@ export type EditPortfolioRequiredPathParams = {
 export type EditPortfolioRequiredBodyParams = {
   name: string;
 };
+
+// Get Best Bid Ask
+export type GetBestBidAskOptionalQueryParams = {
+  product_ids?: string[];
+};
+
+// Get Product Book
+export type GetProductBookRequiredQueryParams = {
+  product_id: string;
+};
+
+export type GetProductBookOptionalQueryParams = {
+  limit?: number;
+  aggregation_price_increment?: number;
+};
+
+// List Products
+export type ListProductsOptionalQueryParams = {
+  limit?: number;
+  offset?: number;
+  product_type?: string;
+  product_ids?: string[];
+  contract_expiry_type?: string;
+  expiring_contract_status?: string;
+  get_tradability_status?: boolean;
+  get_all_products?: boolean;
+};
+
+// Get Product
+export type GetProductRequiredPathParams = {
+  product_id: string;
+};
+
+export type GetProductOptionalQueryParams = {
+  get_tradability_status?: boolean;
+};
+
+// Get Product Candles
+export type GetProductCandlesRequiredPathParams = {
+  product_id: string;
+};
+
+export type GetProductCandlesRequiredQueryParams = {
+  start: string;
+  end: string;
+  granularity: string;
+};
+
+export type GetProductCandlesOptionalQueryParams = {
+  limit?: number;
+};
+
+// Get Market Trades
+export type GetMarketTradesRequiredPathParams = {
+  product_id: string;
+};
+
+export type GetMarketTradesRequiredQueryParams = {
+  limit: number;
+};
+
+export type GetMarketTradesOptionalQueryParams = {
+  start?: string;
+  end?: string;
+};
