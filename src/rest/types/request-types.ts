@@ -1,4 +1,8 @@
-import { OrderConfiguration, TradeIncentiveMetadata } from './misc-types';
+import {
+  Amount,
+  OrderConfiguration,
+  TradeIncentiveMetadata,
+} from './misc-types';
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
@@ -184,4 +188,79 @@ export type ClosePositionOptionalBodyParams = {
 // Get Payment Method
 export type GetPaymentMethodRequiredPathParams = {
   payment_method_id: string;
+};
+
+// Allocate Portfolio
+export type AllocatePortfolioRequiredBodyParams = {
+  portfolio_uuid: string;
+  symbol: string;
+  amount: string;
+  currency: string;
+};
+
+// Get Perpetuals Portfolio Summary
+export type GetPerpetualsPortfolioSummaryRequiredPathParams = {
+  portfolio_uuid: string;
+};
+
+// List Perpetuals Positions
+export type ListPerpetualsPositionsRequiredPathParams = {
+  portfolio_uuid: string;
+};
+
+// Get Perpetuals Position
+export type GetPerpetualsPositionRequiredPathParams = {
+  portfolio_uuid: string;
+  symbol: string;
+};
+
+// Get Portfolio Balances
+export type GetPortfolioBalancesRequiredPathParams = {
+  portfolio_uuid: string;
+};
+
+// Opt In or Out of Multi Asset Collateral
+export type OptInOutMultiAssetCollateralOptionalBodyParams = {
+  portfolio_uuid?: string;
+  multi_asset_collateral_enabled?: boolean;
+};
+
+// List Portfolios
+export type ListPortfoliosOptionalQueryParams = {
+  portfolio_type?: string;
+};
+
+// Create Portfolio
+export type CreatePortfolioRequiredBodyParams = {
+  name: string;
+};
+
+// Move Portfolio Funds
+export type MovePortfolioFundsRequiredBodyParams = {
+  funds: Amount;
+  source_portfolio_uuid: string;
+  target_portfolio_uuid: string;
+};
+
+// Get Portfolio Breakdown
+export type GetPortfolioBreakdownRequiredPathParams = {
+  portfolio_uuid: string;
+};
+
+export type GetPortfolioBreakdownOptionalQueryParams = {
+  currency?: string;
+};
+
+// Delete Portfolio
+export type DeletePortfolioRequiredPathParams = {
+  portfolio_uuid: string;
+};
+
+// Edit Portfolio
+export type EditPortfolioRequiredPathParams = {
+  portfolio_uuid: string;
+};
+
+export type EditPortfolioRequiredBodyParams = {
+  name: string;
 };

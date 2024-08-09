@@ -1,84 +1,78 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
+import {
+  AllocatePortfolioRequiredBodyParams,
+  GetPerpetualsPortfolioSummaryRequiredPathParams,
+  GetPerpetualsPositionRequiredPathParams,
+  GetPortfolioBalancesRequiredPathParams,
+  ListPerpetualsPositionsRequiredPathParams,
+  OptInOutMultiAssetCollateralOptionalBodyParams,
+} from './types/request-types';
 
 export function allocatePortfolio(
   this: RESTBase,
-  portfolio_uuid: string,
-  symbol: string,
-  amount: string,
-  currency: string
+  requiredBody: AllocatePortfolioRequiredBodyParams
 ) {
-  const bodyParams = {
-    portfolio_uuid: portfolio_uuid,
-    symbol: symbol,
-    amount: amount,
-    currency: currency,
-  };
-
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/intx/allocate`,
-    bodyParams: bodyParams,
+    bodyParams: requiredBody,
     isPublic: false,
   });
 }
 
 export function getPerpetualsPortfolioSummary(
   this: RESTBase,
-  portfolio_uuid: string
+  requiredPath: GetPerpetualsPortfolioSummaryRequiredPathParams
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/intx/portfolio/${portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/intx/portfolio/${requiredPath.portfolio_uuid}`,
     isPublic: false,
   });
 }
 
 export function listPerpetualsPositions(
   this: RESTBase,
-  portfolio_uuid: string
+  requiredPath: ListPerpetualsPositionsRequiredPathParams
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/intx/positions/${portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/intx/positions/${requiredPath.portfolio_uuid}`,
     isPublic: false,
   });
 }
 
 export function getPerpertualsPosition(
   this: RESTBase,
-  portfolio_uuid: string,
-  symbol: string
+  requiredPath: GetPerpetualsPositionRequiredPathParams
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/intx/positions/${portfolio_uuid}/${symbol}`,
+    endpoint: `${API_PREFIX}/intx/positions/${requiredPath.portfolio_uuid}/${requiredPath.symbol}`,
     isPublic: false,
   });
 }
 
-export function getPortfolioBalances(this: RESTBase, portfolio_uuid: string) {
+export function getPortfolioBalances(
+  this: RESTBase,
+  requiredPath: GetPortfolioBalancesRequiredPathParams
+) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/intx/balances/${portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/intx/balances/${requiredPath.portfolio_uuid}`,
     isPublic: false,
   });
 }
 
 export function optInOutMultiAssetCollateral(
   this: RESTBase,
-  portfolio_uuid?: string,
-  multi_asset_collateral_enabled?: boolean
+  optionalBody?: OptInOutMultiAssetCollateralOptionalBodyParams
 ) {
-  const bodyParams = {
-    portfolio_uuid: portfolio_uuid,
-    multi_asset_collateral_enabled: multi_asset_collateral_enabled,
-  };
-
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/intx/multi_asset_collateral`,
-    bodyParams: bodyParams,
+    bodyParams: optionalBody,
     isPublic: false,
   });
 }

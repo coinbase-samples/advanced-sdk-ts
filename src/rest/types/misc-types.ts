@@ -4,6 +4,12 @@ export type TradeIncentiveMetadata = {
   code_val: string;
 };
 
+// Move Portfolio Funds
+export type Amount = {
+  value: string;
+  currency: string;
+};
+
 // Create Order, Preview Order
 export type OrderConfiguration =
   | { market_market_ioc: MarketMarketIoc }
