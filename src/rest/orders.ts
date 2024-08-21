@@ -1,131 +1,100 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  CancelOrdersRequiredBodyParams,
-  ClosePositionOptionalBodyParams,
-  ClosePositionRequiredBodyParams,
-  CreateOrderOptionalBodyParams,
-  CreateOrderRequiredBodyParams,
-  EditOrderOptionalBodyParams,
-  EditOrderPreviewOptionalBodyParams,
-  EditOrderPreviewRequiredBodyParams,
-  EditOrderRequiredBodyParams,
-  GetOrderRequiredPathParams,
-  ListFillsOptionalQueryParams,
-  ListOrdersOptionalQueryParams,
-  PreviewOrderOptionalBodyParams,
-  PreviewOrderRequiredBodyParams,
-} from './types/request-types';
+  CancelOrdersRequest,
+  ClosePositionRequest,
+  CreateOrderRequest,
+  EditOrderPreviewRequest,
+  EditOrderRequest,
+  GetOrderRequest,
+  ListFillsRequest,
+  ListOrdersRequest,
+  PreviewOrderRequest,
+} from './types/orders-types';
 
-export function createOrder(
-  this: RESTBase,
-  requiredBody: CreateOrderRequiredBodyParams,
-  optionalBody?: CreateOrderOptionalBodyParams
-) {
+export function createOrder(this: RESTBase, bodyParams: CreateOrderRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders`,
-    bodyParams: { ...requiredBody, ...optionalBody },
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }
 
-export function cancelOrders(
-  this: RESTBase,
-  requiredBody: CancelOrdersRequiredBodyParams
-) {
+export function cancelOrders(this: RESTBase, bodyParams: CancelOrdersRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/batch_cancel`,
-    bodyParams: requiredBody,
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }
 
-export function editOrder(
-  this: RESTBase,
-  requiredBody: EditOrderRequiredBodyParams,
-  optionalBody?: EditOrderOptionalBodyParams
-) {
+export function editOrder(this: RESTBase, bodyParams: EditOrderRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit`,
-    bodyParams: { ...requiredBody, ...optionalBody },
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }
 
 export function editOrderPreview(
   this: RESTBase,
-  requiredBody: EditOrderPreviewRequiredBodyParams,
-  optionalBody?: EditOrderPreviewOptionalBodyParams
+  bodyParams: EditOrderPreviewRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit_preview`,
-    bodyParams: { ...requiredBody, ...optionalBody },
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }
 
-export function listOrders(
-  this: RESTBase,
-  optionalQuery?: ListOrdersOptionalQueryParams
-) {
+export function listOrders(this: RESTBase, queryParams: ListOrdersRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/historical/batch`,
-    queryParams: optionalQuery,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
-export function listFills(
-  this: RESTBase,
-  optionalQuery: ListFillsOptionalQueryParams
-) {
+export function listFills(this: RESTBase, queryParams: ListFillsRequest) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/orders/historical/fills`,
-    queryParams: optionalQuery,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
-export function getOrder(
-  this: RESTBase,
-  requiredPath: GetOrderRequiredPathParams
-) {
+export function getOrder(this: RESTBase, { order_id }: GetOrderRequest) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/orders/historical/${requiredPath.order_id}`,
+    endpoint: `${API_PREFIX}/orders/historical/${order_id}`,
     isPublic: false,
   });
 }
 
-export function previewOrder(
-  this: RESTBase,
-  requiredBody: PreviewOrderRequiredBodyParams,
-  optionalBody?: PreviewOrderOptionalBodyParams
-) {
+export function previewOrder(this: RESTBase, bodyParams: PreviewOrderRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/preview`,
-    bodyParams: { ...requiredBody, ...optionalBody },
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }
 
 export function closePosition(
   this: RESTBase,
-  requiredBody: ClosePositionRequiredBodyParams,
-  optionalBody?: ClosePositionOptionalBodyParams
+  bodyParams: ClosePositionRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/close_position`,
     queryParams: undefined,
-    bodyParams: { ...requiredBody, ...optionalBody },
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }

@@ -1,15 +1,15 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
-import { GetTransactionsSummaryOptionalQueryParams } from './types/request-types';
+import { GetTransactionsSummaryRequest } from './types/fees-types';
 
 export function getTransactionSummary(
   this: RESTBase,
-  optionalQuery?: GetTransactionsSummaryOptionalQueryParams
+  queryParams: GetTransactionsSummaryRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/transaction_summary`,
-    queryParams: optionalQuery,
+    queryParams: queryParams,
     isPublic: false,
   });
 }

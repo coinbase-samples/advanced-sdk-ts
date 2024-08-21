@@ -1,85 +1,81 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  CreatePortfolioRequiredBodyParams,
-  DeletePortfolioRequiredPathParams,
-  EditPortfolioRequiredBodyParams,
-  EditPortfolioRequiredPathParams,
-  GetPortfolioBreakdownOptionalQueryParams,
-  GetPortfolioBreakdownRequiredPathParams,
-  ListPortfoliosOptionalQueryParams,
-  MovePortfolioFundsRequiredBodyParams,
-} from './types/request-types';
+  CreatePortfolioRequest,
+  DeletePortfolioRequest,
+  EditPortfolioRequest,
+  GetPortfolioBreakdownRequest,
+  ListPortfoliosRequest,
+  MovePortfolioFundsRequest,
+} from './types/portfolios-types';
 
 export function listPortfolios(
   this: RESTBase,
-  optionalQuery?: ListPortfoliosOptionalQueryParams
+  queryParams: ListPortfoliosRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/portfolios`,
-    queryParams: optionalQuery,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
 export function createPortfolio(
   this: RESTBase,
-  requiredBody: CreatePortfolioRequiredBodyParams
+  bodyParams: CreatePortfolioRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/portfolios`,
-    bodyParams: requiredBody,
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }
 
 export function movePortfolioFunds(
   this: RESTBase,
-  requiredBody: MovePortfolioFundsRequiredBodyParams
+  bodyParams: MovePortfolioFundsRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/portfolios/move_funds`,
-    bodyParams: requiredBody,
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }
 
 export function getPortfolioBreakdown(
   this: RESTBase,
-  requiredPath: GetPortfolioBreakdownRequiredPathParams,
-  optionalQuery?: GetPortfolioBreakdownOptionalQueryParams
+  { portfolio_uuid, ...queryParams }: GetPortfolioBreakdownRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/portfolios/${requiredPath.portfolio_uuid}`,
-    queryParams: optionalQuery,
+    endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
 export function deletePortfolio(
   this: RESTBase,
-  requiredPath: DeletePortfolioRequiredPathParams
+  { portfolio_uuid }: DeletePortfolioRequest
 ) {
   return this.request({
     method: 'DELETE',
-    endpoint: `${API_PREFIX}/portfolios/${requiredPath.portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
     isPublic: false,
   });
 }
 
 export function editPortfolio(
   this: RESTBase,
-  requiredPath: EditPortfolioRequiredPathParams,
-  requiredBody: EditPortfolioRequiredBodyParams
+  { portfolio_uuid, ...bodyParams }: EditPortfolioRequest
 ) {
   return this.request({
     method: 'PUT',
-    endpoint: `${API_PREFIX}/portfolios/${requiredPath.portfolio_uuid}`,
-    bodyParams: requiredBody,
+    endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }

@@ -1,49 +1,43 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  CommitConvertTradeRequiredBodyParams,
-  CommitConvertTradeRequiredPathParams,
-  CreateConvertQuoteOptionalBodyParams,
-  CreateConvertQuoteRequiredBodyParams,
-  GetConvertTradeRequiredPathParams,
-  GetConvertTradeRequiredQueryParams,
-} from './types/request-types';
+  CommitConvertTradeRequest,
+  CreateConvertQuoteRequest,
+  GetConvertTradeRequest,
+} from './types/converts-types';
 
 export function createConvertQuote(
   this: RESTBase,
-  requiredBody: CreateConvertQuoteRequiredBodyParams,
-  optionalBody?: CreateConvertQuoteOptionalBodyParams
+  queryParams: CreateConvertQuoteRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/convert/quote`,
-    bodyParams: { ...requiredBody, ...optionalBody },
+    bodyParams: queryParams,
     isPublic: false,
   });
 }
 
 export function getConvertTrade(
   this: RESTBase,
-  requiredPath: GetConvertTradeRequiredPathParams,
-  requiredQuery: GetConvertTradeRequiredQueryParams
+  { trade_id, ...queryParams }: GetConvertTradeRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/convert/trade/${requiredPath.trade_id}`,
-    queryParams: requiredQuery,
+    endpoint: `${API_PREFIX}/convert/trade/${trade_id}`,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
 export function commitConvertTrade(
   this: RESTBase,
-  requiredPath: CommitConvertTradeRequiredPathParams,
-  requiredBody: CommitConvertTradeRequiredBodyParams
+  { trade_id, ...bodyParams }: CommitConvertTradeRequest
 ) {
   return this.request({
     method: 'POST',
-    endpoint: `${API_PREFIX}/convert/trade/${requiredPath.trade_id}`,
-    bodyParams: requiredBody,
+    endpoint: `${API_PREFIX}/convert/trade/${trade_id}`,
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }

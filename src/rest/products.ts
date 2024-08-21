@@ -1,94 +1,79 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  GetBestBidAskOptionalQueryParams,
-  GetMarketTradesOptionalQueryParams,
-  GetMarketTradesRequiredPathParams,
-  GetMarketTradesRequiredQueryParams,
-  GetProductBookOptionalQueryParams,
-  GetProductBookRequiredQueryParams,
-  GetProductCandlesOptionalQueryParams,
-  GetProductCandlesRequiredPathParams,
-  GetProductCandlesRequiredQueryParams,
-  GetProductOptionalQueryParams,
-  GetProductRequiredPathParams,
-  ListProductsOptionalQueryParams,
-} from './types/request-types';
+  GetBestBidAskRequest,
+  GetMarketTradesRequest,
+  GetProductBookRequest,
+  GetProductCandlesRequest,
+  GetProductRequest,
+  ListProductsRequest,
+} from './types/products-types';
 
 export function getBestBidAsk(
   this: RESTBase,
-  optionalQuery?: GetBestBidAskOptionalQueryParams
+  queryParams: GetBestBidAskRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/best_bid_ask`,
-    queryParams: optionalQuery,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
 export function getProductBook(
   this: RESTBase,
-  requiredQuery: GetProductBookRequiredQueryParams,
-  optionalQuery?: GetProductBookOptionalQueryParams
+  queryParams: GetProductBookRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/product_book`,
-    queryParams: { ...requiredQuery, ...optionalQuery },
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
-export function listProducts(
-  this: RESTBase,
-  optionalQuery?: ListProductsOptionalQueryParams
-) {
+export function listProducts(this: RESTBase, queryParams: ListProductsRequest) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/products`,
-    queryParams: optionalQuery,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
 export function getProduct(
   this: RESTBase,
-  requiredPath: GetProductRequiredPathParams,
-  optionalQuery?: GetProductOptionalQueryParams
+  { product_id, ...queryParams }: GetProductRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/products/${requiredPath.product_id}`,
-    queryParams: optionalQuery,
+    endpoint: `${API_PREFIX}/products/${product_id}`,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
 export function getProductCandles(
   this: RESTBase,
-  requiredPath: GetProductCandlesRequiredPathParams,
-  requiredQuery: GetProductCandlesRequiredQueryParams,
-  optionalQuery?: GetProductCandlesOptionalQueryParams
+  { product_id, ...queryParams }: GetProductCandlesRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/products/${requiredPath.product_id}/candles`,
-    queryParams: { ...requiredQuery, ...optionalQuery },
+    endpoint: `${API_PREFIX}/products/${product_id}/candles`,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
 
 export function getMarketTrades(
   this: RESTBase,
-  requiredPath: GetMarketTradesRequiredPathParams,
-  requiredQuery: GetMarketTradesRequiredQueryParams,
-  optionalQuery?: GetMarketTradesOptionalQueryParams
+  { product_id, ...queryParams }: GetMarketTradesRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/products/${requiredPath.product_id}/ticker`,
-    queryParams: { ...requiredQuery, ...optionalQuery },
+    endpoint: `${API_PREFIX}/products/${product_id}/ticker`,
+    queryParams: queryParams,
     isPublic: false,
   });
 }

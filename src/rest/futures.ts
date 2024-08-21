@@ -1,11 +1,11 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  GetCurrentMarginWindowOptionalQueryParams,
-  GetFuturesPositionRequiredPathParams,
-  ScheduleFuturesSweepOptionalBodyParams,
-  SetIntradayMarginSettingOptionalBodyParams,
-} from './types/request-types';
+  GetCurrentMarginWindowRequest,
+  GetFuturesPositionRequest,
+  ScheduleFuturesSweepRequest,
+  SetIntradayMarginSettingRequest,
+} from './types/futures-types';
 
 export function getFuturesBalanceSummary(this: RESTBase) {
   return this.request({
@@ -25,24 +25,24 @@ export function getIntradayMarginSetting(this: RESTBase) {
 
 export function setIntradayMarginSetting(
   this: RESTBase,
-  optionalBody?: SetIntradayMarginSettingOptionalBodyParams
+  bodyParams: SetIntradayMarginSettingRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
-    bodyParams: optionalBody,
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }
 
 export function getCurrentMarginWindow(
   this: RESTBase,
-  optionalQuery?: GetCurrentMarginWindowOptionalQueryParams
+  queryParams: GetCurrentMarginWindowRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/intraday/current_margin_window`,
-    queryParams: optionalQuery,
+    queryParams: queryParams,
     isPublic: false,
   });
 }
@@ -57,23 +57,23 @@ export function listFuturesPositions(this: RESTBase) {
 
 export function getFuturesPosition(
   this: RESTBase,
-  requiredPath: GetFuturesPositionRequiredPathParams
+  { product_id }: GetFuturesPositionRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/cfm/positions/${requiredPath.product_id}`,
+    endpoint: `${API_PREFIX}/cfm/positions/${product_id}`,
     isPublic: false,
   });
 }
 
 export function scheduleFuturesSweep(
   this: RESTBase,
-  optionalBody?: ScheduleFuturesSweepOptionalBodyParams
+  bodyParams: ScheduleFuturesSweepRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/cfm/sweeps/schedule`,
-    bodyParams: optionalBody,
+    bodyParams: bodyParams,
     isPublic: false,
   });
 }
