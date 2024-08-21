@@ -1,7 +1,7 @@
 // List Portfolios
 export type ListPortfoliosRequest = {
   // Query Params
-  portfolio_type?: string;
+  portfolio_type?: PortfolioType;
 };
 
 // Create Portfolio
@@ -43,7 +43,14 @@ export type EditPortfolioRequest = {
 };
 
 // Misc.
-export type Amount = {
+type Amount = {
   value: string;
   currency: string;
 };
+
+enum PortfolioType {
+  UNDEFINED = 'UNDEFINED',
+  DEFAULT = 'DEFAULT',
+  CONSUMER = 'CONSUMER',
+  INTX = 'INTX',
+}

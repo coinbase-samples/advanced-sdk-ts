@@ -1,4 +1,10 @@
 // Get Public Product Book
+import {
+  ContractExpiryType,
+  ExpiringContractStatus,
+  ProductType,
+} from './common-types';
+
 export type GetPublicProductBookRequest = {
   // Query Params
   product_id: string;
@@ -11,10 +17,10 @@ export type ListPublicProductsRequest = {
   // Query Params
   limit?: number;
   offset?: number;
-  product_type?: string;
+  product_type?: ProductType;
   product_ids?: string[];
-  contract_expiry_type?: string;
-  expiring_contract_status?: string;
+  contract_expiry_type?: ContractExpiryType;
+  expiring_contract_status?: ExpiringContractStatus;
   get_all_products?: boolean;
 };
 

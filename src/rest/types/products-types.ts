@@ -1,4 +1,10 @@
 // Get Best Bid Ask
+import {
+  ContractExpiryType,
+  ExpiringContractStatus,
+  ProductType,
+} from './common-types';
+
 export type GetBestBidAskRequest = {
   // Query Params
   product_ids?: string[];
@@ -17,10 +23,10 @@ export type ListProductsRequest = {
   // Query Params
   limit?: number;
   offset?: number;
-  product_type?: string;
+  product_type?: ProductType;
   product_ids?: string[];
-  contract_expiry_type?: string;
-  expiring_contract_status?: string;
+  contract_expiry_type?: ContractExpiryType;
+  expiring_contract_status?: ExpiringContractStatus;
   get_tradability_status?: boolean;
   get_all_products?: boolean;
 };
@@ -42,7 +48,7 @@ export type GetProductCandlesRequest = {
   // Query Params
   start: string;
   end: string;
-  granularity: string;
+  granularity: Granularity;
   limit?: number;
 };
 
@@ -56,3 +62,16 @@ export type GetMarketTradesRequest = {
   start?: string;
   end?: string;
 };
+
+// Misc.
+enum Granularity {
+  UNKNOWN = 'UNKNOWN_GRANULARITY',
+  ONE_MINUTE = 'ONE_MINUTE',
+  FIVE_MINUTE = 'FIVE_MINUTE',
+  FIFTEEN_MINUTE = 'FIFTEEN_MINUTE',
+  THIRTY_MINUTE = 'THIRTY_MINUTE',
+  ONE_HOUR = 'ONE_HOUR',
+  TWO_HOUR = 'TWO_HOUR',
+  SIX_HOUR = 'SIX_HOUR',
+  ONE_DAY = 'ONE_DAY',
+}

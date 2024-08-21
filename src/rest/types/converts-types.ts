@@ -28,7 +28,7 @@ export type CommitConvertTradeRequest = {
 };
 
 // Misc.
-export type TradeIncentiveMetadata = {
-    user_incentive_id: string;
-    code_val: string;
+type TradeIncentiveMetadata = {
+  user_incentive_id: string;
+  code_val: string;
 };
