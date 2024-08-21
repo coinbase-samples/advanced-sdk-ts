@@ -3,7 +3,7 @@ export type CreateOrderRequest = {
   // Body Params
   client_order_id: string;
   product_id: string;
-  side: string;
+  side: OrderSide;
   order_configuration: OrderConfiguration;
   self_trade_prevention_id?: string;
   leverage?: string;
@@ -43,7 +43,7 @@ export type ListOrdersRequest = {
   start_date?: string;
   end_date?: string;
   order_type?: string;
-  order_side?: string;
+  order_side?: OrderSide;
   cursor?: string;
   product_type?: string;
   order_placement_source?: string;
@@ -78,7 +78,7 @@ export type GetOrderRequest = {
 export type PreviewOrderRequest = {
   // Body Params
   product_id: string;
-  side: string;
+  side: OrderSide;
   order_configuration: OrderConfiguration;
   leverage?: string;
   margin_type?: string;
@@ -157,3 +157,8 @@ export type TriggerBracketGtd = {
     stop_trigger_price: string;
     end_time: string;
 };
+
+enum OrderSide {
+    BUY = "BUY",
+    SELL = "SELL"
+}
