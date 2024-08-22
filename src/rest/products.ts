@@ -44,11 +44,11 @@ export function listProducts(this: RESTBase, queryParams: ListProductsRequest) {
 
 export function getProduct(
   this: RESTBase,
-  { product_id, ...queryParams }: GetProductRequest
+  { productId, ...queryParams }: GetProductRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/products/${product_id}`,
+    endpoint: `${API_PREFIX}/products/${productId}`,
     queryParams: queryParams,
     isPublic: false,
   });
@@ -56,11 +56,11 @@ export function getProduct(
 
 export function getProductCandles(
   this: RESTBase,
-  { product_id, ...queryParams }: GetProductCandlesRequest
+  { productId, ...queryParams }: GetProductCandlesRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/products/${product_id}/candles`,
+    endpoint: `${API_PREFIX}/products/${productId}/candles`,
     queryParams: queryParams,
     isPublic: false,
   });
@@ -68,11 +68,11 @@ export function getProductCandles(
 
 export function getMarketTrades(
   this: RESTBase,
-  { product_id, ...queryParams }: GetMarketTradesRequest
+  { productId, ...queryParams }: GetMarketTradesRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/products/${product_id}/ticker`,
+    endpoint: `${API_PREFIX}/products/${productId}/ticker`,
     queryParams: queryParams,
     isPublic: false,
   });

@@ -3,26 +3,26 @@ import { ContractExpiryType, ProductType } from './common-types';
 
 export type CreateOrderRequest = {
   // Body Params
-  client_order_id: string;
-  product_id: string;
+  clientOrderId: string;
+  productId: string;
   side: OrderSide;
-  order_configuration: OrderConfiguration;
-  self_trade_prevention_id?: string;
+  orderConfiguration: OrderConfiguration;
+  selfTradePreventionId?: string;
   leverage?: string;
-  margin_type?: MarginType;
-  retail_portfolio_id?: string;
+  marginType?: MarginType;
+  retailPortfolioId?: string;
 };
 
 // Cancel Orders
 export type CancelOrdersRequest = {
   // Body Params
-  order_ids: string[];
+  orderIds: string[];
 };
 
 // Edit Order
 export type EditOrderRequest = {
   // Body Params
-  order_id: string;
+  orderId: string;
   price?: string;
   size?: string;
 };
@@ -30,7 +30,7 @@ export type EditOrderRequest = {
 // Edit Order Preview
 export type EditOrderPreviewRequest = {
   // Body Params
-  order_id: string;
+  orderId: string;
   price?: string;
   size?: string;
 };
@@ -38,60 +38,60 @@ export type EditOrderPreviewRequest = {
 // List Orders
 export type ListOrdersRequest = {
   // Query Params
-  order_ids?: string[];
-  product_ids?: string[];
-  order_status?: string[];
+  orderIds?: string[];
+  productIds?: string[];
+  orderStatus?: string[];
   limit?: number;
-  start_date?: string;
-  end_date?: string;
-  order_type?: string;
-  order_side?: OrderSide;
+  startDate?: string;
+  endDate?: string;
+  orderType?: string;
+  orderSide?: OrderSide;
   cursor?: string;
-  product_type?: ProductType;
-  order_placement_source?: OrderPlacementSource;
-  contract_expiry_type?: ContractExpiryType;
-  asset_filters?: string[];
-  retail_portfolio_id?: string;
-  time_in_forces?: string;
-  sort_by?: SortBy;
+  productType?: ProductType;
+  orderPlacementSource?: OrderPlacementSource;
+  contractExpiryType?: ContractExpiryType;
+  assetFilters?: string[];
+  retailPortfolioId?: string;
+  timeInForces?: string;
+  sortBy?: SortBy;
 };
 
 // List Fills
 export type ListFillsRequest = {
   // Query Params
-  order_ids?: string[];
-  trade_ids?: string[];
-  product_ids?: string[];
-  start_sequence_timestamp?: string;
-  end_sequence_timestamp?: string;
-  retail_portfolio_id?: string;
+  orderIds?: string[];
+  tradeIds?: string[];
+  productIds?: string[];
+  startSequenceTimestamp?: string;
+  endSequenceTimestamp?: string;
+  retailPortfolioId?: string;
   limit?: number;
   cursor?: string;
-  sort_by?: SortBy;
+  sortBy?: SortBy;
 };
 
 // Get Order
 export type GetOrderRequest = {
   // Path Params
-  order_id: string;
+  orderId: string;
 };
 
 // Preview Order
 export type PreviewOrderRequest = {
   // Body Params
-  product_id: string;
+  productId: string;
   side: OrderSide;
-  order_configuration: OrderConfiguration;
+  orderConfiguration: OrderConfiguration;
   leverage?: string;
-  margin_type?: MarginType;
-  retail_portfolio_id?: string;
+  marginType?: MarginType;
+  retailPortfolioId?: string;
 };
 
 // Close Position
 export type ClosePositionRequest = {
   // Body Params
-  client_order_id: string;
-  product_id: string;
+  clientOrderId: string;
+  productId: string;
   size?: string;
 };
 
@@ -110,54 +110,54 @@ type OrderConfiguration =
 type MarketMarketIoc = { quote_size: string } | { base_size: string };
 
 type SorLimitIoc = {
-  base_size: string;
-  limit_price: string;
+  baseSize: string;
+  limitPrice: string;
 };
 
 type LimitLimitGtc = {
-  base_size: string;
-  limit_price: string;
-  post_only: boolean;
+  baseSize: string;
+  limitPrice: string;
+  postOnly: boolean;
 };
 
 type LimitLimitGtd = {
-  base_size: string;
-  limit_price: string;
-  end_time: string;
-  post_only: boolean;
+  baseSize: string;
+  limitPrice: string;
+  endTime: string;
+  postOnly: boolean;
 };
 
 type LimitLimitFok = {
-  base_size: string;
-  limit_price: string;
+  baseSize: string;
+  limitPrice: string;
 };
 
 type StopLimitStopLimitGtc = {
-  base_size: string;
-  limit_price: string;
-  stop_price: string;
-  stop_direction: StopDirection;
+  baseSize: string;
+  limitPrice: string;
+  stopPrice: string;
+  stopDirection: StopDirection;
 };
 
 type StopLimitStopLimitGtd = {
-  base_size: string;
-  limit_price: string;
-  stop_price: string;
-  end_time: string;
-  stop_direction: StopDirection;
+  baseSize: string;
+  limitPrice: string;
+  stopPrice: string;
+  endTime: string;
+  stopDirection: StopDirection;
 };
 
 type TriggerBracketGtc = {
-  base_size: string;
-  limit_price: string;
-  stop_trigger_price: string;
+  baseSize: string;
+  limitPrice: string;
+  stopTriggerPrice: string;
 };
 
 type TriggerBracketGtd = {
-  base_size: string;
-  limit_price: string;
-  stop_trigger_price: string;
-  end_time: string;
+  baseSize: string;
+  limitPrice: string;
+  stopTriggerPrice: string;
+  endTime: string;
 };
 
 // Misc.

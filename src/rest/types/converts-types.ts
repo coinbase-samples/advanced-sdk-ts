@@ -1,34 +1,34 @@
 // Create Convert Quote
 export type CreateConvertQuoteRequest = {
   // Body Params
-  from_account: string;
-  to_account: string;
+  fromAccount: string;
+  toAccount: string;
   amount: string;
-  trade_incentive_metadata?: TradeIncentiveMetadata;
+  tradeIncentiveMetadata?: TradeIncentiveMetadata;
 };
 
 // Get Convert Trade
 export type GetConvertTradeRequest = {
   // Path Params
-  trade_id: string;
+  tradeId: string;
 
   //Query Params
-  from_account: string;
-  to_account: string;
+  fromAccount: string;
+  toAccount: string;
 };
 
 // Commit Convert Trade
 export type CommitConvertTradeRequest = {
   // Path Params
-  trade_id: string;
+  tradeId: string;
 
   // Body Params
-  from_account: string;
-  to_account: string;
+  fromAccount: string;
+  toAccount: string;
 };
 
 // Misc.
 type TradeIncentiveMetadata = {
-  user_incentive_id: string;
-  code_val: string;
+  userIncentiveId: string;
+  codeVal: string;
 };

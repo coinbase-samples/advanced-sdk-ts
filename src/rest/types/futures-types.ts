@@ -7,19 +7,19 @@ export type SetIntradayMarginSettingRequest = {
 // Get Current Margin Window
 export type GetCurrentMarginWindowRequest = {
   // Query Params
-  margin_profile_type?: string;
+  marginProfileType?: string;
 };
 
 // Get Futures Position
 export type GetFuturesPositionRequest = {
   // Path Params
-  product_id: string;
+  productId: string;
 };
 
 // Schedule Futures Sweep
 export type ScheduleFuturesSweepRequest = {
   // Body Params
-  usd_amount?: string;
+  usdAmount?: string;
 };
 
 // Misc.

@@ -20,11 +20,11 @@ export function createConvertQuote(
 
 export function getConvertTrade(
   this: RESTBase,
-  { trade_id, ...queryParams }: GetConvertTradeRequest
+  { tradeId, ...queryParams }: GetConvertTradeRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/convert/trade/${trade_id}`,
+    endpoint: `${API_PREFIX}/convert/trade/${tradeId}`,
     queryParams: queryParams,
     isPublic: false,
   });
@@ -32,11 +32,11 @@ export function getConvertTrade(
 
 export function commitConvertTrade(
   this: RESTBase,
-  { trade_id, ...bodyParams }: CommitConvertTradeRequest
+  { tradeId, ...bodyParams }: CommitConvertTradeRequest
 ) {
   return this.request({
     method: 'POST',
-    endpoint: `${API_PREFIX}/convert/trade/${trade_id}`,
+    endpoint: `${API_PREFIX}/convert/trade/${tradeId}`,
     bodyParams: bodyParams,
     isPublic: false,
   });

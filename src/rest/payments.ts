@@ -12,11 +12,11 @@ export function listPaymentMethods(this: RESTBase) {
 
 export function getPaymentMethod(
   this: RESTBase,
-  { payment_method_id }: GetPaymentMethodRequest
+  { paymentMethodId }: GetPaymentMethodRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/payment_methods/${payment_method_id}`,
+    endpoint: `${API_PREFIX}/payment_methods/${paymentMethodId}`,
     isPublic: false,
   });
 }

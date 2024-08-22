@@ -1,26 +1,30 @@
 import { generateToken } from '../jwt-generator';
-import fetch, { Headers, RequestInit } from 'node-fetch';
+import fetch, { Headers, RequestInit, Response } from 'node-fetch';
 import { BASE_URL, USER_AGENT } from '../constants';
 import { RequestOptions } from './types/request-types';
-import * as http from "http";
+import * as http from 'http';
 
-function handle_exception(response, responseText){
-  const reason = response.statusText;
+function handleException(
+  response: Response,
+  responseText: string,
+  reason: string
+) {
   let httpErrorMsg: string | undefined;
 
-  if(400 <= response.status && response.status <= 499){
-    if(response.status == 403 && responseText.includes('"error_details":"Missing required scopes"')){
+  if (400 <= response.status && response.status <= 499) {
+    if (
+      response.status == 403 &&
+      responseText.includes('"error_details":"Missing required scopes"')
+    ) {
       httpErrorMsg = `${response.status} Client Error: Missing Required Scopes. Please verify your API keys include the necessary permissions.`;
-    }
-    else
-      httpErrorMsg = `${response.status} Server Error: ${reason} ${responseText}`
-  }
-  else if(500 <= response.status && response.status <= 599){
-    httpErrorMsg = `${response.status} Server Error: ${reason} ${responseText}`
+    } else
+      httpErrorMsg = `${response.status} Client Error: ${reason} ${responseText}`;
+  } else if (500 <= response.status && response.status <= 599) {
+    httpErrorMsg = `${response.status} Server Error: ${reason} ${responseText}`;
   }
 
   if (httpErrorMsg) {
-    const error:any = new Error(httpErrorMsg);
+    const error: any = new Error(httpErrorMsg);
     error.response = response;
     throw error;
   }
@@ -83,12 +87,12 @@ export class RESTBase {
     url: string
   ) {
     try {
-      const response = await fetch(url, requestOptions);
-
+      console.log("URL: ", url)
+      const response: Response = await fetch(url, requestOptions);
       const responseText = await response.text();
-      handle_exception(response, responseText)
+      handleException(response, responseText, response.statusText);
 
-      return await response.text();
+      return responseText;
     } catch (error) {
       throw error;
     }

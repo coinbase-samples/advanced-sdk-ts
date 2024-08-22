@@ -1,7 +1,7 @@
 // Allocate Portfolio
 export type AllocatePortfolioRequest = {
   // Body Params
-  portfolio_uuid: string;
+  portfolioUuid: string;
   symbol: string;
   amount: string;
   currency: string;
@@ -10,31 +10,31 @@ export type AllocatePortfolioRequest = {
 // Get Perpetuals Portfolio Summary
 export type GetPerpetualsPortfolioSummaryRequest = {
   // Path Params
-  portfolio_uuid: string;
+  portfolioUuid: string;
 };
 
 // List Perpetuals Positions
 export type ListPerpetualsPositionsRequest = {
   // Path Params
-  portfolio_uuid: string;
+  portfolioUuid: string;
 };
 
 // Get Perpetuals Position
 export type GetPerpetualsPositionRequest = {
   // Path Params
-  portfolio_uuid: string;
+  portfolioUuid: string;
   symbol: string;
 };
 
 // Get Portfolio Balances
 export type GetPortfolioBalancesRequest = {
   // Path Params
-  portfolio_uuid: string;
+  portfolioUuid: string;
 };
 
 // Opt In or Out of Multi Asset Collateral
 export type OptInOutMultiAssetCollateralRequest = {
   // Body Params
-  portfolio_uuid?: string;
-  multi_asset_collateral_enabled?: boolean;
+  portfolioUuid?: string;
+  multiAssetCollateralEnabled?: boolean;
 };

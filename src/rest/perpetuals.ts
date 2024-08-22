@@ -23,44 +23,44 @@ export function allocatePortfolio(
 
 export function getPerpetualsPortfolioSummary(
   this: RESTBase,
-  { portfolio_uuid }: GetPerpetualsPortfolioSummaryRequest
+  { portfolioUuid }: GetPerpetualsPortfolioSummaryRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/intx/portfolio/${portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/intx/portfolio/${portfolioUuid}`,
     isPublic: false,
   });
 }
 
 export function listPerpetualsPositions(
   this: RESTBase,
-  { portfolio_uuid }: ListPerpetualsPositionsRequest
+  { portfolioUuid }: ListPerpetualsPositionsRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/intx/positions/${portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/intx/positions/${portfolioUuid}`,
     isPublic: false,
   });
 }
 
 export function getPerpertualsPosition(
   this: RESTBase,
-  { portfolio_uuid, symbol }: GetPerpetualsPositionRequest
+  { portfolioUuid, symbol }: GetPerpetualsPositionRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/intx/positions/${portfolio_uuid}/${symbol}`,
+    endpoint: `${API_PREFIX}/intx/positions/${portfolioUuid}/${symbol}`,
     isPublic: false,
   });
 }
 
 export function getPortfolioBalances(
   this: RESTBase,
-  { portfolio_uuid }: GetPortfolioBalancesRequest
+  { portfolioUuid }: GetPortfolioBalancesRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/intx/balances/${portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/intx/balances/${portfolioUuid}`,
     isPublic: false,
   });
 }

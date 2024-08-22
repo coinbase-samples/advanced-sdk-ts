@@ -7,15 +7,15 @@ import {
 
 export type GetBestBidAskRequest = {
   // Query Params
-  product_ids?: string[];
+  productIds?: string[];
 };
 
 // Get Product Book
 export type GetProductBookRequest = {
   // Query Params
-  product_id: string;
+  productId: string;
   limit?: number;
-  aggregation_price_increment?: number;
+  aggregationPriceIncrement?: number;
 };
 
 // List Products
@@ -23,27 +23,27 @@ export type ListProductsRequest = {
   // Query Params
   limit?: number;
   offset?: number;
-  product_type?: ProductType;
-  product_ids?: string[];
-  contract_expiry_type?: ContractExpiryType;
-  expiring_contract_status?: ExpiringContractStatus;
-  get_tradability_status?: boolean;
-  get_all_products?: boolean;
+  productType?: ProductType;
+  productIds?: string[];
+  contractExpiryType?: ContractExpiryType;
+  expiringContractStatus?: ExpiringContractStatus;
+  getTradabilityStatus?: boolean;
+  getAllProducts?: boolean;
 };
 
 // Get Product
 export type GetProductRequest = {
   // Path Params
-  product_id: string;
+  productId: string;
 
   // Query Params
-  get_tradability_status?: boolean;
+  getTradabilityStatus?: boolean;
 };
 
 // Get Product Candles
 export type GetProductCandlesRequest = {
   // Path Params
-  product_id: string;
+  productId: string;
 
   // Query Params
   start: string;
@@ -55,7 +55,7 @@ export type GetProductCandlesRequest = {
 // Get Market Trades
 export type GetMarketTradesRequest = {
   // Path Params
-  product_id: string;
+  productId: string;
 
   // Query Params
   limit: number;

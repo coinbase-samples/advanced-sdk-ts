@@ -69,10 +69,10 @@ export function listFills(this: RESTBase, queryParams: ListFillsRequest) {
   });
 }
 
-export function getOrder(this: RESTBase, { order_id }: GetOrderRequest) {
+export function getOrder(this: RESTBase, { orderId }: GetOrderRequest) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/orders/historical/${order_id}`,
+    endpoint: `${API_PREFIX}/orders/historical/${orderId}`,
     isPublic: false,
   });
 }

@@ -1,7 +1,7 @@
 // List Portfolios
 export type ListPortfoliosRequest = {
   // Query Params
-  portfolio_type?: PortfolioType;
+  portfolioType?: PortfolioType;
 };
 
 // Create Portfolio
@@ -14,14 +14,14 @@ export type CreatePortfolioRequest = {
 export type MovePortfolioFundsRequest = {
   // Body Params
   funds: Amount;
-  source_portfolio_uuid: string;
-  target_portfolio_uuid: string;
+  sourcePortfolioUuid: string;
+  targetPortfolioUuid: string;
 };
 
 // Get Portfolio Breakdown
 export type GetPortfolioBreakdownRequest = {
   // Path Params
-  portfolio_uuid: string;
+  portfolioUuid: string;
 
   // Query Params
   currency?: string;
@@ -30,13 +30,13 @@ export type GetPortfolioBreakdownRequest = {
 // Delete Portfolio
 export type DeletePortfolioRequest = {
   // Path Params
-  portfolio_uuid: string;
+  portfolioUuid: string;
 };
 
 // Edit Portfolio
 export type EditPortfolioRequest = {
   // Path Params
-  portfolio_uuid: string;
+  portfolioUuid: string;
 
   // Body Params
   name: string;

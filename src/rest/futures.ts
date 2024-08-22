@@ -57,11 +57,11 @@ export function listFuturesPositions(this: RESTBase) {
 
 export function getFuturesPosition(
   this: RESTBase,
-  { product_id }: GetFuturesPositionRequest
+  { productId }: GetFuturesPositionRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/cfm/positions/${product_id}`,
+    endpoint: `${API_PREFIX}/cfm/positions/${productId}`,
     isPublic: false,
   });
 }

@@ -7,22 +7,13 @@ dotenv.config();
 const client = new RESTClient(process.env.API_KEY, process.env.API_SECRET);
 
 client
-  .listAccounts({ limit: 2 })
+  .listPortfolios({})
   .then((result) => {
     console.log(result);
   })
   .catch((error) => {
     console.error('Unhandled error:', error.message);
   });
-
-// client
-//   .listPortfolios()
-//   .then((result) => {
-//     console.log(result);
-//   })
-//   .catch((error) => {
-//     console.error('Unhandled error:', error.message);
-//   });
 
 // client
 //   .getBestBidAsk(['BTC-USD', 'ETH-USD'])

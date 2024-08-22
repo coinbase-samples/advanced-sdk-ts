@@ -47,11 +47,11 @@ export function movePortfolioFunds(
 
 export function getPortfolioBreakdown(
   this: RESTBase,
-  { portfolio_uuid, ...queryParams }: GetPortfolioBreakdownRequest
+  { portfolioUuid, ...queryParams }: GetPortfolioBreakdownRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
     queryParams: queryParams,
     isPublic: false,
   });
@@ -59,22 +59,22 @@ export function getPortfolioBreakdown(
 
 export function deletePortfolio(
   this: RESTBase,
-  { portfolio_uuid }: DeletePortfolioRequest
+  { portfolioUuid }: DeletePortfolioRequest
 ) {
   return this.request({
     method: 'DELETE',
-    endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
     isPublic: false,
   });
 }
 
 export function editPortfolio(
   this: RESTBase,
-  { portfolio_uuid, ...bodyParams }: EditPortfolioRequest
+  { portfolioUuid, ...bodyParams }: EditPortfolioRequest
 ) {
   return this.request({
     method: 'PUT',
-    endpoint: `${API_PREFIX}/portfolios/${portfolio_uuid}`,
+    endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
     bodyParams: bodyParams,
     isPublic: false,
   });

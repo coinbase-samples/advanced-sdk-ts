@@ -2,13 +2,10 @@ import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import { GetAccountRequest, ListAccountsRequest } from './types/accounts-types';
 
-export function getAccount(
-  this: RESTBase,
-  { account_uuid }: GetAccountRequest
-) {
+export function getAccount(this: RESTBase, { accountUuid }: GetAccountRequest) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/accounts/${account_uuid}`,
+    endpoint: `${API_PREFIX}/accounts/${accountUuid}`,
     isPublic: false,
   });
 }

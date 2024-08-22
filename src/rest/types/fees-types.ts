@@ -3,9 +3,9 @@ import { ContractExpiryType, ProductType } from './common-types';
 // Get Transactions Summary
 export type GetTransactionsSummaryRequest = {
   // Query Params
-  product_type?: ProductType;
-  contract_expiry_type?: ContractExpiryType;
-  product_venue?: ProductVenue;
+  productType?: ProductType;
+  contractExpiryType?: ContractExpiryType;
+  productVenue?: ProductVenue;
 };
 
 // Misc.
