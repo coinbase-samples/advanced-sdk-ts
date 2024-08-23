@@ -7,6 +7,8 @@ import {
   SetIntradayMarginSettingRequest,
 } from './types/futures-types';
 
+// [GET] Get Futures Balance Summary
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfcmbalancesummary
 export function getFuturesBalanceSummary(this: RESTBase) {
   return this.request({
     method: 'GET',
@@ -15,6 +17,8 @@ export function getFuturesBalanceSummary(this: RESTBase) {
   });
 }
 
+// [GET] Get Intraday Margin Setting
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getintradaymarginsetting
 export function getIntradayMarginSetting(this: RESTBase) {
   return this.request({
     method: 'GET',
@@ -23,6 +27,8 @@ export function getIntradayMarginSetting(this: RESTBase) {
   });
 }
 
+// [POST] Set Intraday Margin Setting
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_setintradaymarginsetting
 export function setIntradayMarginSetting(
   this: RESTBase,
   requestParams: SetIntradayMarginSettingRequest
@@ -35,6 +41,8 @@ export function setIntradayMarginSetting(
   });
 }
 
+// [GET] Get Current Margin Window
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getcurrentmarginwindow
 export function getCurrentMarginWindow(
   this: RESTBase,
   requestParams: GetCurrentMarginWindowRequest
@@ -47,6 +55,8 @@ export function getCurrentMarginWindow(
   });
 }
 
+// [GET] List Futures Positions
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfcmpositions
 export function listFuturesPositions(this: RESTBase) {
   return this.request({
     method: 'GET',
@@ -55,6 +65,8 @@ export function listFuturesPositions(this: RESTBase) {
   });
 }
 
+// [GET] Get Futures Position
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfcmposition
 export function getFuturesPosition(
   this: RESTBase,
   { productId }: GetFuturesPositionRequest
@@ -66,6 +78,8 @@ export function getFuturesPosition(
   });
 }
 
+// [POST] Schedule Futures Sweep
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_schedulefcmsweep
 export function scheduleFuturesSweep(
   this: RESTBase,
   requestParams: ScheduleFuturesSweepRequest
@@ -78,6 +92,8 @@ export function scheduleFuturesSweep(
   });
 }
 
+// [GET] List Futures Sweeps
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfcmsweeps
 export function listFuturesSweeps(this: RESTBase) {
   return this.request({
     method: 'GET',
@@ -86,6 +102,8 @@ export function listFuturesSweeps(this: RESTBase) {
   });
 }
 
+// [DELETE] Cancel Pending Futures Sweep
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_cancelfcmsweep
 export function cancelPendingFuturesSweep(this: RESTBase) {
   return this.request({
     method: 'DELETE',

@@ -2,7 +2,7 @@ import { generateToken } from '../jwt-generator';
 import fetch, { Headers, RequestInit, Response } from 'node-fetch';
 import { BASE_URL, USER_AGENT } from '../constants';
 import { RequestOptions } from './types/request-types';
-import {handleException} from "./errors";
+import { handleException } from './errors';
 
 export class RESTBase {
   private apiKey: string | undefined;
@@ -60,16 +60,11 @@ export class RESTBase {
     requestOptions: RequestInit,
     url: string
   ) {
-    try {
-      console.log("URL: ", url)
-      const response: Response = await fetch(url, requestOptions);
-      const responseText = await response.text();
-      handleException(response, responseText, response.statusText);
+    const response: Response = await fetch(url, requestOptions);
+    const responseText = await response.text();
+    handleException(response, responseText, response.statusText);
 
-      return responseText;
-    } catch (error) {
-      throw error;
-    }
+    return responseText;
   }
 
   setHeaders(httpMethod: string, urlPath: string, isPublic?: boolean) {

@@ -33,7 +33,10 @@ export function getProductBook(
   });
 }
 
-export function listProducts(this: RESTBase, requestParams: ListProductsRequest) {
+export function listProducts(
+  this: RESTBase,
+  requestParams: ListProductsRequest
+) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/products`,

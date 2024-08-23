@@ -2,6 +2,8 @@ import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import { GetTransactionsSummaryRequest } from './types/fees-types';
 
+// [POST] Get Transaction Summary
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_commitconverttrade
 export function getTransactionSummary(
   this: RESTBase,
   requestParams: GetTransactionsSummaryRequest
