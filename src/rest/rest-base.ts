@@ -2,33 +2,7 @@ import { generateToken } from '../jwt-generator';
 import fetch, { Headers, RequestInit, Response } from 'node-fetch';
 import { BASE_URL, USER_AGENT } from '../constants';
 import { RequestOptions } from './types/request-types';
-import * as http from 'http';
-
-function handleException(
-  response: Response,
-  responseText: string,
-  reason: string
-) {
-  let httpErrorMsg: string | undefined;
-
-  if (400 <= response.status && response.status <= 499) {
-    if (
-      response.status == 403 &&
-      responseText.includes('"error_details":"Missing required scopes"')
-    ) {
-      httpErrorMsg = `${response.status} Client Error: Missing Required Scopes. Please verify your API keys include the necessary permissions.`;
-    } else
-      httpErrorMsg = `${response.status} Client Error: ${reason} ${responseText}`;
-  } else if (500 <= response.status && response.status <= 599) {
-    httpErrorMsg = `${response.status} Server Error: ${reason} ${responseText}`;
-  }
-
-  if (httpErrorMsg) {
-    const error: any = new Error(httpErrorMsg);
-    error.response = response;
-    throw error;
-  }
-}
+import {handleException} from "./errors";
 
 export class RESTBase {
   private apiKey: string | undefined;
