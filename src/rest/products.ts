@@ -11,69 +11,69 @@ import {
 
 export function getBestBidAsk(
   this: RESTBase,
-  queryParams: GetBestBidAskRequest
+  requestParams: GetBestBidAskRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/best_bid_ask`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
 
 export function getProductBook(
   this: RESTBase,
-  queryParams: GetProductBookRequest
+  requestParams: GetProductBookRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/product_book`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
 
-export function listProducts(this: RESTBase, queryParams: ListProductsRequest) {
+export function listProducts(this: RESTBase, requestParams: ListProductsRequest) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/products`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
 
 export function getProduct(
   this: RESTBase,
-  { productId, ...queryParams }: GetProductRequest
+  { productId, ...requestParams }: GetProductRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/products/${productId}`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
 
 export function getProductCandles(
   this: RESTBase,
-  { productId, ...queryParams }: GetProductCandlesRequest
+  { productId, ...requestParams }: GetProductCandlesRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/products/${productId}/candles`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
 
 export function getMarketTrades(
   this: RESTBase,
-  { productId, ...queryParams }: GetMarketTradesRequest
+  { productId, ...requestParams }: GetMarketTradesRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/products/${productId}/ticker`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }

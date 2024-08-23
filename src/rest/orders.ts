@@ -12,59 +12,59 @@ import {
   PreviewOrderRequest,
 } from './types/orders-types';
 
-export function createOrder(this: RESTBase, bodyParams: CreateOrderRequest) {
+export function createOrder(this: RESTBase, requestParams: CreateOrderRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
 
-export function cancelOrders(this: RESTBase, bodyParams: CancelOrdersRequest) {
+export function cancelOrders(this: RESTBase, requestParams: CancelOrdersRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/batch_cancel`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
 
-export function editOrder(this: RESTBase, bodyParams: EditOrderRequest) {
+export function editOrder(this: RESTBase, requestParams: EditOrderRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
 
 export function editOrderPreview(
   this: RESTBase,
-  bodyParams: EditOrderPreviewRequest
+  requestParams: EditOrderPreviewRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit_preview`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
 
-export function listOrders(this: RESTBase, queryParams: ListOrdersRequest) {
+export function listOrders(this: RESTBase, requestParams: ListOrdersRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/historical/batch`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
 
-export function listFills(this: RESTBase, queryParams: ListFillsRequest) {
+export function listFills(this: RESTBase, requestParams: ListFillsRequest) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/orders/historical/fills`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
@@ -77,24 +77,24 @@ export function getOrder(this: RESTBase, { orderId }: GetOrderRequest) {
   });
 }
 
-export function previewOrder(this: RESTBase, bodyParams: PreviewOrderRequest) {
+export function previewOrder(this: RESTBase, requestParams: PreviewOrderRequest) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/preview`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
 
 export function closePosition(
   this: RESTBase,
-  bodyParams: ClosePositionRequest
+  requestParams: ClosePositionRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/close_position`,
     queryParams: undefined,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }

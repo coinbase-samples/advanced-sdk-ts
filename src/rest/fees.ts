@@ -4,12 +4,12 @@ import { GetTransactionsSummaryRequest } from './types/fees-types';
 
 export function getTransactionSummary(
   this: RESTBase,
-  queryParams: GetTransactionsSummaryRequest
+  requestParams: GetTransactionsSummaryRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/transaction_summary`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }

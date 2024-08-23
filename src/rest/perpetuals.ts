@@ -11,12 +11,12 @@ import {
 
 export function allocatePortfolio(
   this: RESTBase,
-  bodyParams: AllocatePortfolioRequest
+  requestParams: AllocatePortfolioRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/intx/allocate`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
@@ -67,12 +67,12 @@ export function getPortfolioBalances(
 
 export function optInOutMultiAssetCollateral(
   this: RESTBase,
-  bodyParams: OptInOutMultiAssetCollateralRequest
+  requestParams: OptInOutMultiAssetCollateralRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/intx/multi_asset_collateral`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }

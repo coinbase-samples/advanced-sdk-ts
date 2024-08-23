@@ -25,24 +25,24 @@ export function getIntradayMarginSetting(this: RESTBase) {
 
 export function setIntradayMarginSetting(
   this: RESTBase,
-  bodyParams: SetIntradayMarginSettingRequest
+  requestParams: SetIntradayMarginSettingRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
 
 export function getCurrentMarginWindow(
   this: RESTBase,
-  queryParams: GetCurrentMarginWindowRequest
+  requestParams: GetCurrentMarginWindowRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/intraday/current_margin_window`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
@@ -68,12 +68,12 @@ export function getFuturesPosition(
 
 export function scheduleFuturesSweep(
   this: RESTBase,
-  bodyParams: ScheduleFuturesSweepRequest
+  requestParams: ScheduleFuturesSweepRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/cfm/sweeps/schedule`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }

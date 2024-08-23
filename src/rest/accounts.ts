@@ -10,11 +10,11 @@ export function getAccount(this: RESTBase, { accountUuid }: GetAccountRequest) {
   });
 }
 
-export function listAccounts(this: RESTBase, queryParams: ListAccountsRequest) {
+export function listAccounts(this: RESTBase, requestParams: ListAccountsRequest) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/accounts`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }

@@ -8,36 +8,36 @@ import {
 
 export function createConvertQuote(
   this: RESTBase,
-  queryParams: CreateConvertQuoteRequest
+  requestParams: CreateConvertQuoteRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/convert/quote`,
-    bodyParams: queryParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
 
 export function getConvertTrade(
   this: RESTBase,
-  { tradeId, ...queryParams }: GetConvertTradeRequest
+  { tradeId, ...requestParams }: GetConvertTradeRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/convert/trade/${tradeId}`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
 
 export function commitConvertTrade(
   this: RESTBase,
-  { tradeId, ...bodyParams }: CommitConvertTradeRequest
+  { tradeId, ...requestParams }: CommitConvertTradeRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/convert/trade/${tradeId}`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }

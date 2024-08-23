@@ -18,59 +18,59 @@ export function getServerTime(this: RESTBase) {
 
 export function getPublicProductBook(
   this: RESTBase,
-  queryParams: GetPublicProductBookRequest
+  requestParams: GetPublicProductBookRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/market/product_book`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: true,
   });
 }
 
 export function listPublicProducts(
   this: RESTBase,
-  queryParams: ListPublicProductsRequest
+  requestParams: ListPublicProductsRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/market/products`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: true,
   });
 }
 
 export function getPublicProduct(
   this: RESTBase,
-  { product_id }: GetPublicProductRequest
+  { productId }: GetPublicProductRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/market/products/${product_id}`,
+    endpoint: `${API_PREFIX}/market/products/${productId}`,
     isPublic: true,
   });
 }
 
 export function getPublicProductCandles(
   this: RESTBase,
-  { product_id, ...queryParams }: GetPublicProductCandlesRequest
+  { productId, ...requestParams }: GetPublicProductCandlesRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/market/products/${product_id}/candles`,
-    queryParams: queryParams,
+    endpoint: `${API_PREFIX}/market/products/${productId}/candles`,
+    queryParams: requestParams,
     isPublic: true,
   });
 }
 
 export function getPublicMarketTrades(
   this: RESTBase,
-  { product_id, ...queryParams }: GetPublicMarketTradesRequest
+  { productId, ...requestParams }: GetPublicMarketTradesRequest
 ) {
   return this.request({
     method: 'GET',
-    endpoint: `${API_PREFIX}/products/${product_id}/ticker`,
-    queryParams: queryParams,
+    endpoint: `${API_PREFIX}/products/${productId}/ticker`,
+    queryParams: requestParams,
     isPublic: true,
   });
 }

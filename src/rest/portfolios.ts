@@ -11,48 +11,48 @@ import {
 
 export function listPortfolios(
   this: RESTBase,
-  queryParams: ListPortfoliosRequest
+  requestParams: ListPortfoliosRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/portfolios`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
 
 export function createPortfolio(
   this: RESTBase,
-  bodyParams: CreatePortfolioRequest
+  requestParams: CreatePortfolioRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/portfolios`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
 
 export function movePortfolioFunds(
   this: RESTBase,
-  bodyParams: MovePortfolioFundsRequest
+  requestParams: MovePortfolioFundsRequest
 ) {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/portfolios/move_funds`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
 
 export function getPortfolioBreakdown(
   this: RESTBase,
-  { portfolioUuid, ...queryParams }: GetPortfolioBreakdownRequest
+  { portfolioUuid, ...requestParams }: GetPortfolioBreakdownRequest
 ) {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
-    queryParams: queryParams,
+    queryParams: requestParams,
     isPublic: false,
   });
 }
@@ -70,12 +70,12 @@ export function deletePortfolio(
 
 export function editPortfolio(
   this: RESTBase,
-  { portfolioUuid, ...bodyParams }: EditPortfolioRequest
+  { portfolioUuid, ...requestParams }: EditPortfolioRequest
 ) {
   return this.request({
     method: 'PUT',
     endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
-    bodyParams: bodyParams,
+    bodyParams: requestParams,
     isPublic: false,
   });
 }
