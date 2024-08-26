@@ -1,20 +1,20 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  CancelOrdersRequest,
-  ClosePositionRequest,
-  CreateOrderRequest,
-  EditOrderPreviewRequest,
-  EditOrderRequest,
-  GetOrderRequest,
-  ListFillsRequest,
-  ListOrdersRequest,
-  PreviewOrderRequest,
+  CancelOrdersRequest, CancelOrdersResponse,
+  ClosePositionRequest, ClosePositionResponse,
+  CreateOrderRequest, CreateOrderResponse,
+  EditOrderPreviewRequest, EditOrderPreviewResponse,
+  EditOrderRequest, EditOrderResponse,
+  GetOrderRequest, GetOrderResponse,
+  ListFillsRequest, ListFillsResponse,
+  ListOrdersRequest, ListOrdersResponse,
+  PreviewOrderRequest, PreviewOrderResponse,
 } from './types/orders-types';
 
 // [POST] Create Order
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_postorder
-export function createOrder(this: RESTBase, requestParams: CreateOrderRequest) {
+export function createOrder(this: RESTBase, requestParams: CreateOrderRequest): Promise<CreateOrderResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders`,
@@ -28,7 +28,7 @@ export function createOrder(this: RESTBase, requestParams: CreateOrderRequest) {
 export function cancelOrders(
   this: RESTBase,
   requestParams: CancelOrdersRequest
-) {
+): Promise<CancelOrdersResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/batch_cancel`,
@@ -39,7 +39,7 @@ export function cancelOrders(
 
 // [POST] Edit Order
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_editorder
-export function editOrder(this: RESTBase, requestParams: EditOrderRequest) {
+export function editOrder(this: RESTBase, requestParams: EditOrderRequest): Promise<EditOrderResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit`,
@@ -53,7 +53,7 @@ export function editOrder(this: RESTBase, requestParams: EditOrderRequest) {
 export function editOrderPreview(
   this: RESTBase,
   requestParams: EditOrderPreviewRequest
-) {
+): Promise<EditOrderPreviewResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit_preview`,
@@ -64,7 +64,7 @@ export function editOrderPreview(
 
 // [GET] List Orders
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_gethistoricalorders
-export function listOrders(this: RESTBase, requestParams: ListOrdersRequest) {
+export function listOrders(this: RESTBase, requestParams: ListOrdersRequest): Promise<ListOrdersResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/historical/batch`,
@@ -75,7 +75,7 @@ export function listOrders(this: RESTBase, requestParams: ListOrdersRequest) {
 
 // [GET] List Fills
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfills
-export function listFills(this: RESTBase, requestParams: ListFillsRequest) {
+export function listFills(this: RESTBase, requestParams: ListFillsRequest): Promise<ListFillsResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/orders/historical/fills`,
@@ -86,7 +86,7 @@ export function listFills(this: RESTBase, requestParams: ListFillsRequest) {
 
 // [GET] Get Order
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_gethistoricalorder
-export function getOrder(this: RESTBase, { orderId }: GetOrderRequest) {
+export function getOrder(this: RESTBase, { orderId }: GetOrderRequest): Promise<GetOrderResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/orders/historical/${orderId}`,
@@ -99,7 +99,7 @@ export function getOrder(this: RESTBase, { orderId }: GetOrderRequest) {
 export function previewOrder(
   this: RESTBase,
   requestParams: PreviewOrderRequest
-) {
+): Promise<PreviewOrderResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/preview`,
@@ -113,7 +113,7 @@ export function previewOrder(
 export function closePosition(
   this: RESTBase,
   requestParams: ClosePositionRequest
-) {
+): Promise<ClosePositionResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/close_position`,

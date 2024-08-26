@@ -1,9 +1,12 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  CommitConvertTradeRequest, CommitConvertTradeResponse,
-  CreateConvertQuoteRequest, CreateConvertQuoteResponse,
-  GetConvertTradeRequest, GetConvertTradeResponse,
+  CommitConvertTradeRequest,
+  CommitConvertTradeResponse,
+  CreateConvertQuoteRequest,
+  CreateConvertQuoteResponse,
+  GetConvertTradeRequest,
+  GetConvertTradeResponse,
 } from './types/converts-types';
 
 // [POST] Create Convert Quote

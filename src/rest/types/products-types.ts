@@ -1,7 +1,8 @@
 // Get Best Bid Ask
 import {
   ContractExpiryType,
-  ExpiringContractStatus, Granularity,
+  ExpiringContractStatus,
+  Granularity,
   ProductType,
 } from './common-types';
 

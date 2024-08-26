@@ -1,7 +1,7 @@
-// Create Order
 import {
+  CancelOrderObject,
   ContractExpiryType,
-  MarginType,
+  MarginType, Order,
   OrderConfiguration,
   OrderPlacementSource,
   OrderSide,
@@ -9,6 +9,7 @@ import {
   SortBy,
 } from './common-types';
 
+// Create Order
 export type CreateOrderRequest = {
   // Body Params
   clientOrderId: string;
@@ -21,11 +22,25 @@ export type CreateOrderRequest = {
   retailPortfolioId?: string;
 };
 
+export type CreateOrderResponse = {
+  success: boolean,
+  failure_reason: Record<string, any>, // deprecated
+  order_id: string, // deprecated
+  response:
+      { success_response: Record<string, any> }
+      | { error_response: Record<string, any> },
+  order_configuration: OrderConfiguration
+}
+
 // Cancel Orders
 export type CancelOrdersRequest = {
   // Body Params
   orderIds: string[];
 };
+
+export type CancelOrdersResponse = {
+  results: CancelOrderObject[]
+}
 
 // Edit Order
 export type EditOrderRequest = {
@@ -35,6 +50,14 @@ export type EditOrderRequest = {
   size?: string;
 };
 
+export type EditOrderResponse = {
+  success: boolean,
+  response:
+      { success_response: Record<string, any> } // deprecated
+      | { error_response: Record<string, any> }, // deprecated
+  errors: Record<string, any>[]
+}
+
 // Edit Order Preview
 export type EditOrderPreviewRequest = {
   // Body Params
@@ -42,6 +65,17 @@ export type EditOrderPreviewRequest = {
   price?: string;
   size?: string;
 };
+
+export type EditOrderPreviewResponse = {
+  errors: Record<string, any>[],
+  slippage: string,
+  order_total: string,
+  commission_total: string,
+  quote_size: string,
+  base_size: string,
+  best_bid: string,
+  average_filled_price: string
+}
 
 // List Orders
 export type ListOrdersRequest = {
@@ -64,6 +98,13 @@ export type ListOrdersRequest = {
   sortBy?: SortBy;
 };
 
+export type ListOrdersResponse = {
+  orders: Order[],
+  sequence: number, // deprecated
+  has_next: boolean,
+  cursor: string
+}
+
 // List Fills
 export type ListFillsRequest = {
   // Query Params
@@ -78,11 +119,20 @@ export type ListFillsRequest = {
   sortBy?: SortBy;
 };
 
+export type ListFillsResponse = {
+  fills: Record<string, any>[];
+  cursor: string;
+}
+
 // Get Order
 export type GetOrderRequest = {
   // Path Params
   orderId: string;
 };
+
+export type GetOrderResponse = {
+  order: Order
+}
 
 // Preview Order
 export type PreviewOrderRequest = {
@@ -95,6 +145,28 @@ export type PreviewOrderRequest = {
   retailPortfolioId?: string;
 };
 
+export type PreviewOrderResponse = {
+  order_total: string,
+  commission_total: string,
+  errs: Record<string, any>[],
+  warning: Record<string, any>[],
+  quote_size: string,
+  base_size: string,
+  best_bid: string,
+  best_ask: string,
+  is_max: boolean,
+  order_margin_total: string,
+  leverage: string,
+  long_leverage: string,
+  short_leverage: string,
+  slippage: string,
+  preview_id: string,
+  current_liquidation_buffer: string,
+  projected_liquidation_buffer: string,
+  max_leverage: string,
+  pnl_configuration: Record<string, any>
+}
+
 // Close Position
 export type ClosePositionRequest = {
   // Body Params
@@ -102,3 +174,11 @@ export type ClosePositionRequest = {
   productId: string;
   size?: string;
 };
+
+export type ClosePositionResponse = {
+  success: boolean,
+  response:
+      { success_response: Record<string, any> }
+      | { error_response: Record<string, any> },
+  order_configuration: OrderConfiguration
+}

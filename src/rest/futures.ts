@@ -1,15 +1,26 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
+  CancelPendingFuturesSweep,
   GetCurrentMarginWindowRequest,
+  GetCurrentMarginWindowResponse,
+  GetFuturesBalanceSummaryResponse,
   GetFuturesPositionRequest,
+  GetFuturesPositionResponse,
+  GetIntradayMarginSettingResponse,
+  ListFuturesPositionsResponse,
+  ListFuturesSweepsResponse,
   ScheduleFuturesSweepRequest,
+  ScheduleFuturesSweepResponse,
   SetIntradayMarginSettingRequest,
+  SetIntradayMarginSettingResponse,
 } from './types/futures-types';
 
 // [GET] Get Futures Balance Summary
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfcmbalancesummary
-export function getFuturesBalanceSummary(this: RESTBase) {
+export function getFuturesBalanceSummary(
+  this: RESTBase
+): Promise<GetFuturesBalanceSummaryResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/balance_summary`,
@@ -19,7 +30,9 @@ export function getFuturesBalanceSummary(this: RESTBase) {
 
 // [GET] Get Intraday Margin Setting
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getintradaymarginsetting
-export function getIntradayMarginSetting(this: RESTBase) {
+export function getIntradayMarginSetting(
+  this: RESTBase
+): Promise<GetIntradayMarginSettingResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
@@ -32,7 +45,7 @@ export function getIntradayMarginSetting(this: RESTBase) {
 export function setIntradayMarginSetting(
   this: RESTBase,
   requestParams: SetIntradayMarginSettingRequest
-) {
+): Promise<SetIntradayMarginSettingResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
@@ -46,7 +59,7 @@ export function setIntradayMarginSetting(
 export function getCurrentMarginWindow(
   this: RESTBase,
   requestParams: GetCurrentMarginWindowRequest
-) {
+): Promise<GetCurrentMarginWindowResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/intraday/current_margin_window`,
@@ -57,7 +70,9 @@ export function getCurrentMarginWindow(
 
 // [GET] List Futures Positions
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfcmpositions
-export function listFuturesPositions(this: RESTBase) {
+export function listFuturesPositions(
+  this: RESTBase
+): Promise<ListFuturesPositionsResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/positions`,
@@ -70,7 +85,7 @@ export function listFuturesPositions(this: RESTBase) {
 export function getFuturesPosition(
   this: RESTBase,
   { productId }: GetFuturesPositionRequest
-) {
+): Promise<GetFuturesPositionResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/positions/${productId}`,
@@ -83,7 +98,7 @@ export function getFuturesPosition(
 export function scheduleFuturesSweep(
   this: RESTBase,
   requestParams: ScheduleFuturesSweepRequest
-) {
+): Promise<ScheduleFuturesSweepResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/cfm/sweeps/schedule`,
@@ -94,7 +109,9 @@ export function scheduleFuturesSweep(
 
 // [GET] List Futures Sweeps
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfcmsweeps
-export function listFuturesSweeps(this: RESTBase) {
+export function listFuturesSweeps(
+  this: RESTBase
+): Promise<ListFuturesSweepsResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/cfm/sweeps`,
@@ -104,7 +121,9 @@ export function listFuturesSweeps(this: RESTBase) {
 
 // [DELETE] Cancel Pending Futures Sweep
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_cancelfcmsweep
-export function cancelPendingFuturesSweep(this: RESTBase) {
+export function cancelPendingFuturesSweep(
+  this: RESTBase
+): Promise<CancelPendingFuturesSweep> {
   return this.request({
     method: 'DELETE',
     endpoint: `${API_PREFIX}/cfm/sweeps`,
