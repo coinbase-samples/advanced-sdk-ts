@@ -1,4 +1,6 @@
 // Set Intraday Margin Setting
+import { IntradayMarginSetting } from './common-types';
+
 export type SetIntradayMarginSettingRequest = {
   // Body Params
   setting?: IntradayMarginSetting;
@@ -21,10 +23,3 @@ export type ScheduleFuturesSweepRequest = {
   // Body Params
   usdAmount?: string;
 };
-
-// Misc.
-enum IntradayMarginSetting {
-  UNSPECIFIED = 'INTRADAY_MARGIN_SETTING_UNSPECIFIED',
-  STANDARD = 'INTRADAY_MARGIN_SETTING_STANDARD',
-  INTRADAY = 'INTRADAY_MARGIN_SETTING_INTRADAY',
-}

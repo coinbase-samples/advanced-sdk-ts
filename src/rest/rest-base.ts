@@ -16,7 +16,7 @@ export class RESTBase {
     this.apiSecret = secret;
   }
 
-  request(options: RequestOptions) {
+  request(options: RequestOptions): Promise<any> {
     const { method, endpoint, isPublic } = options;
     let { queryParams, bodyParams } = options;
 

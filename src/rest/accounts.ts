@@ -1,10 +1,18 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
-import { GetAccountRequest, ListAccountsRequest } from './types/accounts-types';
+import {
+  GetAccountRequest,
+  GetAccountResponse,
+  ListAccountsRequest,
+  ListAccountsResponse,
+} from './types/accounts-types';
 
 // [GET] Get Account
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getaccount
-export function getAccount(this: RESTBase, { accountUuid }: GetAccountRequest) {
+export function getAccount(
+  this: RESTBase,
+  { accountUuid }: GetAccountRequest
+): Promise<GetAccountResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/accounts/${accountUuid}`,
@@ -17,7 +25,7 @@ export function getAccount(this: RESTBase, { accountUuid }: GetAccountRequest) {
 export function listAccounts(
   this: RESTBase,
   requestParams: ListAccountsRequest
-) {
+): Promise<ListAccountsResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/accounts`,

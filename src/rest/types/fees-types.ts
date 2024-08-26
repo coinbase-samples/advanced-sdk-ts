@@ -1,4 +1,4 @@
-import { ContractExpiryType, ProductType } from './common-types';
+import { ContractExpiryType, ProductType, ProductVenue } from './common-types';
 
 // Get Transactions Summary
 export type GetTransactionsSummaryRequest = {
@@ -7,11 +7,3 @@ export type GetTransactionsSummaryRequest = {
   contractExpiryType?: ContractExpiryType;
   productVenue?: ProductVenue;
 };
-
-// Misc.
-enum ProductVenue {
-  UNKNOWN = 'UNKNOWN_VENUE_TYPE',
-  CBE = 'CBE',
-  FCM = 'FCM',
-  INTX = 'INTX',
-}

@@ -6,15 +6,14 @@ dotenv.config();
 
 const client = new RESTClient(process.env.API_KEY, process.env.API_SECRET);
 
-
-// client
-//   .listAccounts()
-//   .then((result) => {
-//     console.log(result);
-//   })
-//   .catch((error) => {
-//     console.error('Unhandled error:', error.message);
-//   });
+client
+  .listAccounts({})
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.error('Unhandled error:', error.message);
+  });
 
 // client
 //   .listPortfolios()

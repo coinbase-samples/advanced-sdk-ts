@@ -1,4 +1,6 @@
 // List Portfolios
+import { PortfolioType } from './common-types';
+
 export type ListPortfoliosRequest = {
   // Query Params
   portfolioType?: PortfolioType;
@@ -13,7 +15,7 @@ export type CreatePortfolioRequest = {
 // Move Portfolio Funds
 export type MovePortfolioFundsRequest = {
   // Body Params
-  funds: Amount;
+  funds: Record<string, any>;
   sourcePortfolioUuid: string;
   targetPortfolioUuid: string;
 };
@@ -41,16 +43,3 @@ export type EditPortfolioRequest = {
   // Body Params
   name: string;
 };
-
-// Misc.
-type Amount = {
-  value: string;
-  currency: string;
-};
-
-enum PortfolioType {
-  UNDEFINED = 'UNDEFINED',
-  DEFAULT = 'DEFAULT',
-  CONSUMER = 'CONSUMER',
-  INTX = 'INTX',
-}

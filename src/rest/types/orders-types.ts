@@ -1,5 +1,13 @@
 // Create Order
-import { ContractExpiryType, ProductType } from './common-types';
+import {
+  ContractExpiryType,
+  MarginType,
+  OrderConfiguration,
+  OrderPlacementSource,
+  OrderSide,
+  ProductType,
+  SortBy,
+} from './common-types';
 
 export type CreateOrderRequest = {
   // Body Params
@@ -94,96 +102,3 @@ export type ClosePositionRequest = {
   productId: string;
   size?: string;
 };
-
-// Misc.
-type OrderConfiguration =
-  | { market_market_ioc: MarketMarketIoc }
-  | { sor_limit_ioc: SorLimitIoc }
-  | { limit_limit_gtc: LimitLimitGtc }
-  | { limit_limit_gtd: LimitLimitGtd }
-  | { limit_limit_fok: LimitLimitFok }
-  | { stop_limit_stop_limit_gtc: StopLimitStopLimitGtc }
-  | { stop_limit_stop_limit_gtd: StopLimitStopLimitGtd }
-  | { trigger_bracket_gtc: TriggerBracketGtc }
-  | { trigger_bracket_gtd: TriggerBracketGtd };
-
-type MarketMarketIoc = { quote_size: string } | { base_size: string };
-
-type SorLimitIoc = {
-  baseSize: string;
-  limitPrice: string;
-};
-
-type LimitLimitGtc = {
-  baseSize: string;
-  limitPrice: string;
-  postOnly: boolean;
-};
-
-type LimitLimitGtd = {
-  baseSize: string;
-  limitPrice: string;
-  endTime: string;
-  postOnly: boolean;
-};
-
-type LimitLimitFok = {
-  baseSize: string;
-  limitPrice: string;
-};
-
-type StopLimitStopLimitGtc = {
-  baseSize: string;
-  limitPrice: string;
-  stopPrice: string;
-  stopDirection: StopDirection;
-};
-
-type StopLimitStopLimitGtd = {
-  baseSize: string;
-  limitPrice: string;
-  stopPrice: string;
-  endTime: string;
-  stopDirection: StopDirection;
-};
-
-type TriggerBracketGtc = {
-  baseSize: string;
-  limitPrice: string;
-  stopTriggerPrice: string;
-};
-
-type TriggerBracketGtd = {
-  baseSize: string;
-  limitPrice: string;
-  stopTriggerPrice: string;
-  endTime: string;
-};
-
-// Misc.
-enum OrderSide {
-  BUY = 'BUY',
-  SELL = 'SELL',
-}
-
-enum StopDirection {
-  UP = 'STOP_DIRECTION_STOP_UP',
-  DOWN = 'STOP_DIRECTION_STOP_DOWN',
-}
-
-enum MarginType {
-  CROSS = 'CROSS',
-  ISOLATED = 'ISOLATED',
-}
-
-enum OrderPlacementSource {
-  UNKNOWN = 'UNKNOWN_PLACEMENT_SOURCE',
-  RETAIL_SIMPLE = 'RETAIL_SIMPLE',
-  RETAIL_ADVANCED = 'RETAIL_ADVANCED',
-}
-
-enum SortBy {
-  UNKNOWN = 'UNKNOWN_SORT_BY',
-  LIMIT_PRICE = 'LIMIT_PRICE',
-  LAST_FILL_TIME = 'LAST_FILL_TIME',
-}

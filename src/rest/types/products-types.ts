@@ -1,7 +1,7 @@
 // Get Best Bid Ask
 import {
   ContractExpiryType,
-  ExpiringContractStatus,
+  ExpiringContractStatus, Granularity,
   ProductType,
 } from './common-types';
 
@@ -62,16 +62,3 @@ export type GetMarketTradesRequest = {
   start?: string;
   end?: string;
 };
-
-// Misc.
-enum Granularity {
-  UNKNOWN = 'UNKNOWN_GRANULARITY',
-  ONE_MINUTE = 'ONE_MINUTE',
-  FIVE_MINUTE = 'FIVE_MINUTE',
-  FIFTEEN_MINUTE = 'FIFTEEN_MINUTE',
-  THIRTY_MINUTE = 'THIRTY_MINUTE',
-  ONE_HOUR = 'ONE_HOUR',
-  TWO_HOUR = 'TWO_HOUR',
-  SIX_HOUR = 'SIX_HOUR',
-  ONE_DAY = 'ONE_DAY',
-}
