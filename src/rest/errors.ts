@@ -1,24 +1,12 @@
 import { Response } from 'node-fetch';
 
-class CoinbaseClientError extends Error {
+class CoinbaseError extends Error {
   statusCode: number;
   response: Response;
 
   constructor(message: string, statusCode: number, response: Response) {
     super(message);
-    this.name = 'CoinbaseClientError';
-    this.statusCode = statusCode;
-    this.response = response;
-  }
-}
-
-class CoinbaseServerError extends Error {
-  statusCode: number;
-  response: Response;
-
-  constructor(message: string, statusCode: number, response: Response) {
-    super(message);
-    this.name = 'CoinbaseServerError';
+    this.name = 'CoinbaseError';
     this.statusCode = statusCode;
     this.response = response;
   }
@@ -31,19 +19,15 @@ export function handleException(
 ) {
   let message: string | undefined;
 
-  if (400 <= response.status && response.status <= 499) {
+  if ((400 <= response.status && response.status <= 499) || (500 <= response.status && response.status <= 599)){
     if (
       response.status == 403 &&
       responseText.includes('"error_details":"Missing required scopes"')
     ) {
-      message = `${response.status} Coinbase Client Error: Missing Required Scopes. Please verify your API keys include the necessary permissions.`;
+      message = `${response.status} Coinbase Error: Missing Required Scopes. Please verify your API keys include the necessary permissions.`;
     } else
-      message = `${response.status} Coinbase Client Error: ${reason} ${responseText}`;
+      message = `${response.status} Coinbase Error: ${reason} ${responseText}`;
 
-    throw new CoinbaseClientError(message, response.status, response);
-  } else if (500 <= response.status && response.status <= 599) {
-    message = `${response.status} Coinbase Server Error: ${reason} ${responseText}`;
-
-    throw new CoinbaseServerError(message, response.status, response);
+    throw new CoinbaseError(message, response.status, response);
   }
 }
