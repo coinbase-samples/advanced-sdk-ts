@@ -270,3 +270,17 @@ export type Order = {
   originating_order_id: string,
   attached_order_id: string
 }
+
+export type PaymentMethod = {
+  id: string,
+  type: string,
+  name: string,
+  currency: string,
+  verified: boolean,
+  allow_buy: boolean,
+  allow_sell: boolean,
+  allow_deposit: boolean,
+  allow_withdraw: boolean,
+  created_at: string,
+  updated_at: string
+}
