@@ -1,12 +1,18 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  CreatePortfolioRequest, CreatePortfolioResponse,
-  DeletePortfolioRequest, DeletePortfolioResponse,
-  EditPortfolioRequest, EditPortfolioResponse,
-  GetPortfolioBreakdownRequest, GetPortfolioBreakdownResponse,
-  ListPortfoliosRequest, ListPortfoliosResponse,
-  MovePortfolioFundsRequest, MovePortfolioFundsResponse,
+  CreatePortfolioRequest,
+  CreatePortfolioResponse,
+  DeletePortfolioRequest,
+  DeletePortfolioResponse,
+  EditPortfolioRequest,
+  EditPortfolioResponse,
+  GetPortfolioBreakdownRequest,
+  GetPortfolioBreakdownResponse,
+  ListPortfoliosRequest,
+  ListPortfoliosResponse,
+  MovePortfolioFundsRequest,
+  MovePortfolioFundsResponse,
 } from './types/portfolios-types';
 
 export function listPortfolios(

@@ -1,7 +1,8 @@
 import {
   CancelOrderObject,
   ContractExpiryType,
-  MarginType, Order,
+  MarginType,
+  Order,
   OrderConfiguration,
   OrderPlacementSource,
   OrderSide,
@@ -23,14 +24,14 @@ export type CreateOrderRequest = {
 };
 
 export type CreateOrderResponse = {
-  success: boolean,
-  failure_reason: Record<string, any>, // deprecated
-  order_id: string, // deprecated
+  success: boolean;
+  failure_reason: Record<string, any>; // deprecated
+  order_id: string; // deprecated
   response:
-      { success_response: Record<string, any> }
-      | { error_response: Record<string, any> },
-  order_configuration: OrderConfiguration
-}
+    | { success_response: Record<string, any> }
+    | { error_response: Record<string, any> };
+  order_configuration: OrderConfiguration;
+};
 
 // Cancel Orders
 export type CancelOrdersRequest = {
@@ -39,8 +40,8 @@ export type CancelOrdersRequest = {
 };
 
 export type CancelOrdersResponse = {
-  results: CancelOrderObject[]
-}
+  results: CancelOrderObject[];
+};
 
 // Edit Order
 export type EditOrderRequest = {
@@ -51,12 +52,12 @@ export type EditOrderRequest = {
 };
 
 export type EditOrderResponse = {
-  success: boolean,
+  success: boolean;
   response:
-      { success_response: Record<string, any> } // deprecated
-      | { error_response: Record<string, any> }, // deprecated
-  errors: Record<string, any>[]
-}
+    | { success_response: Record<string, any> } // deprecated
+    | { error_response: Record<string, any> }; // deprecated
+  errors: Record<string, any>[];
+};
 
 // Edit Order Preview
 export type EditOrderPreviewRequest = {
@@ -67,15 +68,15 @@ export type EditOrderPreviewRequest = {
 };
 
 export type EditOrderPreviewResponse = {
-  errors: Record<string, any>[],
-  slippage: string,
-  order_total: string,
-  commission_total: string,
-  quote_size: string,
-  base_size: string,
-  best_bid: string,
-  average_filled_price: string
-}
+  errors: Record<string, any>[];
+  slippage: string;
+  order_total: string;
+  commission_total: string;
+  quote_size: string;
+  base_size: string;
+  best_bid: string;
+  average_filled_price: string;
+};
 
 // List Orders
 export type ListOrdersRequest = {
@@ -99,11 +100,11 @@ export type ListOrdersRequest = {
 };
 
 export type ListOrdersResponse = {
-  orders: Order[],
-  sequence: number, // deprecated
-  has_next: boolean,
-  cursor: string
-}
+  orders: Order[];
+  sequence: number; // deprecated
+  has_next: boolean;
+  cursor: string;
+};
 
 // List Fills
 export type ListFillsRequest = {
@@ -122,7 +123,7 @@ export type ListFillsRequest = {
 export type ListFillsResponse = {
   fills: Record<string, any>[];
   cursor: string;
-}
+};
 
 // Get Order
 export type GetOrderRequest = {
@@ -131,8 +132,8 @@ export type GetOrderRequest = {
 };
 
 export type GetOrderResponse = {
-  order: Order
-}
+  order: Order;
+};
 
 // Preview Order
 export type PreviewOrderRequest = {
@@ -146,26 +147,26 @@ export type PreviewOrderRequest = {
 };
 
 export type PreviewOrderResponse = {
-  order_total: string,
-  commission_total: string,
-  errs: Record<string, any>[],
-  warning: Record<string, any>[],
-  quote_size: string,
-  base_size: string,
-  best_bid: string,
-  best_ask: string,
-  is_max: boolean,
-  order_margin_total: string,
-  leverage: string,
-  long_leverage: string,
-  short_leverage: string,
-  slippage: string,
-  preview_id: string,
-  current_liquidation_buffer: string,
-  projected_liquidation_buffer: string,
-  max_leverage: string,
-  pnl_configuration: Record<string, any>
-}
+  order_total: string;
+  commission_total: string;
+  errs: Record<string, any>[];
+  warning: Record<string, any>[];
+  quote_size: string;
+  base_size: string;
+  best_bid: string;
+  best_ask: string;
+  is_max: boolean;
+  order_margin_total: string;
+  leverage: string;
+  long_leverage: string;
+  short_leverage: string;
+  slippage: string;
+  preview_id: string;
+  current_liquidation_buffer: string;
+  projected_liquidation_buffer: string;
+  max_leverage: string;
+  pnl_configuration: Record<string, any>;
+};
 
 // Close Position
 export type ClosePositionRequest = {
@@ -176,9 +177,9 @@ export type ClosePositionRequest = {
 };
 
 export type ClosePositionResponse = {
-  success: boolean,
+  success: boolean;
   response:
-      { success_response: Record<string, any> }
-      | { error_response: Record<string, any> },
-  order_configuration: OrderConfiguration
-}
+    | { success_response: Record<string, any> }
+    | { error_response: Record<string, any> };
+  order_configuration: OrderConfiguration;
+};

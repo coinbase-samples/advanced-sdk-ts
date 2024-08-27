@@ -226,144 +226,217 @@ export type FCMSweep = {
 };
 
 export type CancelOrderObject = {
-  success: boolean,
-  failure_reason: Record<string, any>,
-  order_id: string,
-}
+  success: boolean;
+  failure_reason: Record<string, any>;
+  order_id: string;
+};
 
 export type Order = {
-  order_id: string,
-  product_id: string,
-  user_id: string,
-  order_configuration: OrderConfiguration,
-  side: OrderSide,
-  client_order_id: string,
-  status: Record<string, any>,
-  time_in_force: Record<string, any>,
-  created_time: Record<string, any>,
-  completion_percentage: string,
-  filled_size: string,
-  average_filled_price: string,
-  fee: string,
-  number_of_fills: string,
-  filled_value: string,
-  pending_cancel: boolean,
-  size_in_quote: boolean,
-  total_fees: string,
-  size_inclusive_of_fees: boolean,
-  total_value_after_fees: string,
-  trigger_status: Record<string, any>,
-  order_type: Record<string, any>,
-  reject_reason: Record<string, any>,
-  settled: boolean,
-  product_type: ProductType,
-  reject_message: string,
-  cancel_message: string,
-  order_placement_source: OrderPlacementSource,
-  outstanding_hold_amount: string,
-  is_liquidation: boolean,
-  last_fill_time: Record<string, any>,
-  edit_history: Record<string, any>[],
-  leverage: string,
-  margin_type: MarginType,
-  retail_portfolio_id: string,
-  originating_order_id: string,
-  attached_order_id: string
-}
+  order_id: string;
+  product_id: string;
+  user_id: string;
+  order_configuration: OrderConfiguration;
+  side: OrderSide;
+  client_order_id: string;
+  status: Record<string, any>;
+  time_in_force: Record<string, any>;
+  created_time: Record<string, any>;
+  completion_percentage: string;
+  filled_size: string;
+  average_filled_price: string;
+  fee: string;
+  number_of_fills: string;
+  filled_value: string;
+  pending_cancel: boolean;
+  size_in_quote: boolean;
+  total_fees: string;
+  size_inclusive_of_fees: boolean;
+  total_value_after_fees: string;
+  trigger_status: Record<string, any>;
+  order_type: Record<string, any>;
+  reject_reason: Record<string, any>;
+  settled: boolean;
+  product_type: ProductType;
+  reject_message: string;
+  cancel_message: string;
+  order_placement_source: OrderPlacementSource;
+  outstanding_hold_amount: string;
+  is_liquidation: boolean;
+  last_fill_time: Record<string, any>;
+  edit_history: Record<string, any>[];
+  leverage: string;
+  margin_type: MarginType;
+  retail_portfolio_id: string;
+  originating_order_id: string;
+  attached_order_id: string;
+};
 
 export type PaymentMethod = {
-  id: string,
-  type: string,
-  name: string,
-  currency: string,
-  verified: boolean,
-  allow_buy: boolean,
-  allow_sell: boolean,
-  allow_deposit: boolean,
-  allow_withdraw: boolean,
-  created_at: string,
-  updated_at: string
-}
+  id: string;
+  type: string;
+  name: string;
+  currency: string;
+  verified: boolean;
+  allow_buy: boolean;
+  allow_sell: boolean;
+  allow_deposit: boolean;
+  allow_withdraw: boolean;
+  created_at: string;
+  updated_at: string;
+};
 
 export type PerpetualPortfolio = {
-  portfolio_uuid: string,
-  collateral: string,
-  position_notional: string,
-  open_position_notional: string,
-  pending_fees: string,
-  borrow: string,
-  accrued_interest: string,
-  rolling_debt: string,
-  portfolio_initial_margin: string,
-  portfolio_im_notional: Record<string, any>,
-  liquidation_percentage: string,
-  liquidation_buffer: string,
-  margin_type: Record<string, any>,
-  margin_flags: Record<string, any>,
-  liquidation_status: Record<string, any>,
-  unrealized_pnl: Record<string, any>,
-  total_balance: Record<string, any>
-}
+  portfolio_uuid: string;
+  collateral: string;
+  position_notional: string;
+  open_position_notional: string;
+  pending_fees: string;
+  borrow: string;
+  accrued_interest: string;
+  rolling_debt: string;
+  portfolio_initial_margin: string;
+  portfolio_im_notional: Record<string, any>;
+  liquidation_percentage: string;
+  liquidation_buffer: string;
+  margin_type: Record<string, any>;
+  margin_flags: Record<string, any>;
+  liquidation_status: Record<string, any>;
+  unrealized_pnl: Record<string, any>;
+  total_balance: Record<string, any>;
+};
 
 export type PortfolioSummary = {
-  unrealized_pnl: Record<string, any>,
-  buying_power: Record<string, any>,
-  total_balance: Record<string, any>,
-  max_withdrawal_amount: Record<string, any>,
-  portfolio_im_notional: Record<string, any>,
-  portfolio_mm_notional: Record<string, any>
-}
+  unrealized_pnl: Record<string, any>;
+  buying_power: Record<string, any>;
+  total_balance: Record<string, any>;
+  max_withdrawal_amount: Record<string, any>;
+  portfolio_im_notional: Record<string, any>;
+  portfolio_mm_notional: Record<string, any>;
+};
 
 export type PositionSummary = {
-  aggregated_pnl: Record<string, any>
-}
+  aggregated_pnl: Record<string, any>;
+};
 
 export type Position = {
-  product_id: string,
-  product_uuid: string,
-  portfolio_uuid: string,
-  symbol: string,
-  vwap: Record<string, any>,
-  entry_vwap: Record<string, any>,
-  position_side: Record<string, any>,
-  margin_type: Record<string, any>,
-  net_size: string,
-  buy_order_size: string,
-  sell_order_size: string,
-  im_contribution: string,
-  unrealized_pnl: Record<string, any>,
-  mark_price: Record<string, any>,
-  liquidation_price: Record<string, any>,
-  leverage: string,
-  im_notional: Record<string, any>,
-  mm_notional: Record<string, any>,
-  position_notional: Record<string, any>,
-  aggregated_pnl: Record<string, any>
-}
+  product_id: string;
+  product_uuid: string;
+  portfolio_uuid: string;
+  symbol: string;
+  vwap: Record<string, any>;
+  entry_vwap: Record<string, any>;
+  position_side: Record<string, any>;
+  margin_type: Record<string, any>;
+  net_size: string;
+  buy_order_size: string;
+  sell_order_size: string;
+  im_contribution: string;
+  unrealized_pnl: Record<string, any>;
+  mark_price: Record<string, any>;
+  liquidation_price: Record<string, any>;
+  leverage: string;
+  im_notional: Record<string, any>;
+  mm_notional: Record<string, any>;
+  position_notional: Record<string, any>;
+  aggregated_pnl: Record<string, any>;
+};
 
 export type Balance = {
-  asset: Record<string, any>,
-  quantity: string,
-  hold: string,
-  transfer_hold: string,
-  collateral_value: string,
-  collateral_weight: string,
-  max_withdraw_amount: string,
-  loan: string,
-  loan_collateral_requirement_usd: string,
-  pledged_quantity: string
-}
+  asset: Record<string, any>;
+  quantity: string;
+  hold: string;
+  transfer_hold: string;
+  collateral_value: string;
+  collateral_weight: string;
+  max_withdraw_amount: string;
+  loan: string;
+  loan_collateral_requirement_usd: string;
+  pledged_quantity: string;
+};
 
 export type Portfolio = {
-  name: string,
-  uuid: string,
-  type: string
-}
+  name: string;
+  uuid: string;
+  type: string;
+};
 
 export type PortfolioBreakdown = {
-  portfolio: Portfolio,
-  portfolio_balances: Record<string, any>,
-  spot_positions: Record<string, any>[],
-  perp_positions: Record<string, any>[],
-  futures_positions: Record<string, any>[]
-}
+  portfolio: Portfolio;
+  portfolio_balances: Record<string, any>;
+  spot_positions: Record<string, any>[];
+  perp_positions: Record<string, any>[];
+  futures_positions: Record<string, any>[];
+};
+
+export type PriceBook = {
+  product_id: string;
+  bids: Record<string, any>[];
+  asks: Record<string, any>[];
+  time: Record<string, any>;
+};
+
+export type Products = {
+  products: Product[];
+  num_products: number;
+};
+
+export type Product = {
+  product_id: string;
+  price: string;
+  price_percentage_change_24h: string;
+  volume_24h: string;
+  volume_percentage_change_24h: string;
+  base_increment: string;
+  quote_increment: string;
+  quote_min_size: string;
+  quote_max_size: string;
+  base_min_size: string;
+  base_max_size: string;
+  base_name: string;
+  quote_name: string;
+  watched: boolean;
+  is_disabled: boolean;
+  new: boolean;
+  status: string;
+  limit_only: boolean;
+  post_only: boolean;
+  trading_disabled: boolean;
+  auction_mode: boolean;
+  product_type: ProductType;
+  quote_currency_id: string;
+  base_currency_id: string;
+  fcm_trading_session_details: Record<string, any>;
+  mid_market_price: string;
+  alias: string;
+  alias_to: string[];
+  base_display_symbol: string;
+  quote_display_symbol: string;
+  view_only: boolean;
+  price_increment: string;
+  display_name: string;
+  product_venue: ProductVenue;
+  approximate_quote_24h_volume: string;
+  future_product_details: Record<string, any>;
+};
+
+export type Candles = {
+  candles: Candle[];
+};
+
+export type Candle = {
+  start: string;
+  low: string;
+  high: string;
+  open: string;
+  close: string;
+  volume: string;
+};
+
+export type HistoricalMarketTrade = {
+  trade_id: string;
+  product_id: string;
+  price: string;
+  size: string;
+  time: string;
+  side: OrderSide;
+};

@@ -1,11 +1,14 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  GetPaymentMethodRequest, GetPaymentMethodResponse,
-  ListPaymentMethodsResponse
+  GetPaymentMethodRequest,
+  GetPaymentMethodResponse,
+  ListPaymentMethodsResponse,
 } from './types/payments-types';
 
-export function listPaymentMethods(this: RESTBase): Promise<ListPaymentMethodsResponse> {
+export function listPaymentMethods(
+  this: RESTBase
+): Promise<ListPaymentMethodsResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/payment_methods`,

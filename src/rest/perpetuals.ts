@@ -1,12 +1,18 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  AllocatePortfolioRequest, AllocatePortfolioResponse,
-  GetPerpetualsPortfolioSummaryRequest, GetPerpetualsPortfolioSummaryResponse,
-  GetPerpetualsPositionRequest, GetPerpetualsPositionResponse,
-  GetPortfolioBalancesRequest, GetPortfolioBalancesResponse,
-  ListPerpetualsPositionsRequest, ListPerpetualsPositionsResponse,
-  OptInOutMultiAssetCollateralRequest, OptInOutMultiAssetCollateralResponse,
+  AllocatePortfolioRequest,
+  AllocatePortfolioResponse,
+  GetPerpetualsPortfolioSummaryRequest,
+  GetPerpetualsPortfolioSummaryResponse,
+  GetPerpetualsPositionRequest,
+  GetPerpetualsPositionResponse,
+  GetPortfolioBalancesRequest,
+  GetPortfolioBalancesResponse,
+  ListPerpetualsPositionsRequest,
+  ListPerpetualsPositionsResponse,
+  OptInOutMultiAssetCollateralRequest,
+  OptInOutMultiAssetCollateralResponse,
 } from './types/perpetuals-types';
 
 export function allocatePortfolio(

@@ -1,14 +1,23 @@
-// Get Best Bid Ask
 import {
+  Candles,
   ContractExpiryType,
   ExpiringContractStatus,
   Granularity,
+  HistoricalMarketTrade,
+  PriceBook,
+  Product,
+  Products,
   ProductType,
 } from './common-types';
 
+// Get Best Bid Ask
 export type GetBestBidAskRequest = {
   // Query Params
   productIds?: string[];
+};
+
+export type GetBestBidAskResponse = {
+  pricebooks: PriceBook[];
 };
 
 // Get Product Book
@@ -17,6 +26,10 @@ export type GetProductBookRequest = {
   productId: string;
   limit?: number;
   aggregationPriceIncrement?: number;
+};
+
+export type GetProductBookResponse = {
+  pricebook: PriceBook;
 };
 
 // List Products
@@ -32,6 +45,10 @@ export type ListProductsRequest = {
   getAllProducts?: boolean;
 };
 
+export type ListProductsResponse = {
+  body: Products;
+};
+
 // Get Product
 export type GetProductRequest = {
   // Path Params
@@ -39,6 +56,10 @@ export type GetProductRequest = {
 
   // Query Params
   getTradabilityStatus?: boolean;
+};
+
+export type GetProductResponse = {
+  body: Product;
 };
 
 // Get Product Candles
@@ -53,6 +74,10 @@ export type GetProductCandlesRequest = {
   limit?: number;
 };
 
+export type GetProductCandlesResponse = {
+  body: Candles;
+};
+
 // Get Market Trades
 export type GetMarketTradesRequest = {
   // Path Params
@@ -62,4 +87,10 @@ export type GetMarketTradesRequest = {
   limit: number;
   start?: string;
   end?: string;
+};
+
+export type GetMarketTradesResponse = {
+  trades: HistoricalMarketTrade[];
+  best_bid: string;
+  best_ask: string;
 };

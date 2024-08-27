@@ -1,20 +1,32 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  CancelOrdersRequest, CancelOrdersResponse,
-  ClosePositionRequest, ClosePositionResponse,
-  CreateOrderRequest, CreateOrderResponse,
-  EditOrderPreviewRequest, EditOrderPreviewResponse,
-  EditOrderRequest, EditOrderResponse,
-  GetOrderRequest, GetOrderResponse,
-  ListFillsRequest, ListFillsResponse,
-  ListOrdersRequest, ListOrdersResponse,
-  PreviewOrderRequest, PreviewOrderResponse,
+  CancelOrdersRequest,
+  CancelOrdersResponse,
+  ClosePositionRequest,
+  ClosePositionResponse,
+  CreateOrderRequest,
+  CreateOrderResponse,
+  EditOrderPreviewRequest,
+  EditOrderPreviewResponse,
+  EditOrderRequest,
+  EditOrderResponse,
+  GetOrderRequest,
+  GetOrderResponse,
+  ListFillsRequest,
+  ListFillsResponse,
+  ListOrdersRequest,
+  ListOrdersResponse,
+  PreviewOrderRequest,
+  PreviewOrderResponse,
 } from './types/orders-types';
 
 // [POST] Create Order
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_postorder
-export function createOrder(this: RESTBase, requestParams: CreateOrderRequest): Promise<CreateOrderResponse> {
+export function createOrder(
+  this: RESTBase,
+  requestParams: CreateOrderRequest
+): Promise<CreateOrderResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders`,
@@ -39,7 +51,10 @@ export function cancelOrders(
 
 // [POST] Edit Order
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_editorder
-export function editOrder(this: RESTBase, requestParams: EditOrderRequest): Promise<EditOrderResponse> {
+export function editOrder(
+  this: RESTBase,
+  requestParams: EditOrderRequest
+): Promise<EditOrderResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/edit`,
@@ -64,7 +79,10 @@ export function editOrderPreview(
 
 // [GET] List Orders
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_gethistoricalorders
-export function listOrders(this: RESTBase, requestParams: ListOrdersRequest): Promise<ListOrdersResponse> {
+export function listOrders(
+  this: RESTBase,
+  requestParams: ListOrdersRequest
+): Promise<ListOrdersResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/orders/historical/batch`,
@@ -75,7 +93,10 @@ export function listOrders(this: RESTBase, requestParams: ListOrdersRequest): Pr
 
 // [GET] List Fills
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfills
-export function listFills(this: RESTBase, requestParams: ListFillsRequest): Promise<ListFillsResponse> {
+export function listFills(
+  this: RESTBase,
+  requestParams: ListFillsRequest
+): Promise<ListFillsResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/orders/historical/fills`,
@@ -86,7 +107,10 @@ export function listFills(this: RESTBase, requestParams: ListFillsRequest): Prom
 
 // [GET] Get Order
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_gethistoricalorder
-export function getOrder(this: RESTBase, { orderId }: GetOrderRequest): Promise<GetOrderResponse> {
+export function getOrder(
+  this: RESTBase,
+  { orderId }: GetOrderRequest
+): Promise<GetOrderResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/orders/historical/${orderId}`,
