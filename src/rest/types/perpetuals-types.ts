@@ -1,3 +1,11 @@
+import {
+  Balance,
+  Portfolio,
+  PortfolioSummary,
+  PortfolioType, Position,
+  PositionSummary
+} from "./common-types";
+
 // Allocate Portfolio
 export type AllocatePortfolioRequest = {
   // Body Params
@@ -7,17 +15,29 @@ export type AllocatePortfolioRequest = {
   currency: string;
 };
 
+export type AllocatePortfolioResponse = Record<string, never>;
+
 // Get Perpetuals Portfolio Summary
 export type GetPerpetualsPortfolioSummaryRequest = {
   // Path Params
   portfolioUuid: string;
 };
 
+export type GetPerpetualsPortfolioSummaryResponse = {
+  portfolios: Portfolio[],
+  summary: PortfolioSummary
+}
+
 // List Perpetuals Positions
 export type ListPerpetualsPositionsRequest = {
   // Path Params
   portfolioUuid: string;
 };
+
+export type ListPerpetualsPositionsResponse = {
+  positions: Position[],
+  summary: PositionSummary
+}
 
 // Get Perpetuals Position
 export type GetPerpetualsPositionRequest = {
@@ -26,11 +46,25 @@ export type GetPerpetualsPositionRequest = {
   symbol: string;
 };
 
+export type GetPerpetualsPositionResponse = {
+  position: Position;
+}
+
 // Get Portfolio Balances
 export type GetPortfolioBalancesRequest = {
   // Path Params
   portfolioUuid: string;
 };
+
+export type GetPortfolioBalancesResponse = {
+  portfolio_balancces: PortfolioBalance[]
+}
+
+export type PortfolioBalance = {
+  portfolio_uuid: string,
+  balances: Balance[],
+  is_margin_limit_reached: boolean
+}
 
 // Opt In or Out of Multi Asset Collateral
 export type OptInOutMultiAssetCollateralRequest = {
@@ -38,3 +72,7 @@ export type OptInOutMultiAssetCollateralRequest = {
   portfolioUuid?: string;
   multiAssetCollateralEnabled?: boolean;
 };
+
+export type OptInOutMultiAssetCollateralResponse = {
+  cross_collateral_enabled: boolean
+}

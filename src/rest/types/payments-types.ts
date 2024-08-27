@@ -14,4 +14,3 @@ export type GetPaymentMethodRequest = {
 export type GetPaymentMethodResponse = {
   paymentMethod: PaymentMethod
 }
-

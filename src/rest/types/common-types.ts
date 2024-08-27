@@ -284,3 +284,72 @@ export type PaymentMethod = {
   created_at: string,
   updated_at: string
 }
+
+export type Portfolio = {
+  portfolio_uuid: string,
+  collateral: string,
+  position_notional: string,
+  open_position_notional: string,
+  pending_fees: string,
+  borrow: string,
+  accrued_interest: string,
+  rolling_debt: string,
+  portfolio_initial_margin: string,
+  portfolio_im_notional: Record<string, any>,
+  liquidation_percentage: string,
+  liquidation_buffer: string,
+  margin_type: Record<string, any>,
+  margin_flags: Record<string, any>,
+  liquidation_status: Record<string, any>,
+  unrealized_pnl: Record<string, any>,
+  total_balance: Record<string, any>
+}
+
+export type PortfolioSummary = {
+  unrealized_pnl: Record<string, any>,
+  buying_power: Record<string, any>,
+  total_balance: Record<string, any>,
+  max_withdrawal_amount: Record<string, any>,
+  portfolio_im_notional: Record<string, any>,
+  portfolio_mm_notional: Record<string, any>
+}
+
+export type PositionSummary = {
+  aggregated_pnl: Record<string, any>
+}
+
+export type Position = {
+  product_id: string,
+  product_uuid: string,
+  portfolio_uuid: string,
+  symbol: string,
+  vwap: Record<string, any>,
+  entry_vwap: Record<string, any>,
+  position_side: Record<string, any>,
+  margin_type: Record<string, any>,
+  net_size: string,
+  buy_order_size: string,
+  sell_order_size: string,
+  im_contribution: string,
+  unrealized_pnl: Record<string, any>,
+  mark_price: Record<string, any>,
+  liquidation_price: Record<string, any>,
+  leverage: string,
+  im_notional: Record<string, any>,
+  mm_notional: Record<string, any>,
+  position_notional: Record<string, any>,
+  aggregated_pnl: Record<string, any>
+}
+
+export type Balance = {
+  asset: Record<string, any>,
+  quantity: string,
+  hold: string,
+  transfer_hold: string,
+  collateral_value: string,
+  collateral_weight: string,
+  max_withdraw_amount: string,
+  loan: string,
+  loan_collateral_requirement_usd: string,
+  pledged_quantity: string
+}
