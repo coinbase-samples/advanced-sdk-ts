@@ -1,18 +1,18 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  CreatePortfolioRequest,
-  DeletePortfolioRequest,
-  EditPortfolioRequest,
-  GetPortfolioBreakdownRequest,
-  ListPortfoliosRequest,
-  MovePortfolioFundsRequest,
+  CreatePortfolioRequest, CreatePortfolioResponse,
+  DeletePortfolioRequest, DeletePortfolioResponse,
+  EditPortfolioRequest, EditPortfolioResponse,
+  GetPortfolioBreakdownRequest, GetPortfolioBreakdownResponse,
+  ListPortfoliosRequest, ListPortfoliosResponse,
+  MovePortfolioFundsRequest, MovePortfolioFundsResponse,
 } from './types/portfolios-types';
 
 export function listPortfolios(
   this: RESTBase,
   requestParams: ListPortfoliosRequest
-) {
+): Promise<ListPortfoliosResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/portfolios`,
@@ -24,7 +24,7 @@ export function listPortfolios(
 export function createPortfolio(
   this: RESTBase,
   requestParams: CreatePortfolioRequest
-) {
+): Promise<CreatePortfolioResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/portfolios`,
@@ -36,7 +36,7 @@ export function createPortfolio(
 export function movePortfolioFunds(
   this: RESTBase,
   requestParams: MovePortfolioFundsRequest
-) {
+): Promise<MovePortfolioFundsResponse> {
   return this.request({
     method: 'POST',
     endpoint: `${API_PREFIX}/portfolios/move_funds`,
@@ -48,7 +48,7 @@ export function movePortfolioFunds(
 export function getPortfolioBreakdown(
   this: RESTBase,
   { portfolioUuid, ...requestParams }: GetPortfolioBreakdownRequest
-) {
+): Promise<GetPortfolioBreakdownResponse> {
   return this.request({
     method: 'GET',
     endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
@@ -60,7 +60,7 @@ export function getPortfolioBreakdown(
 export function deletePortfolio(
   this: RESTBase,
   { portfolioUuid }: DeletePortfolioRequest
-) {
+): Promise<DeletePortfolioResponse> {
   return this.request({
     method: 'DELETE',
     endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
@@ -71,7 +71,7 @@ export function deletePortfolio(
 export function editPortfolio(
   this: RESTBase,
   { portfolioUuid, ...requestParams }: EditPortfolioRequest
-) {
+): Promise<EditPortfolioResponse> {
   return this.request({
     method: 'PUT',
     endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,

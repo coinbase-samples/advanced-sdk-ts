@@ -1,6 +1,5 @@
 import {
-  Balance,
-  Portfolio,
+  Balance, PerpetualPortfolio,
   PortfolioSummary,
   PortfolioType, Position,
   PositionSummary
@@ -24,7 +23,7 @@ export type GetPerpetualsPortfolioSummaryRequest = {
 };
 
 export type GetPerpetualsPortfolioSummaryResponse = {
-  portfolios: Portfolio[],
+  portfolios: PerpetualPortfolio[],
   summary: PortfolioSummary
 }
 

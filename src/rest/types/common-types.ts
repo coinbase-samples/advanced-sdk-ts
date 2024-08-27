@@ -285,7 +285,7 @@ export type PaymentMethod = {
   updated_at: string
 }
 
-export type Portfolio = {
+export type PerpetualPortfolio = {
   portfolio_uuid: string,
   collateral: string,
   position_notional: string,
@@ -352,4 +352,18 @@ export type Balance = {
   loan: string,
   loan_collateral_requirement_usd: string,
   pledged_quantity: string
+}
+
+export type Portfolio = {
+  name: string,
+  uuid: string,
+  type: string
+}
+
+export type PortfolioBreakdown = {
+  portfolio: Portfolio,
+  portfolio_balances: Record<string, any>,
+  spot_positions: Record<string, any>[],
+  perp_positions: Record<string, any>[],
+  futures_positions: Record<string, any>[]
 }
