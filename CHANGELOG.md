@@ -5,4 +5,7 @@
 ### Added
 
 - Support for all Coinbase Advanced API REST endpoints via central client
-- Add linter and formatter
+- Custom error types
+- Linting and formatting
+- Custom Request and Response objects for endpoints
+- 
