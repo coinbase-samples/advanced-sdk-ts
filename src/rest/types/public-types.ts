@@ -1,16 +1,20 @@
 import {
   Candles,
   ContractExpiryType,
-  ExpiringContractStatus, HistoricalMarketTrade, PriceBook, Product, Products,
+  ExpiringContractStatus,
+  HistoricalMarketTrade,
+  PriceBook,
+  Product,
+  Products,
   ProductType,
 } from './common-types';
 
 // Get Server Time
 export type GetServerTimeResponse = {
-  iso: string,
-  epochSeconds: number,
-  epochMillis: number
-}
+  iso: string;
+  epochSeconds: number;
+  epochMillis: number;
+};
 
 // Get Public Product Book
 export type GetPublicProductBookRequest = {
@@ -22,7 +26,7 @@ export type GetPublicProductBookRequest = {
 
 export type GetPublicProductBookResponse = {
   pricebook: PriceBook;
-}
+};
 
 // List Public Products
 export type ListPublicProductsRequest = {
@@ -38,7 +42,7 @@ export type ListPublicProductsRequest = {
 
 export type ListPublicProductsResponse = {
   body: Products;
-}
+};
 
 // Get Public Product
 export type GetPublicProductRequest = {
@@ -48,7 +52,7 @@ export type GetPublicProductRequest = {
 
 export type GetPublicProductResponse = {
   body: Product;
-}
+};
 
 //Get Public Product Candles
 export type GetPublicProductCandlesRequest = {
@@ -64,7 +68,7 @@ export type GetPublicProductCandlesRequest = {
 
 export type GetPublicProductCandlesResponse = {
   body: Candles;
-}
+};
 
 // Get Public Market Trades
 export type GetPublicMarketTradesRequest = {
@@ -81,4 +85,4 @@ export type GetPublicMarketTradesResponse = {
   trades: HistoricalMarketTrade[];
   best_bid: string;
   best_ask: string;
-}
+};

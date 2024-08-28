@@ -1,11 +1,17 @@
 import { API_PREFIX } from '../constants';
 import { RESTBase } from './rest-base';
 import {
-  GetPublicMarketTradesRequest, GetPublicMarketTradesResponse,
-  GetPublicProductBookRequest, GetPublicProductBookResponse,
-  GetPublicProductCandlesRequest, GetPublicProductCandlesResponse,
-  GetPublicProductRequest, GetPublicProductResponse, GetServerTimeResponse,
-  ListPublicProductsRequest, ListPublicProductsResponse,
+  GetPublicMarketTradesRequest,
+  GetPublicMarketTradesResponse,
+  GetPublicProductBookRequest,
+  GetPublicProductBookResponse,
+  GetPublicProductCandlesRequest,
+  GetPublicProductCandlesResponse,
+  GetPublicProductRequest,
+  GetPublicProductResponse,
+  GetServerTimeResponse,
+  ListPublicProductsRequest,
+  ListPublicProductsResponse,
 } from './types/public-types';
 
 export function getServerTime(this: RESTBase): Promise<GetServerTimeResponse> {

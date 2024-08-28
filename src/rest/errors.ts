@@ -19,7 +19,10 @@ export function handleException(
 ) {
   let message: string | undefined;
 
-  if ((400 <= response.status && response.status <= 499) || (500 <= response.status && response.status <= 599)){
+  if (
+    (400 <= response.status && response.status <= 499) ||
+    (500 <= response.status && response.status <= 599)
+  ) {
     if (
       response.status == 403 &&
       responseText.includes('"error_details":"Missing required scopes"')
