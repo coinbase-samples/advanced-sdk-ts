@@ -7,7 +7,7 @@ export type ListPortfoliosRequest = {
 };
 
 export type ListPortfoliosResponse = {
-  portfolios: Portfolio[];
+  portfolios?: Portfolio[];
 };
 
 // Create Portfolio
@@ -17,7 +17,7 @@ export type CreatePortfolioRequest = {
 };
 
 export type CreatePortfolioResponse = {
-  portfolio: Portfolio;
+  portfolio?: Portfolio;
 };
 
 // Move Portfolio Funds
@@ -29,8 +29,8 @@ export type MovePortfolioFundsRequest = {
 };
 
 export type MovePortfolioFundsResponse = {
-  source_portfolio_uuid: string;
-  target_portfolio_uuid: string;
+  source_portfolio_uuid?: string;
+  target_portfolio_uuid?: string;
 };
 
 // Get Portfolio Breakdown
@@ -43,7 +43,7 @@ export type GetPortfolioBreakdownRequest = {
 };
 
 export type GetPortfolioBreakdownResponse = {
-  breakdown: PortfolioBreakdown;
+  breakdown?: PortfolioBreakdown;
 };
 
 // Delete Portfolio
@@ -64,5 +64,5 @@ export type EditPortfolioRequest = {
 };
 
 export type EditPortfolioResponse = {
-  portfolio: Portfolio;
+  portfolio?: Portfolio;
 };

@@ -7,7 +7,7 @@ export type GetAccountRequest = {
 };
 
 export type GetAccountResponse = {
-  account: Account;
+  account?: Account;
 };
 
 // List Accounts
@@ -19,8 +19,8 @@ export type ListAccountsRequest = {
 };
 
 export type ListAccountsResponse = {
-  accounts: Account[];
+  accounts?: Account[];
   has_next: boolean;
-  cursor: string;
-  size: number;
+  cursor?: string;
+  size?: number;
 };

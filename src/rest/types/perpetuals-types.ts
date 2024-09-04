@@ -1,6 +1,6 @@
 import {
   Balance,
-  PerpetualPortfolio,
+  PerpetualPortfolio, PortfolioBalance,
   PortfolioSummary,
   Position,
   PositionSummary,
@@ -24,8 +24,8 @@ export type GetPerpetualsPortfolioSummaryRequest = {
 };
 
 export type GetPerpetualsPortfolioSummaryResponse = {
-  portfolios: PerpetualPortfolio[];
-  summary: PortfolioSummary;
+  portfolios?: PerpetualPortfolio[];
+  summary?: PortfolioSummary;
 };
 
 // List Perpetuals Positions
@@ -35,8 +35,8 @@ export type ListPerpetualsPositionsRequest = {
 };
 
 export type ListPerpetualsPositionsResponse = {
-  positions: Position[];
-  summary: PositionSummary;
+  positions?: Position[];
+  summary?: PositionSummary;
 };
 
 // Get Perpetuals Position
@@ -47,7 +47,7 @@ export type GetPerpetualsPositionRequest = {
 };
 
 export type GetPerpetualsPositionResponse = {
-  position: Position;
+  position?: Position;
 };
 
 // Get Portfolio Balances
@@ -57,13 +57,7 @@ export type GetPortfolioBalancesRequest = {
 };
 
 export type GetPortfolioBalancesResponse = {
-  portfolio_balancces: PortfolioBalance[];
-};
-
-export type PortfolioBalance = {
-  portfolio_uuid: string;
-  balances: Balance[];
-  is_margin_limit_reached: boolean;
+  portfolio_balancces?: PortfolioBalance[];
 };
 
 // Opt In or Out of Multi Asset Collateral
@@ -74,5 +68,5 @@ export type OptInOutMultiAssetCollateralRequest = {
 };
 
 export type OptInOutMultiAssetCollateralResponse = {
-  cross_collateral_enabled: boolean;
+  cross_collateral_enabled?: boolean;
 };

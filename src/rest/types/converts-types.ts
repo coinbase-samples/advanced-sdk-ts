@@ -10,7 +10,7 @@ export type CreateConvertQuoteRequest = {
 };
 
 export type CreateConvertQuoteResponse = {
-  trade: RatConvertTrade;
+  trade?: RatConvertTrade;
 };
 
 // Get Convert Trade
@@ -24,7 +24,7 @@ export type GetConvertTradeRequest = {
 };
 
 export type GetConvertTradeResponse = {
-  trade: RatConvertTrade;
+  trade?: RatConvertTrade;
 };
 
 // Commit Convert Trade
@@ -38,5 +38,5 @@ export type CommitConvertTradeRequest = {
 };
 
 export type CommitConvertTradeResponse = {
-  trade: RatConvertTrade;
+  trade?: RatConvertTrade;
 };

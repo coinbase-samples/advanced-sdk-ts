@@ -46,7 +46,7 @@ export type ListProductsRequest = {
 };
 
 export type ListProductsResponse = {
-  body: Products;
+  body?: Products;
 };
 
 // Get Product
@@ -59,7 +59,7 @@ export type GetProductRequest = {
 };
 
 export type GetProductResponse = {
-  body: Product;
+  body?: Product;
 };
 
 // Get Product Candles
@@ -75,7 +75,7 @@ export type GetProductCandlesRequest = {
 };
 
 export type GetProductCandlesResponse = {
-  body: Candles;
+  body?: Candles;
 };
 
 // Get Market Trades
@@ -90,7 +90,7 @@ export type GetMarketTradesRequest = {
 };
 
 export type GetMarketTradesResponse = {
-  trades: HistoricalMarketTrade[];
-  best_bid: string;
-  best_ask: string;
+  trades?: HistoricalMarketTrade[];
+  best_bid?: string;
+  best_ask?: string;
 };
