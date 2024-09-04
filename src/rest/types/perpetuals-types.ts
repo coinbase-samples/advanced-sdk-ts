@@ -1,6 +1,7 @@
 import {
   Balance,
-  PerpetualPortfolio, PortfolioBalance,
+  PerpetualPortfolio,
+  PortfolioBalance,
   PortfolioSummary,
   Position,
   PositionSummary,

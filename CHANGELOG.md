@@ -8,4 +8,4 @@
 - Custom error types
 - Linting and formatting
 - Custom Request and Response objects for endpoints
-- 
+-

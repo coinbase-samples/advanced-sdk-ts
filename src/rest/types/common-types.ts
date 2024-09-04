@@ -95,8 +95,8 @@ export type Account = {
 };
 
 export type TradeIncentiveMetadata = {
-  userIncentiveId: string;
-  codeVal: string;
+  userIncentiveId?: string;
+  codeVal?: string;
 };
 
 export type OrderConfiguration =
@@ -419,16 +419,16 @@ export type Product = {
 };
 
 export type Candles = {
-  candles: Candle[];
+  candles?: Candle[];
 };
 
 export type Candle = {
-  start: string;
-  low: string;
-  high: string;
-  open: string;
-  close: string;
-  volume: string;
+  start?: string;
+  low?: string;
+  high?: string;
+  open?: string;
+  close?: string;
+  volume?: string;
 };
 
 export type HistoricalMarketTrade = {
