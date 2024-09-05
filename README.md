@@ -1,8 +1,8 @@
-# Coinbase Advanced API Typescript SDK
+# Coinbase Advanced API TypeScript SDK
 
-Welcome to the Coinbase Advanced API Typescript SDK. This typescript project was created to allow coders to easily plug into the [Coinbase Advanced API](https://docs.cdp.coinbase.com/advanced-trade/docs/welcome).
+Welcome to the Coinbase Advanced API Typescript SDK. This typescript project was created to allow developers to easily plug into the [Coinbase Advanced API](https://docs.cdp.coinbase.com/advanced-trade/docs/welcome).
 
-For more information on all the available REST endpoints, see the [API Reference](https://docs-cdp-advanced-trade-preview.cbhq.net/advanced-trade/reference/retailbrokerageapi_getaccounts).
+For more information on all the available REST endpoints, see the [API Reference](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getaccount).
 
 ---
 
@@ -32,7 +32,7 @@ To run a file, use the following command:
 node dist/{INSERT-FILENAME}.js
 ```
 
-For example, the SDK includes a `main.ts` file with examples requests already setup inside it. To run it, you would do it like so:
+For example, the SDK includes a `main.ts` file with examples requests already setup inside it. To run it, you would do it like:
 
 ```bash
 node dist/main.js
@@ -51,7 +51,7 @@ Make sure to save your API key and secret in a safe place. You will not be able 
 
 Authentication of CDP API Keys is handled automatically by the SDK when making a REST request.
 
-After creating your CDP API keys, simply create a `.env` file in the root of your repository and add your keys there like so:
+After creating your CDP API keys, simply create a `.env` file in the root of your repository and add your keys there like:
 
 ```
 API_KEY = "Enter API key here"
@@ -62,9 +62,9 @@ Once finished, you are ready to make requests with the SDK.
 
 ---
 
-## Locating and Setting Up requests
+## Imports
 
-All REST endpoints are stored in the `src/rest/`. After locating the endpoint you would like to make a request to, import it to `main.ts` (or any other file of choice) like so:
+All REST endpoints are stored in the `src/rest/`. After locating the endpoint you would like to make a request to, import it to `main.ts` (or any other file of choice) like:
 
 ```
 import { listAccounts } from "./rest/accounts";
@@ -74,9 +74,9 @@ Here, the `listAccounts` endpoint is now imported and ready to be called.
 
 ---
 
-## Making the request
+## Making Requests
 
-After the endpoint is imported, make a request to the `listAccounts` endpoint like so:
+After the endpoint is imported, make a request to the `listAccounts` endpoint like:
 
 ```
 import { listAccounts } from "./rest/accounts";
