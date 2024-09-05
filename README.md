@@ -32,7 +32,7 @@ To run a file, use the following command:
 node dist/{INSERT-FILENAME}.js
 ```
 
-For example, the SDK includes a `main.ts` file with examples requests already setup inside it. To run it, you would do it like:
+For example, a `main.ts` file would be run like:
 
 ```bash
 node dist/main.js
@@ -47,45 +47,73 @@ Make sure to save your API key and secret in a safe place. You will not be able 
 
 ---
 
+## Import RESTClient
+
+All the REST endpoints are available directly from the client, therefore it's all you need to import.
+
+```
+import { RESTClient } from './rest';
+```
+
+---
+
 ## Authentication
 
 Authentication of CDP API Keys is handled automatically by the SDK when making a REST request.
 
-After creating your CDP API keys, simply create a `.env` file in the root of your repository and add your keys there like:
+After creating your CDP API keys, store them using your desired method and simply pass them into the client during initialization like:
 
 ```
-API_KEY = "Enter API key here"
-API_SECRET = "Enter API secret here"
+const client = new RESTClient(API_KEY, API_SECRET);
 ```
-
-Once finished, you are ready to make requests with the SDK.
-
----
-
-## Imports
-
-All REST endpoints are stored in the `src/rest/`. After locating the endpoint you would like to make a request to, import it to `main.ts` (or any other file of choice) like:
-
-```
-import { listAccounts } from "./rest/accounts";
-```
-
-Here, the `listAccounts` endpoint is now imported and ready to be called.
 
 ---
 
 ## Making Requests
 
-After the endpoint is imported, make a request to the `listAccounts` endpoint like:
+Here are a few examples requests:
 
+**[List Accounts](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getaccounts)**
 ```
-import { listAccounts } from "./rest/accounts";
-
-listAccounts()
+client
+    .listAccounts({})
     .then((result) => {
-        console.log(result)
+        console.log(result);
     })
     .catch((error) => {
-        console.error('Unhandled error:', error.message);
+        console.error(error.message);
+    });
+```
+**[Get Product](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getproduct)**
+```
+client
+    .getProduct({productId: "BTC-USD"})
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.error(error.message);
+    });
+```
+**[Create Order](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_postorder)**
+
+_$10 Market Buy on BTC-USD_
+```
+client
+    .createOrder({
+        clientOrderId: "00000001",
+        productId: "BTC-USD",
+        side: OrderSide.BUY,
+        orderConfiguration:{
+            market_market_ioc: {
+                quote_size: "10"
+            }
+        }
+    })
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.error(error.message);
     });
 ```
