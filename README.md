@@ -47,7 +47,7 @@ Make sure to save your API key and secret in a safe place. You will not be able 
 
 ---
 
-## Import RESTClient
+## Importing the RESTClient
 
 All the REST endpoints are available directly from the client, therefore it's all you need to import.
 
