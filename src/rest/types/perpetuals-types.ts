@@ -1,5 +1,4 @@
 import {
-  Balance,
   PerpetualPortfolio,
   PortfolioBalance,
   PortfolioSummary,

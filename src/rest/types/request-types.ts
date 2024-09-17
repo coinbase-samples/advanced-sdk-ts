@@ -6,7 +6,7 @@ export enum request {
 }
 
 export interface RequestOptions {
-  method: HttpMethod;
+  method: request;
   endpoint: string;
   queryParams?: Record<string, any>;
   bodyParams?: Record<string, any>;

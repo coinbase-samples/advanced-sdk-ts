@@ -32,7 +32,7 @@ export function getPublicProductBook(
   requestParams: GetPublicProductBookRequest
 ): Promise<GetPublicProductBookResponse> {
   return this.request({
-    method: request.GET ,
+    method: request.GET,
     endpoint: `${API_PREFIX}/market/product_book`,
     queryParams: requestParams,
     isPublic: true,

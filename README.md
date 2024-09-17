@@ -74,6 +74,7 @@ const client = new RESTClient(API_KEY, API_SECRET);
 Here are a few examples requests:
 
 **[List Accounts](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getaccounts)**
+
 ```
 client
     .listAccounts({})
@@ -84,7 +85,9 @@ client
         console.error(error.message);
     });
 ```
+
 **[Get Product](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getproduct)**
+
 ```
 client
     .getProduct({productId: "BTC-USD"})
@@ -95,9 +98,11 @@ client
         console.error(error.message);
     });
 ```
+
 **[Create Order](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_postorder)**
 
 _$10 Market Buy on BTC-USD_
+
 ```
 client
     .createOrder({
