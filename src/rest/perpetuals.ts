@@ -14,7 +14,7 @@ import {
   OptInOutMultiAssetCollateralRequest,
   OptInOutMultiAssetCollateralResponse,
 } from './types/perpetuals-types';
-import { request } from './types/request-types';
+import { method } from './types/request-types';
 
 // [POST] Allocate Portfolio
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_allocateportfolio
@@ -23,7 +23,7 @@ export function allocatePortfolio(
   requestParams: AllocatePortfolioRequest
 ): Promise<AllocatePortfolioResponse> {
   return this.request({
-    method: request.POST,
+    method: method.POST,
     endpoint: `${API_PREFIX}/intx/allocate`,
     bodyParams: requestParams,
     isPublic: false,
@@ -37,7 +37,7 @@ export function getPerpetualsPortfolioSummary(
   { portfolioUuid }: GetPerpetualsPortfolioSummaryRequest
 ): Promise<GetPerpetualsPortfolioSummaryResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/intx/portfolio/${portfolioUuid}`,
     isPublic: false,
   });
@@ -50,7 +50,7 @@ export function listPerpetualsPositions(
   { portfolioUuid }: ListPerpetualsPositionsRequest
 ): Promise<ListPerpetualsPositionsResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/intx/positions/${portfolioUuid}`,
     isPublic: false,
   });
@@ -63,7 +63,7 @@ export function getPerpertualsPosition(
   { portfolioUuid, symbol }: GetPerpetualsPositionRequest
 ): Promise<GetPerpetualsPositionResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/intx/positions/${portfolioUuid}/${symbol}`,
     isPublic: false,
   });
@@ -76,7 +76,7 @@ export function getPortfolioBalances(
   { portfolioUuid }: GetPortfolioBalancesRequest
 ): Promise<GetPortfolioBalancesResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/intx/balances/${portfolioUuid}`,
     isPublic: false,
   });
@@ -89,7 +89,7 @@ export function optInOutMultiAssetCollateral(
   requestParams: OptInOutMultiAssetCollateralRequest
 ): Promise<OptInOutMultiAssetCollateralResponse> {
   return this.request({
-    method: request.POST,
+    method: method.POST,
     endpoint: `${API_PREFIX}/intx/multi_asset_collateral`,
     bodyParams: requestParams,
     isPublic: false,

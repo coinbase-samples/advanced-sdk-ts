@@ -1,4 +1,4 @@
-export enum request {
+export enum method {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
@@ -6,7 +6,7 @@ export enum request {
 }
 
 export interface RequestOptions {
-  method: request;
+  method: method;
   endpoint: string;
   queryParams?: Record<string, any>;
   bodyParams?: Record<string, any>;

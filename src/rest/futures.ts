@@ -15,7 +15,7 @@ import {
   SetIntradayMarginSettingRequest,
   SetIntradayMarginSettingResponse,
 } from './types/futures-types';
-import { request } from './types/request-types';
+import { method } from './types/request-types';
 
 // [GET] Get Futures Balance Summary
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getfcmbalancesummary
@@ -23,7 +23,7 @@ export function getFuturesBalanceSummary(
   this: RESTBase
 ): Promise<GetFuturesBalanceSummaryResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/cfm/balance_summary`,
     isPublic: false,
   });
@@ -35,7 +35,7 @@ export function getIntradayMarginSetting(
   this: RESTBase
 ): Promise<GetIntradayMarginSettingResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
     isPublic: false,
   });
@@ -48,7 +48,7 @@ export function setIntradayMarginSetting(
   requestParams: SetIntradayMarginSettingRequest
 ): Promise<SetIntradayMarginSettingResponse> {
   return this.request({
-    method: request.POST,
+    method: method.POST,
     endpoint: `${API_PREFIX}/cfm/intraday/margin_setting`,
     bodyParams: requestParams,
     isPublic: false,
@@ -62,7 +62,7 @@ export function getCurrentMarginWindow(
   requestParams: GetCurrentMarginWindowRequest
 ): Promise<GetCurrentMarginWindowResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/cfm/intraday/current_margin_window`,
     queryParams: requestParams,
     isPublic: false,
@@ -75,7 +75,7 @@ export function listFuturesPositions(
   this: RESTBase
 ): Promise<ListFuturesPositionsResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/cfm/positions`,
     isPublic: false,
   });
@@ -88,7 +88,7 @@ export function getFuturesPosition(
   { productId }: GetFuturesPositionRequest
 ): Promise<GetFuturesPositionResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/cfm/positions/${productId}`,
     isPublic: false,
   });
@@ -101,7 +101,7 @@ export function scheduleFuturesSweep(
   requestParams: ScheduleFuturesSweepRequest
 ): Promise<ScheduleFuturesSweepResponse> {
   return this.request({
-    method: request.POST,
+    method: method.POST,
     endpoint: `${API_PREFIX}/cfm/sweeps/schedule`,
     bodyParams: requestParams,
     isPublic: false,
@@ -114,7 +114,7 @@ export function listFuturesSweeps(
   this: RESTBase
 ): Promise<ListFuturesSweepsResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/cfm/sweeps`,
     isPublic: false,
   });
@@ -126,7 +126,7 @@ export function cancelPendingFuturesSweep(
   this: RESTBase
 ): Promise<CancelPendingFuturesSweep> {
   return this.request({
-    method: request.DELETE,
+    method: method.DELETE,
     endpoint: `${API_PREFIX}/cfm/sweeps`,
     isPublic: false,
   });

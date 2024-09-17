@@ -8,7 +8,7 @@ import {
   GetConvertTradeRequest,
   GetConvertTradeResponse,
 } from './types/converts-types';
-import { request } from './types/request-types';
+import { method } from './types/request-types';
 
 // [POST] Create Convert Quote
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_createconvertquote
@@ -17,7 +17,7 @@ export function createConvertQuote(
   requestParams: CreateConvertQuoteRequest
 ): Promise<CreateConvertQuoteResponse> {
   return this.request({
-    method: request.POST,
+    method: method.POST,
     endpoint: `${API_PREFIX}/convert/quote`,
     bodyParams: requestParams,
     isPublic: false,
@@ -31,7 +31,7 @@ export function getConvertTrade(
   { tradeId, ...requestParams }: GetConvertTradeRequest
 ): Promise<GetConvertTradeResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/convert/trade/${tradeId}`,
     queryParams: requestParams,
     isPublic: false,
@@ -45,7 +45,7 @@ export function commitConvertTrade(
   { tradeId, ...requestParams }: CommitConvertTradeRequest
 ): Promise<CommitConvertTradeResponse> {
   return this.request({
-    method: request.POST,
+    method: method.POST,
     endpoint: `${API_PREFIX}/convert/trade/${tradeId}`,
     bodyParams: requestParams,
     isPublic: false,

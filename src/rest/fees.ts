@@ -4,7 +4,7 @@ import {
   GetTransactionsSummaryRequest,
   GetTransactionsSummaryResponse,
 } from './types/fees-types';
-import { request } from './types/request-types';
+import { method } from './types/request-types';
 
 // [GET] Get Transaction Summary
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_commitconverttrade
@@ -13,7 +13,7 @@ export function getTransactionSummary(
   requestParams: GetTransactionsSummaryRequest
 ): Promise<GetTransactionsSummaryResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/transaction_summary`,
     queryParams: requestParams,
     isPublic: false,

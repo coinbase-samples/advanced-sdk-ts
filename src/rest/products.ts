@@ -14,7 +14,7 @@ import {
   ListProductsRequest,
   ListProductsResponse,
 } from './types/products-types';
-import { request } from './types/request-types';
+import { method } from './types/request-types';
 
 // [GET] Get Best Bid Ask
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getbestbidask
@@ -23,7 +23,7 @@ export function getBestBidAsk(
   requestParams: GetBestBidAskRequest
 ): Promise<GetBestBidAskResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/best_bid_ask`,
     queryParams: requestParams,
     isPublic: false,
@@ -37,7 +37,7 @@ export function getProductBook(
   requestParams: GetProductBookRequest
 ): Promise<GetProductBookResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/product_book`,
     queryParams: requestParams,
     isPublic: false,
@@ -51,7 +51,7 @@ export function listProducts(
   requestParams: ListProductsRequest
 ): Promise<ListProductsResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/products`,
     queryParams: requestParams,
     isPublic: false,
@@ -65,7 +65,7 @@ export function getProduct(
   { productId, ...requestParams }: GetProductRequest
 ): Promise<GetProductResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/products/${productId}`,
     queryParams: requestParams,
     isPublic: false,
@@ -79,7 +79,7 @@ export function getProductCandles(
   { productId, ...requestParams }: GetProductCandlesRequest
 ): Promise<GetProductCandlesResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/products/${productId}/candles`,
     queryParams: requestParams,
     isPublic: false,
@@ -93,7 +93,7 @@ export function getMarketTrades(
   { productId, ...requestParams }: GetMarketTradesRequest
 ): Promise<GetMarketTradesResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/products/${productId}/ticker`,
     queryParams: requestParams,
     isPublic: false,

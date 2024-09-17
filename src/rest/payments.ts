@@ -5,7 +5,7 @@ import {
   GetPaymentMethodResponse,
   ListPaymentMethodsResponse,
 } from './types/payments-types';
-import { request } from './types/request-types';
+import { method } from './types/request-types';
 
 // [GET] List Payment Methods
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getpaymentmethods
@@ -13,7 +13,7 @@ export function listPaymentMethods(
   this: RESTBase
 ): Promise<ListPaymentMethodsResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/payment_methods`,
     isPublic: false,
   });
@@ -26,7 +26,7 @@ export function getPaymentMethod(
   { paymentMethodId }: GetPaymentMethodRequest
 ): Promise<GetPaymentMethodResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/payment_methods/${paymentMethodId}`,
     isPublic: false,
   });

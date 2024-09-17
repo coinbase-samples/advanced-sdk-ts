@@ -14,7 +14,7 @@ import {
   MovePortfolioFundsRequest,
   MovePortfolioFundsResponse,
 } from './types/portfolios-types';
-import { request } from './types/request-types';
+import { method } from './types/request-types';
 
 // [GET] List Portfolios
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getportfolios
@@ -23,7 +23,7 @@ export function listPortfolios(
   requestParams: ListPortfoliosRequest
 ): Promise<ListPortfoliosResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/portfolios`,
     queryParams: requestParams,
     isPublic: false,
@@ -37,7 +37,7 @@ export function createPortfolio(
   requestParams: CreatePortfolioRequest
 ): Promise<CreatePortfolioResponse> {
   return this.request({
-    method: request.POST,
+    method: method.POST,
     endpoint: `${API_PREFIX}/portfolios`,
     bodyParams: requestParams,
     isPublic: false,
@@ -51,7 +51,7 @@ export function movePortfolioFunds(
   requestParams: MovePortfolioFundsRequest
 ): Promise<MovePortfolioFundsResponse> {
   return this.request({
-    method: request.POST,
+    method: method.POST,
     endpoint: `${API_PREFIX}/portfolios/move_funds`,
     bodyParams: requestParams,
     isPublic: false,
@@ -65,7 +65,7 @@ export function getPortfolioBreakdown(
   { portfolioUuid, ...requestParams }: GetPortfolioBreakdownRequest
 ): Promise<GetPortfolioBreakdownResponse> {
   return this.request({
-    method: request.GET,
+    method: method.GET,
     endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
     queryParams: requestParams,
     isPublic: false,
@@ -79,7 +79,7 @@ export function deletePortfolio(
   { portfolioUuid }: DeletePortfolioRequest
 ): Promise<DeletePortfolioResponse> {
   return this.request({
-    method: request.DELETE,
+    method: method.DELETE,
     endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
     isPublic: false,
   });
@@ -92,7 +92,7 @@ export function editPortfolio(
   { portfolioUuid, ...requestParams }: EditPortfolioRequest
 ): Promise<EditPortfolioResponse> {
   return this.request({
-    method: request.PUT,
+    method: method.PUT,
     endpoint: `${API_PREFIX}/portfolios/${portfolioUuid}`,
     bodyParams: requestParams,
     isPublic: false,
