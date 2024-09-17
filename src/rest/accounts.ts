@@ -6,6 +6,7 @@ import {
   ListAccountsRequest,
   ListAccountsResponse,
 } from './types/accounts-types';
+import { request } from './types/request-types';
 
 // [GET] Get Account
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getaccount
@@ -14,20 +15,20 @@ export function getAccount(
   { accountUuid }: GetAccountRequest
 ): Promise<GetAccountResponse> {
   return this.request({
-    method: 'GET',
+    method: request.GET,
     endpoint: `${API_PREFIX}/accounts/${accountUuid}`,
     isPublic: false,
   });
 }
 
-// List Accounts
+// [GET] List Accounts
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getaccounts
 export function listAccounts(
   this: RESTBase,
   requestParams: ListAccountsRequest
 ): Promise<ListAccountsResponse> {
   return this.request({
-    method: 'GET',
+    method: request.GET,
     endpoint: `${API_PREFIX}/accounts`,
     queryParams: requestParams,
     isPublic: false,

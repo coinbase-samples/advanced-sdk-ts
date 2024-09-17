@@ -20,6 +20,7 @@ import {
   PreviewOrderRequest,
   PreviewOrderResponse,
 } from './types/orders-types';
+import { request } from './types/request-types';
 
 // [POST] Create Order
 // Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_postorder
@@ -28,7 +29,7 @@ export function createOrder(
   requestParams: CreateOrderRequest
 ): Promise<CreateOrderResponse> {
   return this.request({
-    method: 'POST',
+    method: request.POST,
     endpoint: `${API_PREFIX}/orders`,
     bodyParams: requestParams,
     isPublic: false,
@@ -42,7 +43,7 @@ export function cancelOrders(
   requestParams: CancelOrdersRequest
 ): Promise<CancelOrdersResponse> {
   return this.request({
-    method: 'POST',
+    method: request.POST,
     endpoint: `${API_PREFIX}/orders/batch_cancel`,
     bodyParams: requestParams,
     isPublic: false,
@@ -56,7 +57,7 @@ export function editOrder(
   requestParams: EditOrderRequest
 ): Promise<EditOrderResponse> {
   return this.request({
-    method: 'POST',
+    method: request.POST,
     endpoint: `${API_PREFIX}/orders/edit`,
     bodyParams: requestParams,
     isPublic: false,
@@ -70,7 +71,7 @@ export function editOrderPreview(
   requestParams: EditOrderPreviewRequest
 ): Promise<EditOrderPreviewResponse> {
   return this.request({
-    method: 'POST',
+    method: request.POST,
     endpoint: `${API_PREFIX}/orders/edit_preview`,
     bodyParams: requestParams,
     isPublic: false,
@@ -84,7 +85,7 @@ export function listOrders(
   requestParams: ListOrdersRequest
 ): Promise<ListOrdersResponse> {
   return this.request({
-    method: 'POST',
+    method: request.GET,
     endpoint: `${API_PREFIX}/orders/historical/batch`,
     queryParams: requestParams,
     isPublic: false,
@@ -98,7 +99,7 @@ export function listFills(
   requestParams: ListFillsRequest
 ): Promise<ListFillsResponse> {
   return this.request({
-    method: 'GET',
+    method: request.GET,
     endpoint: `${API_PREFIX}/orders/historical/fills`,
     queryParams: requestParams,
     isPublic: false,
@@ -112,7 +113,7 @@ export function getOrder(
   { orderId }: GetOrderRequest
 ): Promise<GetOrderResponse> {
   return this.request({
-    method: 'GET',
+    method: request.GET,
     endpoint: `${API_PREFIX}/orders/historical/${orderId}`,
     isPublic: false,
   });
@@ -125,7 +126,7 @@ export function previewOrder(
   requestParams: PreviewOrderRequest
 ): Promise<PreviewOrderResponse> {
   return this.request({
-    method: 'POST',
+    method: request.POST,
     endpoint: `${API_PREFIX}/orders/preview`,
     bodyParams: requestParams,
     isPublic: false,
@@ -139,7 +140,7 @@ export function closePosition(
   requestParams: ClosePositionRequest
 ): Promise<ClosePositionResponse> {
   return this.request({
-    method: 'POST',
+    method: request.POST,
     endpoint: `${API_PREFIX}/orders/close_position`,
     queryParams: undefined,
     bodyParams: requestParams,

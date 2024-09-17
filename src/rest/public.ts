@@ -14,6 +14,8 @@ import {
   ListPublicProductsResponse,
 } from './types/public-types';
 
+// [GET] Get Server Time
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getservertime
 export function getServerTime(this: RESTBase): Promise<GetServerTimeResponse> {
   return this.request({
     method: 'GET',
@@ -22,6 +24,8 @@ export function getServerTime(this: RESTBase): Promise<GetServerTimeResponse> {
   });
 }
 
+// [GET] Get Public Product Book
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getpublicproductbook
 export function getPublicProductBook(
   this: RESTBase,
   requestParams: GetPublicProductBookRequest
@@ -34,6 +38,8 @@ export function getPublicProductBook(
   });
 }
 
+// [GET] List Public Products
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getpublicproducts
 export function listPublicProducts(
   this: RESTBase,
   requestParams: ListPublicProductsRequest
@@ -46,6 +52,8 @@ export function listPublicProducts(
   });
 }
 
+// [GET] Get Public Product
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getpublicproduct
 export function getPublicProduct(
   this: RESTBase,
   { productId }: GetPublicProductRequest
@@ -57,6 +65,8 @@ export function getPublicProduct(
   });
 }
 
+// [GET] Get Public Product Candles
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getpubliccandles
 export function getPublicProductCandles(
   this: RESTBase,
   { productId, ...requestParams }: GetPublicProductCandlesRequest
@@ -69,6 +79,8 @@ export function getPublicProductCandles(
   });
 }
 
+// [GET] Get Public Market Trades
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getpublicmarkettrades
 export function getPublicMarketTrades(
   this: RESTBase,
   { productId, ...requestParams }: GetPublicMarketTradesRequest

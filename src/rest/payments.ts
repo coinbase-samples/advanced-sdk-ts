@@ -5,17 +5,22 @@ import {
   GetPaymentMethodResponse,
   ListPaymentMethodsResponse,
 } from './types/payments-types';
+import { request } from './types/request-types';
 
+// [GET] List Payment Methods
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getpaymentmethods
 export function listPaymentMethods(
   this: RESTBase
 ): Promise<ListPaymentMethodsResponse> {
   return this.request({
-    method: 'GET',
+    method: request.GET,
     endpoint: `${API_PREFIX}/payment_methods`,
     isPublic: false,
   });
 }
 
+// [GET] Get Payment Method
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getpaymentmethod
 export function getPaymentMethod(
   this: RESTBase,
   { paymentMethodId }: GetPaymentMethodRequest
