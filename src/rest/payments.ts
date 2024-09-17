@@ -26,7 +26,7 @@ export function getPaymentMethod(
   { paymentMethodId }: GetPaymentMethodRequest
 ): Promise<GetPaymentMethodResponse> {
   return this.request({
-    method: 'GET',
+    method: request.GET,
     endpoint: `${API_PREFIX}/payment_methods/${paymentMethodId}`,
     isPublic: false,
   });
