@@ -12,6 +12,6 @@ export function getAPIKeyPermissions(
   return this.request({
     method: method.GET,
     endpoint: `${API_PREFIX}/key_permissions`,
-    isPublic: true,
+    isPublic: false,
   });
 }
