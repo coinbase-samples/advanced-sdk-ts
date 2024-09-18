@@ -1,6 +1,7 @@
 import { RESTBase } from './rest-base';
 import * as Accounts from './accounts';
 import * as Converts from './converts';
+import * as DataAPI from './dataAPI';
 import * as Fees from './fees';
 import * as Futures from './futures';
 import * as Orders from './orders';
@@ -23,6 +24,9 @@ export class RESTClient extends RESTBase {
   public createConvertQuote = Converts.createConvertQuote.bind(this);
   public commitConvertTrade = Converts.commitConvertTrade.bind(this);
   public getConvertTrade = Converts.getConvertTrade.bind(this);
+
+  // =============== DATA API endpoints ===============
+  public getAPIKeyPermissions = DataAPI.getAPIKeyPermissions.bind(this);
 
   // =============== FEES endpoints ===============
   public getTransactionSummary = Fees.getTransactionSummary.bind(this);
