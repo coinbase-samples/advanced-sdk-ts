@@ -44,7 +44,7 @@ export function getPerpetualsPortfolioSummary(
 }
 
 // [GET] List Perpetuals Positions
-// Official Documentation:
+// Official Documentation: https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getintxpositions
 export function listPerpetualsPositions(
   this: RESTBase,
   { portfolioUuid }: ListPerpetualsPositionsRequest
