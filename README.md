@@ -2,6 +2,8 @@
 
 Welcome to the Coinbase Advanced API TypeScript SDK. This TypeScript project was created to allow developers to easily plug into the [Coinbase Advanced API](https://docs.cdp.coinbase.com/advanced-trade/docs/welcome).
 
+Coinbase Advanced Trade offers a comprehensive API for traders, providing access to real-time market data, order management, and execution. Elevate your trading strategies and develop sophisticated solutions using our powerful tools and features.
+
 For more information on all the available REST endpoints, see the [API Reference](https://docs.cdp.coinbase.com/advanced-trade/reference/).
 
 ---
@@ -74,6 +76,7 @@ const client = new RESTClient(API_KEY, API_SECRET);
 Here are a few examples requests:
 
 **[List Accounts](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getaccounts)**
+
 ```
 client
     .listAccounts({})
@@ -84,7 +87,9 @@ client
         console.error(error.message);
     });
 ```
+
 **[Get Product](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_getproduct)**
+
 ```
 client
     .getProduct({productId: "BTC-USD"})
@@ -95,9 +100,11 @@ client
         console.error(error.message);
     });
 ```
+
 **[Create Order](https://docs.cdp.coinbase.com/advanced-trade/reference/retailbrokerageapi_postorder)**
 
 _$10 Market Buy on BTC-USD_
+
 ```
 client
     .createOrder({

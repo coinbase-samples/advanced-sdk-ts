@@ -1,7 +1,12 @@
-type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+export enum method {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+}
 
 export interface RequestOptions {
-  method: HttpMethod;
+  method: method;
   endpoint: string;
   queryParams?: Record<string, any>;
   bodyParams?: Record<string, any>;

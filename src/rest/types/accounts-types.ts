@@ -1,6 +1,6 @@
-// Get Account
 import { Account } from './common-types';
 
+// Get Account
 export type GetAccountRequest = {
   // Path Params
   accountUuid: string;
