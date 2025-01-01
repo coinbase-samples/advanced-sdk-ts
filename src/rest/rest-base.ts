@@ -61,10 +61,10 @@ export class RESTBase {
     url: string
   ) {
     const response: Response = await fetch(url, requestOptions);
-    const responseText = await response.text();
-    handleException(response, responseText, response.statusText);
+    const responseJson = await response.json();
+    handleException(response, responseJson, response.statusText);
 
-    return responseText;
+    return responseJson;
   }
 
   setHeaders(httpMethod: string, urlPath: string, isPublic?: boolean) {
