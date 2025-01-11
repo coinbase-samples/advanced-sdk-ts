@@ -103,7 +103,13 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true, /* Skip type checking all .d.ts files. */
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "baseUrl": ".",
+    "paths": {
+      "@coinbase-samples/advanced-sdk-ts/*": ["dist/*"]
+    }
   },
   "include": ["src/**/*.ts"], // Include all .ts files in the src directory and subdirectories
   "exclude": ["node_modules"]
