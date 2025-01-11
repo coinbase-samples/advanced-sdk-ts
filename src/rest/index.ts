@@ -1,3 +1,5 @@
+export * from './types';
+
 import { RESTBase } from './rest-base';
 import * as Accounts from './accounts';
 import * as Converts from './converts';

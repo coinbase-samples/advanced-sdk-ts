@@ -1,7 +1,8 @@
 {
   "name": "@coinbase-samples/advanced-sdk-ts",
   "version": "0.1.0",
-  "main": "dist/main.js",
+  "main": "dist/rest/index.js",
+  "types": "./dist/types/rest/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",

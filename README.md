@@ -42,6 +42,26 @@ node dist/main.js
 
 ---
 
+To link this into your project and consume the types and interface
+
+In this repo:
+```
+npm link
+```
+
+The repo you want to import it to
+```node
+npm link @coinbase-samples/advanced-sdk-ts
+```
+
+Then in your project, you can import the SDK like so:
+
+```TypeScript
+import { RESTClient } from '@coinbase-samples/advanced-sdk-ts';
+```
+
+---
+
 ## Coinbase Developer Platform (CDP) API Keys
 
 This SDK uses Cloud Developer Platform (CDP) API keys. To use this SDK, you will need to create a CDP API key and secret by following the instructions [here](https://docs.cdp.coinbase.com/advanced-trade/docs/getting-started).
